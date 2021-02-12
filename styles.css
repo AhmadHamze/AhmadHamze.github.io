@@ -71,26 +71,28 @@ h1:hover {
     margin-bottom: 10px;
 }
 
+/*
 .navigator {
     background-color: darkslategray;
     padding: 1rem 2rem 0;
 }
 
-/*This makes a vertical list*/
 li {
     float: left;
 }
 
-.navigator li a {
+.navigator li {
     padding: 12px;
     font-size: 30px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+a[href$=".html"] {
     color: navajowhite;
 }
 
 a:hover {
     text-decoration: none;
-    /*color: lightsalmon;*/
 }
 
 .navigator {
@@ -120,3 +122,4 @@ footer ul li {
     padding: 50px;
     padding-left: 300px;
 }
+*/
