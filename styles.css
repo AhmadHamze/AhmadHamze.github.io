@@ -90,7 +90,7 @@ li {
 
 a:hover {
     text-decoration: none;
-    color: lightsalmon;
+    /*color: lightsalmon;*/
 }
 
 .navigator {
@@ -99,3 +99,24 @@ a:hover {
     padding: 10px;
     overflow: hidden;
   }
+
+  footer {
+      background-color: black;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      overflow: auto;
+  }
+  
+i {
+    font-size: 45px;
+    text-align: center;
+    display: block;
+}
+
+footer ul li {
+    text-align: center;
+    display: block;
+    margin: auto;
+    padding: 50px;
+    padding-left: 300px;
+}
