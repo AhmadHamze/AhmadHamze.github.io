@@ -1,8 +1,6 @@
 const footerTemplate = document.createElement('template');
 footerTemplate.innerHTML = `
     <link rel="stylesheet" href="components/footer.css">
-        <!--DevIcons link-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.9.0/devicon.min.css">
         <!--Font awesome link-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <footer>

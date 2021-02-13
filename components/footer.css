@@ -9,6 +9,10 @@ i {
   font-size: 45px;
   text-align: center;
   display: block;
+  color: white;
+}
+
+i:hover {
   color: blue;
 }
 

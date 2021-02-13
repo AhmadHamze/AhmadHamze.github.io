@@ -2,14 +2,7 @@
 body {
     background-color: grey;
 }
-/*
-.container{
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-}
-*/
+
 #mainHead {
     /*When you use fixed position the divs will not be placed vertically anymore, they overlap!*/
     margin: auto !important;
@@ -70,56 +63,3 @@ h1:hover {
     font-size: larger;
     margin-bottom: 10px;
 }
-
-/*
-.navigator {
-    background-color: darkslategray;
-    padding: 1rem 2rem 0;
-}
-
-li {
-    float: left;
-}
-
-.navigator li {
-    padding: 12px;
-    font-size: 30px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-a[href$=".html"] {
-    color: navajowhite;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.navigator {
-    list-style-type: none;
-    margin: 10px;
-    padding: 10px;
-    overflow: hidden;
-  }
-
-  footer {
-      background-color: black;
-      margin-top: 20px;
-      margin-bottom: 0px;
-      overflow: auto;
-  }
-  
-i {
-    font-size: 45px;
-    text-align: center;
-    display: block;
-}
-
-footer ul li {
-    text-align: center;
-    display: block;
-    margin: auto;
-    padding: 50px;
-    padding-left: 300px;
-}
-*/
