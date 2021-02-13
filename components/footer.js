@@ -6,11 +6,13 @@ footerTemplate.innerHTML = `
         <!--Font awesome link-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <footer>
+      <nav>
         <ul>
-            <li><a href="mailto:ahmadhamze@yahoo.com"><i class="far fa-envelope fa-3x"></i></a></li>
-            <li><a href="https://github.com/AhmadHamze"><i class="devicon-github-original"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/ahmad-hamze-4161a0170/"><i class="devicon-linkedin-plain"></i></a></li>
+            <li><a href="mailto:ahmadhamze@yahoo.com"><i class="fa fa-envelope fa-3x"></i></a></li>
+            <li><a href="https://github.com/AhmadHamze"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/ahmad-hamze-4161a0170/"><i class="fab fa-linkedin"></i></a></li>
         </ul>
+      </nav>
     </footer>
 `
 

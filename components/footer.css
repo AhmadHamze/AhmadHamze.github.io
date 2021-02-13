@@ -1,22 +1,21 @@
-footer {
-    background-color: black;
-    margin-top: 20px;
-    margin-bottom: 0px;
-    overflow: auto;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:  #0a0a23;
 }
 
 i {
   font-size: 45px;
   text-align: center;
   display: block;
+  color: blue;
 }
 
-footer ul li {
-  text-align: center;
-  display: block;
-  margin: auto;
-  padding: 50px;
-  padding-left: 300px;
+ul li {
+   list-style: none;
+   display: inline;
+   padding: 0 100px;
 }
 
 li {
