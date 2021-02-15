@@ -9,6 +9,7 @@
         <!--Bootstrap script link-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
         <!--my css link-->
+        <link href="styles-blog.css" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
         <!--Font awesome link-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -20,10 +21,32 @@
         <header-component></header-component>
         <div id="page-container">
             <div id="content-wrap">
-                <p>
-                    HI!
-                </p>
-                
+                <div id="blogContainer">
+                    
+                    <h1>Using the Monte-Carlo simulation to estimate the value of &#120529;</h1>
+                    <p>
+                        First of all let's talk briefly about what is a Monte-Carlo simulation.<br>
+                        Simply put, it is a computational method that uses a large number of random samples to obtain a result. It is used in a
+                        wide range of disciplines like mathematics, computer graphics and physical sciences.
+                        In this blog, we will see how we can use this method to estimate the value of the mathematical constant &#120529;.
+                    </p>
+
+                    <!--If you put this header h3 inside the paragraph, css won't be able to identify the paragraph anymore!!!!-->
+                    <h3>Concept</h3>
+                    <p>
+                        How can a large number of random samples be used to estimate &#120529;?<br>
+                        Suppose we have a circle inscribed in a square, if we throw a pile of sand randomly on the square, some grains will end up
+                        inside the circle and others will end up outside of it.
+                        We can compute the proportion of grains that ended up inside the circle, this value equals the proportion of the circle in relation
+                        to the square.<br>
+                        <img src="images/mc-pie-best.png" alt="Card image cap"><br>
+                        This picture illustrates what is written above, the blue dots represent the grains that are inside the circle and the red ones
+                        represent the ones outside of it.<br>
+                        But why is this true? The Monte-Carlo simulation is an example of the "Law of Large Numbers (LLN)", this is not the focus of this
+                        blog, if you want to know more you can check this wikipedia article
+                        <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law_of_large_numbers</a>.
+                    </p>
+                </div>
             </div>
             <footer-component></footer-component>
         </div>

@@ -15,14 +15,14 @@ body {
     padding-bottom: 10px;
 }
 
-h1 {
+h1:not(#blogContainer h1) {
     color: wheat;
     font-size: 48px;
     font-family: 'Courier New', Courier, monospace;
     padding-bottom: 30px;
 }
 
-h1:hover {
+h1:hover:not(#blogContainer h1) {
     color: lightsalmon;
 }
 
@@ -122,13 +122,4 @@ padding: 8px;
 #courses {
     padding-left: 180px;
     padding-right: 180px;
-}
-
-#blogCards {
-    width: 18rem;
-    margin-left: 270px;
-    margin-right: 270px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    background-color: rgb(139, 165, 69);
 }
