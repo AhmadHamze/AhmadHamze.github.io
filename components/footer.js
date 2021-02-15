@@ -1,6 +1,41 @@
 const footerTemplate = document.createElement('template');
 footerTemplate.innerHTML = `
-    <link rel="stylesheet" href="components/footer.css">
+    <style>
+        nav {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color:  #0a0a23;
+        }
+        
+        i {
+          font-size: 45px;
+          text-align: center;
+          display: block;
+          color: white;
+        }
+        
+        i:hover {
+          color: blue;
+        }
+        
+        ul li {
+          list-style: none;
+          display: inline;
+          padding: 0 100px;
+        }
+        
+        li {
+            float: left;
+        }
+        
+        footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 2.5rem;            /* Footer height */
+        }
+    </style>
         <!--Font awesome link-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <footer>
