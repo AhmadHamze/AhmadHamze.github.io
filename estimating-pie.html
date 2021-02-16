@@ -36,15 +36,78 @@
                     <p>
                         How can a large number of random samples be used to estimate &#120529;?<br>
                         Suppose we have a circle inscribed in a square, if we throw a pile of sand randomly on the square, some grains will end up
-                        inside the circle and others will end up outside of it.
-                        We can compute the proportion of grains that ended up inside the circle, this value equals the proportion of the circle in relation
-                        to the square.<br>
+                        inside the circle and others will end up outside of it. This picture illustrates this concept,
+                        the blue dots represent the grains that are inside the circle and the red ones represent the ones outside of it.<br>
                         <img src="images/mc-pie-best.png" alt="Card image cap"><br>
-                        This picture illustrates what is written above, the blue dots represent the grains that are inside the circle and the red ones
-                        represent the ones outside of it.<br>
+                        We can compute the proportion of grains that ended up inside the circle, this value equals the proportion of the circle in relation
+                        to the square. In addition, the more grain of sands we throw onto the square the more accurate the estimation will be.<br>
                         But why is this true? The Monte-Carlo simulation is an example of the "Law of Large Numbers (LLN)", this is not the focus of this
                         blog, if you want to know more you can check this wikipedia article
-                        <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">Law_of_large_numbers</a>.
+                        <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers" target="_blank" rel="noopener noreferrer">Law_of_large_numbers</a>.<br>
+                        First, let's figure out what the proportion of the circle in relation to the square is.<br>
+                        The area of the circle is &#120529; &#215; r <sup>2</sup>, where r <mo>=</mo> &frac12;, on the other hand the area of the square is simply 1.<br>
+                        Therefore the proportion we're lookoing for is <sup>(&#120529; &frasl; 4)</sup> &frasl; <sub>1</sub> <mo>=</mo> (&#120529; &frasl; <sub>4</sub>).<br>
+                        The second value we're looking for is the proportion of the grains inside the circle. Denote "success" the number of these grains and "trials"
+                        the total number of grains thrown, the proportion will be <sup>success</sup> &frasl; <sub>trials</sub>.<br>
+                        Now, let's write the equation &#120529; &frasl; <sub>4</sub> <mo>=</mo> <sup>success</sup> &frasl; <sub>trials</sub>, this is equivalent to
+                        &#120529; <mo>=</mo> 4 &#215; <sup>success</sup> &frasl; <sub>trials</sub>.<br>
+                        There you go! What we have to do now is to simulate a lot of "trials" and see how many are "success" i.e. inside the circle.
+
+                    </p>
+                    <h3>Code</h3>
+                    <p>
+                        We will be creating an array containing many couples of variables representing the coordinates of each point (grain of sand),
+                        then we calculate whether the point is within the disk or not (the disk center is (&frac12;,&frac12;)).
+                        Each point <mrow>(x,y)</mrow> is a bivariate uniform random variable on the unit square,
+                        <mrow>
+                            <mi>(x,y)</mi> &isin;
+                            <mi>(0,1)<sup>2</sup></mi>
+                        </mrow>
+                        and the disk is defined by:<br>
+                        <mrow class="formulas">
+                            <mi>{(x,y) &isin; &#x211D; <sup>2</sup>;</mi>
+                            <mi>(x - &frac12;)<sup>2</sup></mi>
+                            <mo>+</mo>
+                            <mi>(y - &frac12;)<sup>2</sup></mi> &le;
+                            <mi>(&frac12;)<sup>2</sup>}</mi>
+                        </mrow>
+                    </p>
+                    <pre>
+                        <code>
+                            import numpy as np
+
+                            def monte_carlo_pi(trials):
+                                b_uniform = ((np.random.uniform(0,1), np.random.uniform(0,1)) for _ in range(trials))
+                                success = sum(((x - 0.5)**2 + (y - 0.5)**2 <= 0.25 for x,y in b_uniform))
+                                return 4 * (success/trials)
+                        </code>
+                    </pre>
+                    <p>
+                        The code above defines a function "monte_carlo_pi" that takes the number of random trials to generate as argument.<br>
+                        The "b_uniform" is a generator containing "trials" amonut of random points all within the square. The "success" variable is
+                        simply the number of points situated inside the circle. Finally the estimated value of &#120529; is returned.  
+                    </p>
+                    <h3>Results</h3>
+                    <p>
+                        We expect the estimated value to be closer to &#120529; when using larger number of trials.<br>
+                        Let's see the result when using only 100 trials.<br>
+                        <img src="images/pie_100.png" alt="Card image cap"><br>
+                        We got 3.0 as an estimation, this is quite far from the value that we're mostly used to (e.g. <mn>3.141592654<mn>), so let's
+                        increase the number of trials to 100,000<br>
+                        <img src="images/pie_100,000.png" alt="Card image cap"><br>
+                        Now we're at 3.13976, much better. Finally, let's try 1,000,000 trials
+                        <img src="images/pie_1,000,000.png" alt="Card image cap"><br>
+                        The estimation got even closer, we're at 3.144164.
+                    </p>
+                    <h3>Conclusion</h3>
+                    <p>
+                        The Monte-Carlo method got a decent approximation of &#120529; when using 1,000,000 trials, so why not use even more trials?
+                        How about 100 million? What about 100 billion?<br>
+                        The theory states that the more trials we make the better the approximation, but obviously there is a limit when using computers.<br>
+                        In addition, more trials will result in more computing time, in fact 100 million trials will give an estimation of <mn>3.14144576</mn>.<br>
+                        A better result however, it took eight and a half minutes to complete.<br>
+                        There are many ways to enhance the performance of our code, including using the Numba library and parallelization, this will be covered
+                        in an other blog.
                     </p>
                 </div>
             </div>

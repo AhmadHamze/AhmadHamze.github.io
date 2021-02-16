@@ -13,7 +13,9 @@
 }
 
 #blogContainer {
-    margin: 180px;
+    margin-left: 180px;
+    margin-right: 180px;
+    margin-top: 60px;
 }
 
 #blogContainer img {
@@ -38,4 +40,19 @@
 
 #blogContainer a {
     color: black;
+}
+
+.formulas {
+    display: block;
+    margin: auto;
+    text-align: center;
+    color: blanchedalmond;
+    font-size: larger;
+}
+
+pre code {
+    display: block;
+    background-color: white;
+    font-size: medium;
+    margin-left: 50px;
 }
