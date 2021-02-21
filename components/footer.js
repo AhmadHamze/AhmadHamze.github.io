@@ -6,9 +6,9 @@ footerTemplate.innerHTML = `
     <footer>
       <nav>
         <ul>
-            <li><a href="mailto:ahmadhamze@yahoo.com"><i class="fa fa-envelope fa-3x"></i></a></li>
-            <li><a href="https://github.com/AhmadHamze"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/ahmad-hamze-4161a0170/"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="mailto:ahmadhamze@yahoo.com" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope fa-3x"></i></a></li>
+            <li><a href="https://github.com/AhmadHamze" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/ahmad-hamze-4161a0170/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a></li>
         </ul>
       </nav>
     </footer>
