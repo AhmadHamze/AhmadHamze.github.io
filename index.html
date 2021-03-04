@@ -1,74 +1,818 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <!--Bootstrap styles link-->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <!--jquery script link-->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <!--Bootstrap script link-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-        <!--my css link-->
-        <link href="styles.css" rel="stylesheet">
-        <!--Font awesome link-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-        <!--<meta name="viewport" content="initial-scale=1, width=device-width">-->
-        <title>A. Hamze | HOME</title>
-        <script src="components/header.js" type="text/javascript" defer></script>
-        <script src="components/footer.js" type="text/javascript" defer></script>
-    </head>
-    <body>
-        <header-component></header-component>
-        <div id="page-container">
-            <div id="content-wrap">
-                <div class="container">
-                    <div id="mainHead">
-                        <h1>Ahmad Hamze</h1>
-                        <p id="role">
-                            Data Engineer, AI Engineer, Pythonist,<br>
-                            Web Experimenter, Mathematician.
-                        </p>
-                    </div>
-                    <div id="welcomeStatement">
-                        <p>
-                            Welcome to my Homepage!<br>
-                            You can find some quick details about me below,<br>
-                            you can also find my projects and blogs.
-                        </p>
-                    </div>
-                    <div class="jumbotron">
-                        <div class="container" id="jumbotronContainer">
-                        <h2 class="display-4">Languages & Tools I am most experienced with</h2>
-                        <!--<p class="lead">Python</p>-->
-                        <span class="badge badge-pill badge-info">Python</span>
-                            <p>
-                                Jupyter notebook, Google Colaboratory, Anaconda, Pandas, Matplotlib, Seaborn, Scikit-learn
-                            </p>
-                        <span class="badge badge-pill badge-info">SQL</span>
-                            <p>
-                                Postgres, SSMS, SQLite
-                            </p>
-                            <span class="badge badge-pill badge-info">Git</span>
-                            <p>
-                                Git Bash, Github
-                            </p>
-                            <span class="badge badge-pill badge-info">C/C++</span>
-                                <p>
-                                    C standard library, C++14
-                                </p>
-                        </div>
+  <head>
+	<meta name="generator" content="Hugo 0.81.0" />
+    <title>Ahmad Hamze Homepage</title>
+    
+    
+      
+      
+        
+      
+    
+    <meta name="description" content="portfolio and personal blog of Ahmad Hamze." />
+    
+    
 
-                        <div class="container">
-                            <h2 class="display-4">Secondary Languages and Tools I work with</h2>
-                            <span class="badge badge-pill badge-info">Web Development</span>
-                                <p>
-                                    HTML, CSS, JavaScript, NodeJs, Angular, React, Odoo
-                                </p>
-                        </div>
-                    </div>
-                </div>
-                <footer-component></footer-component>
-            </div>
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    <link rel="stylesheet" href="/css/sections/home.css"/>
+    <link rel="stylesheet" href="/css/sections/about.css"/>
+    <link rel="stylesheet" href="/css/sections/skills.css"/>
+    <link rel="stylesheet" href="/css/sections/experiences.css"/>
+    <link rel="stylesheet" href="/css/sections/education.css"/>
+    <link rel="stylesheet" href="/css/sections/projects.css"/>
+    <link rel="stylesheet" href="/css/sections/recent-posts.css"/>
+    <link rel="stylesheet" href="/css/sections/achievements.css"/>
+
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
+
+    
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar initial-navbar" id="top-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" id="logo">Ahmad Hamze Homepage</a>
+    <button
+      class="navbar-toggler navbar-dark"
+      id="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#top-nav-items"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        
+          
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#recent-posts">Blogs</a>
+              </li>
+            
+        
+        
+        
+          <div class="dropdown-divider" id="top-navbar-divider"></div>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" id="blog-link" href="/posts">Posts</a>
+          </li>
+        
+        
+        
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_2.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+<div class="container-fluid home" id="home">
+  <style>
+     
+    #homePageBackgroundImageDivStyled {
+        
+      background-image: url('http://AhmadHamze.github.io/images/sunset-custom_hu8d8d33fff6fd781232c2c2f3b8b6b3f8_53593_500x0_resize_q75_box.jpg');
+    }
+     
+    @media (min-width: 500px) and (max-width: 800px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('http://AhmadHamze.github.io/images/sunset-custom_hu8d8d33fff6fd781232c2c2f3b8b6b3f8_53593_800x0_resize_q75_box.jpg');
+        }
+    }
+    @media (min-width: 801px) and (max-width: 1200px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('http://AhmadHamze.github.io/images/sunset-custom_hu8d8d33fff6fd781232c2c2f3b8b6b3f8_53593_1200x0_resize_q75_box.jpg');
+        }
+    }
+    @media (min-width: 1201px) and (max-width: 1500px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('http://AhmadHamze.github.io/images/sunset-custom_hu8d8d33fff6fd781232c2c2f3b8b6b3f8_53593_1500x0_resize_q75_box.jpg');
+        }
+    }
+    @media (min-width: 1501px) {  
+      #homePageBackgroundImageDivStyled {   
+          background-image: url('http://AhmadHamze.github.io/images/sunset-custom.jpg');
+        }
+    }
+    </style>
+    <span class="on-the-fly-behavior"></span>
+  <div
+    id="homePageBackgroundImageDivStyled"
+    class="background container-fluid"
+  ></div>
+  <div class="container content text-center">
+    <img src="/images/my-photo_huecd4fc1503301c2a26e82a91f3b5627b_148146_148x148_fit_q75_box.jpg"
+      class="rounded-circle mx-auto d-block img-fluid"
+    />
+    <h1 class="greeting"> Welcome to my website, I am Ahmad</h1>
+    <div class="typing-carousel">
+      <span id="ityped" class="ityped"></span>
+      <span class="ityped-cursor"></span>
+    </div>
+    <ul id="typing-carousel-data">
+      
+        
+          <li>I am a developper</li>
+        
+          <li>I am an AI engineer</li>
+        
+          <li>I am a Pythonist</li>
+        
+          <li>I am a Mathematician</li>
+        
+      
+    </ul>
+    
+      
+        
+        
+          
+        
+        <a href="#About"><i class="arrow bounce fa fa-chevron-down"></i></a>
+      
+    
+  </div>
+</div>
+
+    
+    
+      
+    
+
+    
+      
+      
+        
+          <div class="container-fluid section-holder d-flex bg-white">
+            
+
+  
+
+
+
+
+  
+
+
+<div class="container anchor p-lg-5 about-section" id="About">
+  <div class="row pt-sm-2 pt-md-4 align-self-center">
+    
+    <div class="col-sm-6">
+      <h3 class="p-1">Ahmad Hamze</h3>
+      
+      <h5 class="p-1">
+        AI Engineer
+        
+      </h5>
+      
+      <p class="p-1 text-justify">
+        I consider myself to be someone who uses logic and computers to solve problems. Whether it&rsquo;s about creating an AI from scratch or simply teaching a student, it&rsquo;s always about solving problems.
+      </p>
+      <div class="text-container ml-auto">
+        <ul class="social-link d-flex">
+          
+          <li>
+            
+              <a href="https://github.com/AhmadHamze" target="/"><i class="fab fa-github"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://www.linkedin.com/in/ahmad-hamze-4161a0170/" target="/"><i class="fab fa-linkedin-in"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="mailto:ahmadhamze@yahoo.com" target="/"><i class="fas fa-envelope"></i></a>
+            
+          </li>
+          
+        </ul>
+      </div>
+      
+      <a href="/files/Ahmad_Hamze_cv.pdf" target="#"
+        ><button class="btn btn-dark">My resume</button></a
+      >
+      
+    </div>
+    
+    <div class="col-sm-6 pt-5 pl-md-4 pl-sm-3 pt-sm-0">
+      <div class="row">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-dimmed">
+            
+
+  
+
+
+<div class="container-fluid anchor pb-5 skills-section" id="Skills">
+  
+    <h1 class="text-center">Skills</h1>
+  
+  <div class="container d-flex-block">
+    <div class="row" id="primary-skills">
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="javascript:void(0)">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+
+          
+          
+            
+          
+
+          <img class="card-img-xs" src="/images/pythonicon.png" alt="Python Development" />
+        
+        <h5 class="card-title">Python Development</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Capable of using the Python language for different uses including data science and web development.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="javascript:void(0)">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+
+          
+          
+            
+          
+
+          <img class="card-img-xs" src="/images/Git-Icon.png" alt="Git" />
+        
+        <h5 class="card-title">Git</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Experienced in Git development, mostly use Github.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="javascript:void(0)">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+
+          
+          
+            
+          
+
+          <img class="card-img-xs" src="/images/jupyter-logo-300.png" alt="Jupyter Notebook" />
+        
+        <h5 class="card-title">Jupyter Notebook</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Experienced in Jupyter notebook, used it for data science, data visualization and scientific programming.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="javascript:void(0)">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+
+          
+          
+            
+          
+
+          <img class="card-img-xs" src="/images/colab_favicon_256px.png" alt="Google Colaboratory" />
+        
+        <h5 class="card-title">Google Colaboratory</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Capable of using Google Colab including accessing files directly from Google Drive.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="javascript:void(0)">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+
+          
+          
+            
+          
+
+          <img class="card-img-xs" src="/images/SQL.png" alt="SQL" />
+        
+        <h5 class="card-title">SQL</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Capable of using different SQL servers including SQLite, PostgreSQL and SQL Server Management Studio SSMS.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-xs-12 col-sm-6 col-lg-4 pt-2">
+  <a class="skill-card-link" href="javascript:void(0)">
+    <div class="card">
+      <div class="card-head d-flex">
+        
+          
+
+          
+          
+            
+          
+
+          <img class="card-img-xs" src="/images/C&#43;&#43;_Logo.svg.png" alt="C&#43;&#43; Development" />
+        
+        <h5 class="card-title">C&#43;&#43; Development</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">knowledgeable in both C and C++, capable of writing basic programs in both languages.</p>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-white">
+            
+
+  
+
+
+<div class="container-fluid anchor pb-5 projects-section" id="projects">
+  
+    <h1 class="text-center">Projects</h1>
+  
+  <div class="container ml-auto text-center">
+    <div class="btn-group flex-wrap" role="group" id="project-filter-buttons">
+      
+    </div>
+  </div>
+  <div class="container filtr-projects">
+    <div class="row" id="project-card-holder">
+      
+        <div
+  class="col-sm-12 col-md-6 col-lg-4 p-2 filtr-item"
+  data-category='all, Python,Processing'
+>
+  <div class="card mt-1">
+    <div class="card">
+      <a class="card-header" href="https://github.com/AhmadHamze/Earthquakes-">
+        <div>
+          <div class="d-flex">
+            
+
+            
+            
+            
+
+            <img class="card-img-xs" src="/images/earthquakes_hucecc1d94f70fe0a845a32e2a89c02f47_206197_24x24_fit_box_2.png" alt="Earthquakes" />
+            
+            
+            <h5 class="card-title mb-0">Earthquakes</h5>
+          </div>
+          <div class="sub-title">
+            <span></span>
+            <span></span>
+          </div>
         </div>
-    </body>
+      </a>
+      <div class="card-body text-justify pt-1 pb-1">
+        <p>A Processing program that maps the locations of 2000 earthquakes that occured between the years 2000 and 2012. The top three earthquakes by magnitude are mapped using a red circle, you can see the name of the locations displayed on the map as well as the value of the magnitude.</p>
+        <span class="float-right">
+          
+          <a
+            class="github-button-inactive"
+            href="https://github.com/AhmadHamze/Earthquakes-"
+            data-icon="octicon-standard"
+            data-show-count="true"
+            aria-label="Star Earthquakes"
+            >Star</a
+          >
+          
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-dimmed">
+            
+
+  
+
+
+<div class="container-fluid anchor pb-5 recent-posts-section" id="recent-posts">
+  
+    <h1 class="text-center">Blogs</h1>
+  
+  <div class="container">
+    <div class="row" id="recent-post-cards">
+      
+        <div class="col-lg-4 col-md-6 pt-2 post-card">
+  <a href="/posts/estimating-pie/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/posts/estimating-pie/hero.png'
+          alt="Card image cap"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Estimating pie</h5>
+        <p class="card-text post-summary"> Using the Monte-Carlo simulation to estimate the value of &#x03C0;First of all let's talk briefly about what is a Monte-Carlo simulation.
+Simply put, it is a computational method that uses a large number of random samples to obtain a result. It is used in awide range of disciplines like mathematics, computer graphics and physical sciences.In this blog, we will see how we can use this method to estimate the value of the mathematical constant \( \pi \).</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">March 3, 2021</span>
+        <a href="/posts/estimating-pie/" class="float-right btn btn-outline-info btn-sm">Read</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-lg-4 col-md-6 pt-2 post-card">
+  <a href="/posts/introduction/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/posts/introduction/hero.svg'
+          alt="Card image cap"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Introduction</h5>
+        <p class="card-text post-summary"> Greeting! This is an introduction post. This post tests the followings:
+ Hero image is in the same directory as the post. This post should be at top of the sidebar. Post author should be the same as specified in author.yaml file.  </p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">March 2, 2021</span>
+        <a href="/posts/introduction/" class="float-right btn btn-outline-info btn-sm">Read</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+</div>
+
+          </div>
+          
+          
+            
+          
+        
+      
+    
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    <script src="/js/itype.min.js"></script>
+    <script src="/js/github-button.js"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/jquery.filterizr.min.js"></script>
+  </body>
 </html>
