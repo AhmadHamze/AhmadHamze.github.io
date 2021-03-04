@@ -1,0 +1,13 @@
+section:
+  name: Projects
+  id: projects
+  enable: True
+  weight: 3
+  showOnNavbar: True
+
+projects:
+- name: "Earthquakes"
+  logo: /images/earthquakes.png
+  repo: https://github.com/AhmadHamze/Earthquakes-
+  summary: A Processing program that maps the locations of 2000 earthquakes that occured between the years 2000 and 2012. The top three earthquakes by magnitude are mapped using a red circle, you can see the name of the locations displayed on the map as well as the value of the magnitude.
+  tags: ["Python", "Processing"]
