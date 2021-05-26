@@ -1,12 +1,12 @@
 ---
-title: "Estimating pie"
+title: "Estimating pi"
 date: 2021-03-03
-description: Python code to estimate pie
+description: Python code to estimate pi
 math: true
 menu:
   sidebar:
-    name: Monte-Carlo Estimation of Pie
-    identifier: mc-pie
+    name: Monte-Carlo Estimation of Pi
+    identifier: mc-pi
     weight: 10
 ---
 
@@ -23,9 +23,9 @@ menu:
             
             <h1>Using the Monte-Carlo simulation to estimate the value of &#x03C0;</h1>
             <p>
-                First of all let's talk briefly about what is a Monte-Carlo simulation.<br>
+                First of all, let's talk briefly about what is a Monte-Carlo simulation.<br>
                 Simply put, it is a computational method that uses a large number of random samples to obtain a result. It is used in a
-                wide range of disciplines like mathematics, computer graphics and physical sciences.
+                wide range of disciplines like mathematics, computer graphics, and physical sciences.
                 In this blog, we will see how we can use this method to estimate the value of the mathematical constant \( \pi \).
             </p>
 
@@ -42,8 +42,8 @@ menu:
 
             </div>
             <p>
-                We can compute the proportion of grains that ended up inside the circle, this value equals the proportion of the circle in relation
-                to the square. In addition, the more grain of sands we throw onto the square the more accurate the estimation will be.<br>
+                We can compute the proportion of grains that ended up inside the circle, this value equals the proportion of the circle
+                to the square. Besides, the more grain of sands we throw onto the square the more accurate the estimation will be.<br>
                 But why is this true? The Monte-Carlo simulation is an example of the "Law of Large Numbers (LLN)", this is not the focus of this
                 blog, if you want to know more you can check this wikipedia article
                 <a href="https://en.wikipedia.org/wiki/Law_of_large_numbers" target="_blank" rel="noopener noreferrer">Law_of_large_numbers</a>.<br>
@@ -77,7 +77,7 @@ menu:
             </pre>
             <p>
                 The code above defines a function "monte_carlo_pi" that takes the number of random trials to generate as argument.<br>
-                The "b_uniform" is a generator containing "trials" amonut of random points all within the square. The "success" variable is
+                The "b_uniform" is a generator containing "trials" amount of random points all within the square. The "success" variable is
                 simply the number of points situated inside the circle. Finally the estimated value of \( \pi \) is returned.  
             </p>
             <h3>Results</h3>
@@ -96,9 +96,9 @@ menu:
             <p>
                 The Monte-Carlo method got a decent approximation of \( \pi \) when using 1,000,000 trials, so why not use even more trials?
                 How about 100 million? What about 100 billion?<br>
-                The theory states that the more trials we make the better the approximation, but obviously there is a limit when using computers.<br>
-                In addition, more trials will result in more computing time, in fact 100 million trials will give an estimation of <mn>3.14144576</mn>.<br>
-                A better result however, it took eight and a half minutes to complete.<br>
+                The theory states that the more trials we make the better the approximation, but there is a limit when using computers.<br>
+                Also, more trials will result in more computing time, 100 million trials will give an estimation of <mn>3.14144576</mn>.<br>
+                A better result, however, it took eight and a half minutes to complete.<br>
                 There are many ways to enhance the performance of our code, including using the Numba library and parallelization, this will be covered
                 in another blog.
             </p>

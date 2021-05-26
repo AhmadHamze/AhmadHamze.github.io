@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Ahmad Hamze Homepage</title>
+    <link>http://AhmadHamze.github.io/posts/</link>
+    <description>Recent content in Posts on Ahmad Hamze Homepage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advice to my past self</title>
+      <link>http://AhmadHamze.github.io/posts/advice-to-myself/</link>
+      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/advice-to-myself/</guid>
+      <description>Advice to my past self regarding programming In this blog, I talk about a few things that I wish somebody told me back when I started learning to program by myself, I hope you can benefit from this if you&amp;rsquo;re also new to programming.
+1. Talk to real programmers who know what they&amp;rsquo;re doing Getting into the world of programming is quite easy, all you have to do is own a laptop, watch YouTube videos and try to build programs yourself.</description>
+    </item>
+    
+    <item>
+      <title>Estimating pi</title>
+      <link>http://AhmadHamze.github.io/posts/estimating-pi/</link>
+      <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/estimating-pi/</guid>
+      <description>Using the Monte-Carlo simulation to estimate the value of &amp;#x03C0;First of all, let&#39;s talk briefly about what is a Monte-Carlo simulation.
+Simply put, it is a computational method that uses a large number of random samples to obtain a result. It is used in awide range of disciplines like mathematics, computer graphics, and physical sciences.In this blog, we will see how we can use this method to estimate the value of the mathematical constant \( \pi \).</description>
+    </item>
+    
+  </channel>
+</rss>
