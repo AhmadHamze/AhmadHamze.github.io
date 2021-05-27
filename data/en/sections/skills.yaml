@@ -9,7 +9,11 @@ skills:
 - name: Python Development
   # All images need to be added to themes/toha/assets/images else you get an error!
   logo: "/images/pythonicon.png"
-  summary: "Capable of using the Python language for different uses including data science and web development."
+  summary: "Capable of using the Python language for different uses including data science and web development (Flask and Django)."
+
+- name: React Development
+  logo: "/images/react-logo.jpg"
+  summary: "Experienced in React development, I mostly use Typescript"
 
 - name: Git
   logo: "/images/Git-Icon.png"

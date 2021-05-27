@@ -11,3 +11,8 @@ projects:
   repo: https://github.com/AhmadHamze/Earthquakes-
   summary: A Processing program that maps the locations of 2000 earthquakes that occured between the years 2000 and 2012. The top three earthquakes by magnitude are mapped using a red circle, you can see the name of the locations displayed on the map as well as the value of the magnitude.
   tags: ["Python", "Processing"]
+
+- name: "Trivia Quizz"
+  repo: https://github.com/AhmadHamze/Trivia-Quizz-React
+  summary: A React typescript program that fetches 10 trivia questions from an API, the program displays each question for the user alongside 4 different answers where only one is correct. A score is displayed and a simple navigation system is provided, the game can be repeated after completion. This project uses storybook.
+  tags: ["React", "Typecript", "Storybook"]
