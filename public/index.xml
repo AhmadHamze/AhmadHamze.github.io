@@ -6,7 +6,17 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lessons Learned From My First Web Dev Job</title>
+      <link>http://AhmadHamze.github.io/posts/first-react-job/</link>
+      <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/first-react-job/</guid>
+      <description>Recently I started a web development job as a front-end developer, here are a few things I learned so far.
+1. Make sure to have the correct working environment As you might know, preparing the development environment is an essential step when you start a new project. In my case, the team decided to use Nix for package management (it&amp;rsquo;s awesome). The first problem I faced is that I am using Windows, and to be able to use nix on Windows you have to use WSL.</description>
+    </item>
+    
     <item>
       <title>Advice to my past self</title>
       <link>http://AhmadHamze.github.io/posts/advice-to-myself/</link>

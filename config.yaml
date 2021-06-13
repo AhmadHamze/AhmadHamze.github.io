@@ -23,7 +23,7 @@ markup:
 enableEmoji: true
 
 params:
-  background: "images/sunset-custom.jpg"
+  background: "images/wil-stewart-space.jpg"
   # GitHub repo URL of the site
   gitRepo: https://github.com/AhmadHamze/AhmadHamze.github.io.git
 
