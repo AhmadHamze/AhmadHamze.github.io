@@ -6,7 +6,17 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My first C&#43;&#43; console application</title>
+      <link>http://AhmadHamze.github.io/posts/c&#43;&#43;-matrix/</link>
+      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/c&#43;&#43;-matrix/</guid>
+      <description>Matrix calculator for two by two and three by three real matrices This is a project that I did around three years ago, just after I finished taking my very first comprehensive programming course, it was about the C++ language.
+Back then I knew that there are many better options to do matrix calculation, mostly using the Python Numpy library. I also knew that there are many C++ libraries that provide matrix calculation, most notably Eigen.</description>
+    </item>
+    
     <item>
       <title>Lessons Learned From My First Web Dev Job</title>
       <link>http://AhmadHamze.github.io/posts/first-react-job/</link>
