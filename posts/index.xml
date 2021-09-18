@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A live pictionary using websockets</title>
+      <link>http://AhmadHamze.github.io/posts/pictionary/</link>
+      <pubDate>Sat, 18 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/pictionary/</guid>
+      <description>Introduction This is a project that uses websockets to create a drawing on a page and copy this drawing to another page instantly.
+If you&amp;rsquo;ve never heard of websockets before, here&amp;rsquo;s the main idea:
+  You send data from your browser to a server using a &amp;ldquo;socket&amp;rdquo; which is a real-time connection that can send data back and forth.
+  There is another computer that is connected to the server and will receive the data from it also using a socket.</description>
+    </item>
+    
     <item>
       <title>My first C&#43;&#43; console application</title>
       <link>http://AhmadHamze.github.io/posts/c&#43;&#43;-matrix/</link>
