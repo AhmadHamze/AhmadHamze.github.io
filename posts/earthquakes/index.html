@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Advice to my past self</title>
+    <title>Mapping Earthquakes Locations on a Map</title>
     
 
 
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="/css/style.css"/>
 
     
-<meta name="description" content="reflecting my journey in programming so far" />
+<meta name="description" content="Data Visulization Using Processing.py" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
@@ -123,21 +123,21 @@
   
   
   
-    
-    
-  
   
     
-    <li><a class="active" href="/posts/advice-to-myself/">Advice to my past self</a></li>
+    <li><a class="" href="/posts/advice-to-myself/">Advice to my past self</a></li>
   
 
   
   
   
   
+    
+    
+  
   
     
-    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+    <li><a class="active" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
   
 
   
@@ -182,7 +182,7 @@
   <div class="content">
     <div class="container p-0 read-area">
       
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/images/default-hero.jpg);'>
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/earthquakes/hero.png);'>
       </div>
 
       
@@ -190,63 +190,78 @@
         <div class="author-profile ml-auto align-self-lg-center">
           <img class="rounded-circle" src='/images/my-photo.jpg'/>
           <h5 class="author-name">Ahmad Hamze</h5>
-          <p>March 4, 2021</p>
+          <p>October 18, 2021</p>
         </div>
 
         <div class="title">
-          <h1>Advice to my past self</h1>
+          <h1>Mapping Earthquakes Locations on a Map</h1>
         </div>
 
         <div class="post-content" id="post-content">
-          <h1 id="advice-to-my-past-self-regarding-programming">Advice to my past self regarding programming</h1>
-<p>In this blog, I talk about a few things that I wish somebody told me back when I started learning to program by myself, 
-I hope you can benefit from this if you&rsquo;re also new to programming.<br></p>
-<h2 id="1-talk-to-real-programmers-who-know-what-theyre-doing">1. Talk to real programmers who know what they&rsquo;re doing</h2>
-<p>Getting into the world of programming is quite easy, all you have to do is own a laptop, watch YouTube videos
-and try to build programs yourself.<br>
-In the beginning, you will be so happy with what you&rsquo;re achieving, all these new concepts and these new projects you&rsquo;re
-building (despite being simple) will make you feel happy about yourself, and maybe even a little bit arrogant.<br>
-After a while though, you might begin to feel that this is endless! There is always a new thing to learn, you can spend years
-learning the ins and outs of a specific language, you keep hearing a lot of new terminologies and you&rsquo;re not sure whether or not you
-should understand what they mean. You try to focus on a certain technology but you always doubt yourself whether you&rsquo;re going
-in the right direction or not, even worse you might be unsure where you want to go in the first place!<br></p>
-<p>You should know that when you embark on this journey you will get distracted! This is normal to happen due to the massive ocean of
-online resources that are available for free.<br>
-The best way to deal with this problem is to stop watching all these tutorials online and get in touch with people who are currently
-working in programming fields. Try to talk with web developers, data scientists, embedded systems engineers, and many others, you have
-no idea how easier your life will be if you do so.<br>
-A lot of your questions will be answered, you will doubt yourself much lesser and you will start to get feedback about your progress.<br>
-Most importantly, you should know that you are not qualified to assess your work, other people have to do this for you.</p>
-<h2 id="2-learn-html-css-and-javascript">2. Learn HTML, CSS, and JavaScript</h2>
-<p>When I started, I didn&rsquo;t want to become a web developer, I preferred other disciplines much more, things like data science and AI.<br>
-Therefore, I thought I don&rsquo;t need to learn web development, I would be wasting my time and deviating from the right path, correct?
-Wrong! You cannot call yourself a programmer if you don&rsquo;t know HTML, CSS, and JavaScript. Even if you don&rsquo;t want to be a web developer, not knowing
-these languages is like shooting yourself in the foot. If you want recruiters and by extension, business managers to notice you, there is no other way
-but to show them, and the only way to do so is through a website.<br>
-The average recruiter is not going to clone your code from Github, they want to see something dynamic in front of them just by navigating the web.
-If you don&rsquo;t do that you have to know that a lot of other programmers are doing so, they will be noticed instead of you. You can be a better programmer
-than most, but that doesn&rsquo;t matter nobody is going to notice you!<br></p>
-<h2 id="3-learn-git-as-soon-as-possible">3. Learn Git as soon as possible</h2>
-<p>If you want to be a developer then you have to know how to use Git and Github, the sooner the better.<br>
-You don&rsquo;t want to build good projects and not push them on Github, also you will not work with a team if you don&rsquo;t know how
-to use Git. Keep in mind, you should learn Git commands and use a terminal.<br>
-Avoid Graphical User Interfaces at the beginning, working with a terminal will enhance your skills.</p>
-<h2 id="4-the-internet-is-not-always-right">4. The internet is not always right</h2>
-<p>The internet is a wonderful place, however, it might mislead you sometimes (remember advice number one!).
-Don&rsquo;t assume that just because a lot of people are bashing a certain technology, company, language, etc. that means they are correct.<br>
-It&rsquo;s common for people to imitate each other, a lot of people will repeat what seems to be the cool thing to say, which makes a snowball effect.
-Always check for yourself if you have to, before blindly taking sides.<br>
-Take for example JavaScript, everybody online seems to hate the language and talk about how bad it is. I believed this without checking
-myself, which had bad effects on me because it discouraged me from learning the language<br>
-Finally, when I started learning it, I loved it! It&rsquo;s not as hard as people were saying, furthermore it is quite
-easier than other languages that I started with (e.g. C++).</p>
+          <h2 id="introduction">Introduction</h2>
+<p>This is a data visualization program made using <a href="https://processing.org/">processing.py</a>, I made it a few years ago, however, I think it&rsquo;s a great program that deserves recognition.</p>
+<p>You can find the code and the data used <a href="https://github.com/AhmadHamze/Earthquakes-">here</a>.</p>
+<h2 id="data">Data</h2>
+<p>The program uses a csv file containing 2000 locations of earthquakes (longitude and latitude), the magnitude of the earthquakes, and the name of the place where they occurred (a string). Here is the source of the <a href="https://earthquake.usgs.gov">data</a></p>
+<p><img src="images/csv_file.png" alt="csv file"></p>
+<p>Also, an equirectangular map of the earth is needed, this is where the locations will be ploted.</p>
+<p><img src="images/map.png" alt="world map"></p>
+<h2 id="code">Code</h2>
+<p>We will discuss the code briefly, mainly the points that I find most interesting.</p>
+<h3 id="saving-the-picture-on-a-pdf-file">Saving the picture on a pdf file</h3>
+<p>The output of the program will be a pdf file displaying the final image, to do that we need to use a processing library that deals with pdf files.<br>
+The first line of the program calls the library: <code>add_library('pdf')</code>.</p>
+<p>The next step is to specify the size of the image, I chose <code>size(1400,700)</code>,
+then we call <code>beginRecord(PDF,&quot;Earthquakes.pdf&quot;)</code> to save the work on a new &ldquo;Earthquakes.pdf&rdquo; file, and stop saving at the end of the program by calling <code>endRecord()</code>.</p>
+<p>Just after <code>beginRecord</code>, we have to load the image we&rsquo;re using and create the shape of the final map.
+We want the map to be drawn from the top left corner of the screen and occupy all the available width and height.
+this is exactly what <code>shape(loadShape(&quot;WorldMap.svg&quot;),0,0,width,height)</code> does.</p>
+<blockquote>
+<p>Note that <em>width</em> and <em>height</em> are automatic variables which are always defined as being the values entered in &ldquo;size(.., ..)&rdquo;</p>
+</blockquote>
+<h3 id="parsing-the-csv-file">Parsing the csv file</h3>
+<p>First, we open the csv file using a context manager <code>with open(&quot;EarthquakeData.csv&quot;,'r') as csv_file:</code>.<br>
+Next, we will be making use of <code>csv.DictReader</code> to parse the csv file, this is a powerful function that returns an ordered dictionary for every line in the csv file.
+The data in each line contains each data field as a value to its corresponding field name which will be a key of the dictionary.</p>
+<p><code>csv_reader = csv.DictReader(csv_file)</code></p>
+<p>Finaly, start looping <code>for i,li_ne in enumerate(csv_reader):</code></p>
+<h3 id="the-map-function">The map function</h3>
+<p>This is the most crucial function in the program, it&rsquo;s a processing function that allows translating the set of data into a map.
+It takes a value that exists on one scale and maps this value on a different scale.</p>
+<p>For example, if you want the longitude 125.5 to be mapped on a map having a certain width, this is what you need to do:</p>
+<p><code>map(125.5, -180, 180, 0, width)</code></p>
+<p>The original scale here is -180:180 with 0 as its center.</p>
+<h3 id="drawing">Drawing</h3>
+<p>Back to the main code:</p>
+<pre>
+ for i,li_ne in enumerate(csv_reader):
+        graphLong = map(float(li_ne["longitude"]),-180,180,0,width)
+        graphLat = map(float(li_ne["latitude"]),-90,90,height,0)
+        magnitude = sqrt((float(li_ne["mag"])/2)/PI)
+        if i < 3:
+            fill(255,0,0,50)
+            ellipse(graphLong,graphLat,20*magnitude,20*magnitude)
+            fill(0)
+            text(li_ne["place"] + "\n" +li_ne["mag"] + "Richter",graphLong-150,graphLat)
+        else:
+            fill(0,0,255,50)
+            ellipse(graphLong,graphLat,5*magnitude,5*magnitude)
+</pre>
+<p>As you can see, we&rsquo;re using the &ldquo;enumerate&rdquo; function to be able to access each line of data. The first three earthquakes have a different color than the rest, also a text is displayed next to each one of the three showing the magnitude and the
+name of the place where the earthquake occurred.</p>
+<blockquote>
+<p><em>magnitude</em> is built in such a way that when used to draw a circle using it as a radius, you would get a disk of area magnitude / 2. This is unnecessary because the magnitude values are very small and no effect will be noticed.</p>
+</blockquote>
+<h2 id="result">Result</h2>
+<p>Running the code will produce a pdf file containing this image.</p>
+<p><img src="images/earthquakes.png" alt="result"></p>
 
         </div>
 
         
         
           <div class="btn-improve-page">
-              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/advice-to-myself/index.md">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/earthquakes/index.md">
                 <i class="fas fa-code-branch"></i>
                 Improve this page
               </a>
@@ -261,42 +276,28 @@ easier than other languages that I started with (e.g. C++).</p>
   
 
   
-    
-      
-      <div class="col-md-6 previous-article">
-        <a href="/posts/first-react-job/" class="btn btn-outline-info">
-          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
-          <br />
-          <span>Lessons Learned From My First Web Dev Job</span>
-        </a>
-      </div>
-      
+
+  
+
+  
+
+  
+
+  
     
     
       
         
         
-          
-              
-          
-        
-        <div class="col-md-6 next-article">
-          <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+        <div class="col-md-12 next-article">
+          <a href="/posts/pictionary/" class="btn btn-outline-info">
             <span>Next <i class="fas fa-chevron-circle-right"></i></span>
             <br />
-            <span>Estimating pi</span>
+            <span>A live pictionary using websockets</span>
           </a>
         </div>
       
     
-  
-
-  
-
-  
-
-  
-
   
 
 </div>
