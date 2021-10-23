@@ -167,6 +167,31 @@
     <li><a class="" href="/posts/first-react-job/">Web Dev Learned Lessons</a></li>
   
 
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
 
             </div>
           </ul>
@@ -233,21 +258,19 @@ It takes a value that exists on one scale and maps this value on a different sca
 <p>The original scale here is -180:180 with 0 as its center.</p>
 <h3 id="drawing">Drawing</h3>
 <p>Back to the main code:</p>
-<pre>
- for i,li_ne in enumerate(csv_reader):
-        graphLong = map(float(li_ne["longitude"]),-180,180,0,width)
-        graphLat = map(float(li_ne["latitude"]),-90,90,height,0)
-        magnitude = sqrt((float(li_ne["mag"])/2)/PI)
-        if i < 3:
-            fill(255,0,0,50)
-            ellipse(graphLong,graphLat,20*magnitude,20*magnitude)
-            fill(0)
-            text(li_ne["place"] + "\n" +li_ne["mag"] + "Richter",graphLong-150,graphLat)
-        else:
-            fill(0,0,255,50)
-            ellipse(graphLong,graphLat,5*magnitude,5*magnitude)
-</pre>
-<p>As you can see, we&rsquo;re using the &ldquo;enumerate&rdquo; function to be able to access each line of data. The first three earthquakes have a different color than the rest, also a text is displayed next to each one of the three showing the magnitude and the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> <span style="color:#66d9ef">for</span> i,li_ne <span style="color:#f92672">in</span> enumerate(csv_reader):
+        graphLong <span style="color:#f92672">=</span> map(float(li_ne[<span style="color:#e6db74">&#34;longitude&#34;</span>]),<span style="color:#f92672">-</span><span style="color:#ae81ff">180</span>,<span style="color:#ae81ff">180</span>,<span style="color:#ae81ff">0</span>,width)
+        graphLat <span style="color:#f92672">=</span> map(float(li_ne[<span style="color:#e6db74">&#34;latitude&#34;</span>]),<span style="color:#f92672">-</span><span style="color:#ae81ff">90</span>,<span style="color:#ae81ff">90</span>,height,<span style="color:#ae81ff">0</span>)
+        magnitude <span style="color:#f92672">=</span> sqrt((float(li_ne[<span style="color:#e6db74">&#34;mag&#34;</span>])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">/</span>PI)
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>:
+            fill(<span style="color:#ae81ff">255</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">50</span>)
+            ellipse(graphLong,graphLat,<span style="color:#ae81ff">20</span><span style="color:#f92672">*</span>magnitude,<span style="color:#ae81ff">20</span><span style="color:#f92672">*</span>magnitude)
+            fill(<span style="color:#ae81ff">0</span>)
+            text(li_ne[<span style="color:#e6db74">&#34;place&#34;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">+</span>li_ne[<span style="color:#e6db74">&#34;mag&#34;</span>] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;Richter&#34;</span>,graphLong<span style="color:#f92672">-</span><span style="color:#ae81ff">150</span>,graphLat)
+        <span style="color:#66d9ef">else</span>:
+            fill(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">255</span>,<span style="color:#ae81ff">50</span>)
+            ellipse(graphLong,graphLat,<span style="color:#ae81ff">5</span><span style="color:#f92672">*</span>magnitude,<span style="color:#ae81ff">5</span><span style="color:#f92672">*</span>magnitude)
+</code></pre></div><p>As you can see, we&rsquo;re using the &ldquo;enumerate&rdquo; function to be able to access each line of data. The first three earthquakes have a different color than the rest, also a text is displayed next to each one of the three showing the magnitude and the
 name of the place where the earthquake occurred.</p>
 <blockquote>
 <p><em>magnitude</em> is built in such a way that when used to draw a circle using it as a radius, you would get a disk of area magnitude / 2. This is unnecessary because the magnitude values are very small and no effect will be noticed.</p>
@@ -285,11 +308,25 @@ name of the place where the earthquake occurred.</p>
 
   
     
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/react/trivia-quiz/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>A React Typescript Trivia Quiz</span>
+        </a>
+      </div>
+      
+    
     
       
         
         
-        <div class="col-md-12 next-article">
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
           <a href="/posts/pictionary/" class="btn btn-outline-info">
             <span>Next <i class="fas fa-chevron-circle-right"></i></span>
             <br />
@@ -298,6 +335,8 @@ name of the place where the earthquake occurred.</p>
         </div>
       
     
+  
+
   
 
 </div>

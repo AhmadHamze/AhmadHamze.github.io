@@ -167,6 +167,31 @@
     <li><a class="" href="/posts/first-react-job/">Web Dev Learned Lessons</a></li>
   
 
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
 
             </div>
           </ul>
@@ -235,67 +260,63 @@ it contains the declaration of the classes and their respective constructors, at
 <li><code>Matrix2by2(float*)</code>: convert constructor, used to simplify the process of creating a matrix.</li>
 </ol>
 <p>Here is the code for both constructors respectively:</p>
-<pre>
-    Matrix2by2::Matrix2by2()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">    Matrix2by2<span style="color:#f92672">::</span>Matrix2by2()
     {
-        isPrintable = true;
-        for (short i = 0; i < 9; i++)
+        isPrintable <span style="color:#f92672">=</span> true;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">9</span>; i<span style="color:#f92672">++</span>)
         {
-            q[i] = 0;
-            p[i] = 0;
+            q[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+            p[i] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
         }
-        for (short i = 0; i < 3; i++)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; i<span style="color:#f92672">++</span>)
         {
-            for (short j = 0; j < 3; j++)
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; j<span style="color:#f92672">++</span>)
             {
-                r[i][j] = 0;
+                r[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
             }
         }
     }
 
-    Matrix2by2::Matrix2by2(float* q)
+    Matrix2by2<span style="color:#f92672">::</span>Matrix2by2(<span style="color:#66d9ef">float</span><span style="color:#f92672">*</span> q)
     {
-        for (short i = 0; i < 4; i++)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; i<span style="color:#f92672">++</span>)
         {
-            this->q[i] = q[i];
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>q[i] <span style="color:#f92672">=</span> q[i];
         }
     }
-</pre>
-<p>We have two operators overloaded, the <code>+</code> and <code>*</code>, these are used to add and multiply two matrices.</p>
+</code></pre></div><p>We have two operators overloaded, the <code>+</code> and <code>*</code>, these are used to add and multiply two matrices.</p>
 <p>Here is the code for both operators:</p>
-<pre>
-    // Overloading the '+' operator to add two by two matrices
-    Matrix2by2 Matrix2by2::operator+(Matrix2by2 M)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">    <span style="color:#75715e">// Overloading the &#39;+&#39; operator to add two by two matrices
+</span><span style="color:#75715e"></span>    Matrix2by2 Matrix2by2<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(Matrix2by2 M)
     {
-        for (short i = 0; i < 4; i++)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; i<span style="color:#f92672">++</span>)
         {
-            p[i] = this->q[i] + M.q[i];
+            p[i] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>q[i] <span style="color:#f92672">+</span> M.q[i];
         }
-      M = p;
-      M.isPrintable = true;
-      return M;
+      M <span style="color:#f92672">=</span> p;
+      M.isPrintable <span style="color:#f92672">=</span> true;
+      <span style="color:#66d9ef">return</span> M;
     }
 
-    // Overloading the '*' operator to multiply two by two matrices
-    Matrix2by2 Matrix2by2::operator*(Matrix2by2 M)
+    <span style="color:#75715e">// Overloading the &#39;*&#39; operator to multiply two by two matrices
+</span><span style="color:#75715e"></span>    Matrix2by2 Matrix2by2<span style="color:#f92672">::</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">*</span>(Matrix2by2 M)
     {
-        for (short i = 0; i < 4; i += 2)
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>)
         {
-            for (short j = 0; j < 2; j++)
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span>; j<span style="color:#f92672">++</span>)
             {
-                r[i][j] = this->q[i] * M.q[j] + this->q[i+1] * M.q[j+2];
+                r[i][j] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>q[i] <span style="color:#f92672">*</span> M.q[j] <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>q[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> M.q[j<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>];
             }
         }
-        p[0] = r[0][0];
-        p[1] = r[0][1];
-        p[2] = r[2][0];
-        p[3] = r[2][1];
-        M = p;
-        M.isPrintable = true;
-        return M;
+        p[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> r[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>];
+        p[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> r[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>];
+        p[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> r[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">0</span>];
+        p[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> r[<span style="color:#ae81ff">2</span>][<span style="color:#ae81ff">1</span>];
+        M <span style="color:#f92672">=</span> p;
+        M.isPrintable <span style="color:#f92672">=</span> true;
+        <span style="color:#66d9ef">return</span> M;
     }
-</pre>
-<p>After seeing the code, hopefully, you can start to understand the necessity of each attribute as well as how they simplify the code.</p>
+</code></pre></div><p>After seeing the code, hopefully, you can start to understand the necessity of each attribute as well as how they simplify the code.</p>
 <p>We have three methods:</p>
 <ol>
 <li><code>void setMatrix()</code>: used to set the matrix received from the user input, this is where error handling is done.</li>
@@ -306,51 +327,47 @@ it contains the declaration of the classes and their respective constructors, at
 <p>The main idea of this method is to not accept any matrix that has a non-floating number, it also makes sure to
 accept only the needed numbers from the user and ignore all excessive numbers in case they were provided.</p>
 <p>This is the code:</p>
-<pre>
-    void Matrix2by2::setMatrix()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">    <span style="color:#66d9ef">void</span> Matrix2by2<span style="color:#f92672">::</span>setMatrix()
     {
-        cout << "Enter the 2 by 2 matrix\n";
-        short counter = 0;
-        do {
-            for (short i = 0; i < 4; i++)
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Enter the 2 by 2 matrix</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+        <span style="color:#66d9ef">short</span> counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">do</span> {
+            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">short</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; i<span style="color:#f92672">++</span>)
             {
-                if(!(cin >> q[i]))
+                <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>(cin <span style="color:#f92672">&gt;&gt;</span> q[i]))
                 {
                     cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "You can only enter floating numbers, please enter the matrix again\n";
-                    counter = 0;
-                    break;
+                    cin.ignore(numeric_limits<span style="color:#f92672">&lt;</span>streamsize<span style="color:#f92672">&gt;::</span>max(), <span style="color:#e6db74">&#39;\n&#39;</span>);
+                    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;You can only enter floating numbers, please enter the matrix again</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>;
+                    counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+                    <span style="color:#66d9ef">break</span>;
                 }
-                else
+                <span style="color:#66d9ef">else</span>
                 {
-                    counter++;
+                    counter<span style="color:#f92672">++</span>;
                 }
             }
-        } while (counter < 4);
-        // Ignore any additional numbers that the user might input by mistake
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        } <span style="color:#66d9ef">while</span> (counter <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>);
+        <span style="color:#75715e">// Ignore any additional numbers that the user might input by mistake
+</span><span style="color:#75715e"></span>        cin.ignore(numeric_limits<span style="color:#f92672">&lt;</span>streamsize<span style="color:#f92672">&gt;::</span>max(), <span style="color:#e6db74">&#39;\n&#39;</span>);
     }
-</pre>
-<p>This method awaits the input from the user, once an input is not valid e.g. entering a string, (this is being checked here <code>if(!(cin &gt;&gt; q[i]))</code>), the console is cleared then all previous input is cleared so that the user had to enter the matrix again.</p>
+</code></pre></div><p>This method awaits the input from the user, once an input is not valid e.g. entering a string, (this is being checked here <code>if(!(cin &gt;&gt; q[i]))</code>), the console is cleared then all previous input is cleared so that the user had to enter the matrix again.</p>
 <p>To ignore all mistakes I am using <code>numeric_limits&lt;streamsize&gt;::max(), '\n'</code> from the <code>limits</code> library, this ensures that all errors are indeed ignored no matter the number.</p>
 <h4 id="inheritance">Inheritance</h4>
 <p>The previous code is that of the <code>Matrix2by2</code> class, however, it can be slightly altered to create the <code>Matrix3by3</code> class, the clear way forward is inheriting the <code>Matrix2by2</code> class and overloading all methods and operators.</p>
-<pre>
-    class Matrix3by3:public Matrix2by2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Matrix3by3</span><span style="color:#f92672">:</span><span style="color:#66d9ef">public</span> Matrix2by2
     {
-        public:
+        <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
             Matrix3by3();
-            ~Matrix3by3();
-            Matrix3by3(float*);
-            void setMatrix();
-            void getMatrix();
-            Matrix3by3 operator+(Matrix3by3);
-            Matrix3by3 operator*(Matrix3by3);
-            float* invertMatrix();
+            <span style="color:#f92672">~</span>Matrix3by3();
+            Matrix3by3(<span style="color:#66d9ef">float</span><span style="color:#f92672">*</span>);
+            <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setMatrix</span>();
+            <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getMatrix</span>();
+            Matrix3by3 <span style="color:#66d9ef">operator</span><span style="color:#f92672">+</span>(Matrix3by3);
+            Matrix3by3 <span style="color:#66d9ef">operator</span><span style="color:#f92672">*</span>(Matrix3by3);
+            <span style="color:#66d9ef">float</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">invertMatrix</span>();
     };
-</pre>
-<h2 id="final-words">Final Words</h2>
+</code></pre></div><h2 id="final-words">Final Words</h2>
 <p>This was a rookie project that provides basic matrix calculation using the C++ language, it was fun to do and it was good practice for all the object-oriented concepts that I learned.</p>
 <p>If I were to redo it now, I would probably create a web application having Django as a backend and using Numpy to make all matrix calculations.</p>
 <p>There is a great lesson that I learned working on this project and that can be summarized by the following</p>
@@ -411,6 +428,8 @@ accept only the needed numbers from the user and ignore all excessive numbers in
         </div>
       
     
+  
+
   
 
   

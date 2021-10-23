@@ -6,7 +6,19 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A React Typescript Trivia Quiz</title>
+      <link>http://AhmadHamze.github.io/posts/react/trivia-quiz/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/react/trivia-quiz/</guid>
+      <description>This is a simple React + TypeScript + Storybook application, it&amp;rsquo;s a trivia quiz where the user answers a question and when all the questions are finished, they can see their score and the correct answers.
+In this blog, I will go over the most important parts of the code, which you can find here.
+Handling the data received from the API The code is in api/quizz-api.ts.
+The first thing to do is to create a type that handles the response returned by the API.</description>
+    </item>
+    
     <item>
       <title>Mapping Earthquakes Locations on a Map</title>
       <link>http://AhmadHamze.github.io/posts/earthquakes/</link>

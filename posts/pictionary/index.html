@@ -167,6 +167,31 @@
     <li><a class="" href="/posts/first-react-job/">Web Dev Learned Lessons</a></li>
   
 
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
 
             </div>
           </ul>
@@ -221,15 +246,13 @@ You can also find instructions on how to run the project locally on your compute
 <p>It&rsquo;s added within the head tag of the main html file (the file hosting the p5 sketch).</p>
 <p>The next step is to create a websocket and to connect it to the port where the backend will be listening (this will be done shortly).</p>
 <p>This is the code doing so, it&rsquo;s found in <em>sketch.js</em>:</p>
-<pre>
-let socket;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">socket</span>;
 
-function setup() {
-  /* sketch code */
-  socket = io.connect("http://localhost:5000");
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+  <span style="color:#75715e">/* sketch code */</span>
+  <span style="color:#a6e22e">socket</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#e6db74">&#34;http://localhost:5000&#34;</span>);
 }
-</pre>
-<blockquote>
+</code></pre></div><blockquote>
 <p><em>The setup function is specific to the p5 library check the <a href="https://p5js.org/reference/#/p5/setup">documentation</a> for more information</em></p>
 </blockquote>
 <h2 id="drawing-and-sending-the-sketch-to-the-back-end">Drawing and sending the sketch to the back-end</h2>
@@ -239,23 +262,21 @@ function setup() {
 <blockquote>
 <p>Notice this line <code>socket.emit(&quot;coordinates&quot;, data);</code> the data are sent under the name of &ldquo;coordinates&rdquo; this will be useful when receiving the data in the back-end.</p>
 </blockquote>
-<pre>
-    function pen() {
-        noStroke();
-        if (mouseIsPressed) {
-            fill(0, 0, 255);
-            ellipse(mouseX, mouseY, 20, 20);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pen</span>() {
+        <span style="color:#a6e22e">noStroke</span>();
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">mouseIsPressed</span>) {
+            <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>);
+            <span style="color:#a6e22e">ellipse</span>(<span style="color:#a6e22e">mouseX</span>, <span style="color:#a6e22e">mouseY</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>);
 
-            const data = {
-            x: mouseX,
-            y: mouseY,
+            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {
+            <span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">mouseX</span>,
+            <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">mouseY</span>,
             };
-            // Sending the data under the name "coordinates"
-            socket.emit("coordinates", data);
+            <span style="color:#75715e">// Sending the data under the name &#34;coordinates&#34;
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#34;coordinates&#34;</span>, <span style="color:#a6e22e">data</span>);
         }
     }
-</pre>
-<h2 id="receiving-the-data-in-the-back-end-and-sending-it-back-to-the-front-end">Receiving the data in the back-end and sending it back to the front-end</h2>
+</code></pre></div><h2 id="receiving-the-data-in-the-back-end-and-sending-it-back-to-the-front-end">Receiving the data in the back-end and sending it back to the front-end</h2>
 <p>We need to establish a connection and &ldquo;grab&rdquo; the data coming from the front-end.<br>
 Remember that the data are emitted by the socket under the name &ldquo;coordinates&rdquo;, so to grab them we will use
 <code>socket.on(&quot;coordinates&quot;, (data) =&gt; {...})</code></p>
@@ -265,44 +286,38 @@ We will use the &ldquo;broadcast&rdquo; flag, it sets a modifier for the emissio
 <blockquote>
 <p>Notice that we are sending back the data under the same name &ldquo;coordinates&rdquo;.</p>
 </blockquote>
-<pre>
-const io = socket(server);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">io</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">socket</span>(<span style="color:#a6e22e">server</span>);
 
-io.sockets.on("connection", (socket) => {
-  console.log(`new connection: ${socket.id}`);
-  // Receiving the data from the front-end
-  socket.on("coordinates", (data) => {
-    console.log(data);
-    // Sending back the coordinates to the client, notice this way the
-    // client sending the coordinates will not receive back what it already sent.
-    socket.broadcast.emit("coordinates", data);
+<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">sockets</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;connection&#34;</span>, (<span style="color:#a6e22e">socket</span>) =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`new connection: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+  <span style="color:#75715e">// Receiving the data from the front-end
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;coordinates&#34;</span>, (<span style="color:#a6e22e">data</span>) =&gt; {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
+    <span style="color:#75715e">// Sending back the coordinates to the client, notice this way the
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// client sending the coordinates will not receive back what it already sent.
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">broadcast</span>.<span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#34;coordinates&#34;</span>, <span style="color:#a6e22e">data</span>);
   });
 });
-</pre>
-<h2 id="receiving-the-data-from-the-back-end-and-drawing-a-new-sketch">Receiving the data from the back-end and drawing a new sketch</h2>
+</code></pre></div><h2 id="receiving-the-data-from-the-back-end-and-drawing-a-new-sketch">Receiving the data from the back-end and drawing a new sketch</h2>
 <p>This is the final stage, we will create a new function that draws a new sketch using the data received from the backend (the (x,y) coordinates).</p>
 <p>To do so we will listen to the incoming event emitted from the back-end, we will add the listener to the &ldquo;setup&rdquo; function, here is the final version:</p>
-<pre>
-
-    function setup() {
-        const canvas = createCanvas(500, 500);
-        canvas.parent("container");
-        background(0);
-        socket = io.connect("http://localhost:5000");
-        // the socket receiving data from the back-end
-        socket.on("coordinates", newDrawing);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">setup</span>() {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">canvas</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createCanvas</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>);
+        <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">parent</span>(<span style="color:#e6db74">&#34;container&#34;</span>);
+        <span style="color:#a6e22e">background</span>(<span style="color:#ae81ff">0</span>);
+        <span style="color:#a6e22e">socket</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">connect</span>(<span style="color:#e6db74">&#34;http://localhost:5000&#34;</span>);
+        <span style="color:#75715e">// the socket receiving data from the back-end
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">socket</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#34;coordinates&#34;</span>, <span style="color:#a6e22e">newDrawing</span>);
     }
-</pre>
-<p>The &ldquo;newDrawing&rdquo; argument is a function that we will define, it draws the new sketch with a different color.</p>
-<pre>
-
-    function newDrawing(data) {
-        noStroke();
-        fill(0, 255, 0);
-        ellipse(data.x, data.y, 20, 20);
+</code></pre></div><p>The &ldquo;newDrawing&rdquo; argument is a function that we will define, it draws the new sketch with a different color.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">newDrawing</span>(<span style="color:#a6e22e">data</span>) {
+        <span style="color:#a6e22e">noStroke</span>();
+        <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>);
+        <span style="color:#a6e22e">ellipse</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">y</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>);
     }
-</pre>
-<h2 id="result">Result</h2>
+</code></pre></div><h2 id="result">Result</h2>
 <p>That&rsquo;s it all is done, run the server and open two or more tabs on <code>http://localhost:5000</code>, draw anything on a canvas (it will be blue), you will see the same drawing on the other canvases with a different color (green).</p>
 <p>The initial drawing</p>
 <p><img src="./images/draw.png" alt="hand draw"></p>
@@ -363,6 +378,8 @@ io.sockets.on("connection", (socket) => {
         </div>
       
     
+  
+
   
 
   
