@@ -6,7 +6,16 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Selenium Speed Test</title>
+      <link>http://AhmadHamze.github.io/posts/automation/selenium-speed-test/</link>
+      <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/automation/selenium-speed-test/</guid>
+      <description>This blog is for learning purposes only, you can find the complete code on my Github go there to find the instructions necessary to run the code. Background  The first time I ever used Selenium, I had to type a string into a search bar. Doing so, I couldn&#39;t see if a string was typed at all, to the point where I thought maybe it doesn&#39;t actually type words.</description>
+    </item>
+    
     <item>
       <title>Storybook with React</title>
       <link>http://AhmadHamze.github.io/posts/react/storybook-trivia-quiz/</link>
