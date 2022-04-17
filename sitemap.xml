@@ -3,10 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://AhmadHamze.github.io/</loc>
-    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://AhmadHamze.github.io/posts/algorithmics/</loc>
+    <lastmod>2022-04-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://AhmadHamze.github.io/posts/</loc>
-    <lastmod>2021-11-04T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://AhmadHamze.github.io/posts/opinion/</loc>
+    <lastmod>2022-04-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://AhmadHamze.github.io/posts/automation/puppeteer-vs-selenium/</loc>
     <lastmod>2021-11-04T00:00:00+00:00</lastmod>
@@ -35,10 +41,13 @@
     <loc>http://AhmadHamze.github.io/posts/c&#43;&#43;-matrix/</loc>
     <lastmod>2021-07-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://AhmadHamze.github.io/posts/first-react-job/</loc>
+    <loc>http://AhmadHamze.github.io/posts/opinion/first-react-job/</loc>
     <lastmod>2021-05-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://AhmadHamze.github.io/posts/advice-to-myself/</loc>
+    <loc>http://AhmadHamze.github.io/posts/algorithmics/memoization/</loc>
+    <lastmod>2021-04-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://AhmadHamze.github.io/posts/opinion/advice-to-myself/</loc>
     <lastmod>2021-03-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://AhmadHamze.github.io/posts/estimating-pi/</loc>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mapping Earthquakes Locations on a Map</title>
       <link>http://AhmadHamze.github.io/posts/earthquakes/</link>
@@ -38,26 +38,6 @@ If you&amp;rsquo;ve never heard of websockets before, here&amp;rsquo;s the main 
       <guid>http://AhmadHamze.github.io/posts/c&#43;&#43;-matrix/</guid>
       <description>Matrix calculator for two by two and three by three real matrices This is a project that I did around three years ago, just after I finished taking my very first comprehensive programming course, it was about the C++ language.
 Back then I knew that there are many better options to do matrix calculation, mostly using the Python Numpy library. I also knew that there are many C++ libraries that provide matrix calculation, most notably Eigen.</description>
-    </item>
-    
-    <item>
-      <title>Lessons Learned From My First Web Dev Job</title>
-      <link>http://AhmadHamze.github.io/posts/first-react-job/</link>
-      <pubDate>Thu, 27 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://AhmadHamze.github.io/posts/first-react-job/</guid>
-      <description>Recently I started a web development job as a front-end developer, here are a few things I learned so far.
-1. Make sure to have the correct working environment As you might know, preparing the development environment is an essential step when you start a new project. In my case, the team decided to use Nix for package management (it&amp;rsquo;s awesome). The first problem I faced is that I am using Windows, and to be able to use nix on Windows you have to use WSL.</description>
-    </item>
-    
-    <item>
-      <title>Advice to my past self</title>
-      <link>http://AhmadHamze.github.io/posts/advice-to-myself/</link>
-      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://AhmadHamze.github.io/posts/advice-to-myself/</guid>
-      <description>Advice to my past self regarding programming In this blog, I talk about a few things that I wish somebody told me back when I started learning to program by myself, I hope you can benefit from this if you&amp;rsquo;re also new to programming.
-1. Talk to real programmers who know what they&amp;rsquo;re doing Getting into the world of programming is quite easy, all you have to do is own a laptop, watch YouTube videos and try to build programs yourself.</description>
     </item>
     
     <item>
