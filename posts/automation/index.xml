@@ -13,7 +13,7 @@
       <pubDate>Thu, 04 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>http://AhmadHamze.github.io/posts/automation/puppeteer-vs-selenium/</guid>
-      <description>This blog is for learning purposes only, you can find the complete code on my Github go there to find the instructions necessary to run the code. Introduction  In a previous blogI created a selenium bot that performs the 10fastfingers typing speed, it scored 960 WPM.
+      <description>&lt;!DOCTYPE html&gt; This blog is for learning purposes only, you can find the complete code on my Github go there to find the instructions necessary to run the code. Introduction In a previous blog I created a selenium bot that performs the 10fastfingers typing speed, it scored 960 WPM.
 This code was far from perfect, I did it quickly without taking into consideration the best performance that could be achieved.</description>
     </item>
     
@@ -23,7 +23,7 @@ This code was far from perfect, I did it quickly without taking into considerati
       <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>http://AhmadHamze.github.io/posts/automation/selenium-speed-test/</guid>
-      <description>This blog is for learning purposes only, you can find the complete code on my Github go there to find the instructions necessary to run the code. Background  The first time I ever used Selenium, I had to type a string into a search bar. Doing so, I couldn&#39;t see if a string was typed at all, to the point where I thought maybe it doesn&#39;t actually type words.</description>
+      <description>&lt;!DOCTYPE html&gt; This blog is for learning purposes only, you can find the complete code on my Github go there to find the instructions necessary to run the code. Background The first time I ever used Selenium, I had to type a string into a search bar. Doing so, I couldn&#39;t see if a string was typed at all, to the point where I thought maybe it doesn&#39;t actually type words.</description>
     </item>
     
   </channel>

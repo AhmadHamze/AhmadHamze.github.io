@@ -26,8 +26,8 @@ Data The program uses a csv file containing 2000 locations of earthquakes (longi
       <guid>http://AhmadHamze.github.io/posts/pictionary/</guid>
       <description>Introduction This is a project that uses websockets to create a drawing on a page and copy this drawing to another page instantly.
 If you&amp;rsquo;ve never heard of websockets before, here&amp;rsquo;s the main idea:
-  You send data from your browser to a server using a &amp;ldquo;socket&amp;rdquo; which is a real-time connection that can send data back and forth.
-  There is another computer that is connected to the server and will receive the data from it also using a socket.</description>
+You send data from your browser to a server using a &amp;ldquo;socket&amp;rdquo; which is a real-time connection that can send data back and forth.
+There is another computer that is connected to the server and will receive the data from it also using a socket.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ Back then I knew that there are many better options to do matrix calculation, mo
       <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>http://AhmadHamze.github.io/posts/estimating-pi/</guid>
-      <description>Using the Monte-Carlo simulation to estimate the value of &amp;#x03C0;First of all, let&#39;s talk briefly about what is a Monte-Carlo simulation.
+      <description>&lt;!DOCTYPE html&gt;Using the Monte-Carlo simulation to estimate the value of &amp;#x03C0;First of all, let&#39;s talk briefly about what is a Monte-Carlo simulation.
 Simply put, it is a computational method that uses a large number of random samples to obtain a result. It is used in awide range of disciplines like mathematics, computer graphics, and physical sciences.In this blog, we will see how we can use this method to estimate the value of the mathematical constant \( \pi \).</description>
     </item>
     
