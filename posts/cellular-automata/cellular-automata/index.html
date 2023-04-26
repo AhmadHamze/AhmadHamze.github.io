@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cellular Automata</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="Introduction to Cellular Automata" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/estimating-pi/">Monte-Carlo Estimation of Pi</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/cellular-automata/cellular-automata/hero.png);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/my-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>April 15, 2023</p>
+        </div>
+
+        <div class="title">
+          <h1>Cellular Automata</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <p>
+    In the 1940s, John Von Neumann and Stanislaw Ulam wanted to design a computer able to self-repair.
+    <br />
+    In the real world an object can be produced only from a more complex object. Consider replicating a piece
+    of paper. <br />
+    To create one, we need to have a more complex object, a printer,
+    the printer is a much more complex system than paper, and to create a printer, we need a lot of
+    smaller components which are themselves complex and so on.
+    <br />
+    However, this is not what happens in nature, cells are capable of self-replicating and self-repairing,
+    so scientists contemplated the idea of creating a system that has such capabilities.
+  </p>
+  <h2>
+    Simplifying the problem
+  </h2>
+  <div>
+    <p>
+      Tackling such a problem is hard, so scientists decided to simplify the problem. <br />
+      <span class="highlight">
+        How to find the logical mechanisms for self-reproduction?
+      </span>
+
+      Finding an algorithm to achieve transcription and translation would be a great start, it would also be easier to
+      formalize these concepts in a discrete world.
+      <br />
+      That's when the idea of cellular automata was born.
+      <br />
+      A cellular automaton is a mathematical abstraction of the real world, a modeling framework in which everything is
+      discrete.
+      There are many examples of cellular automata, in this blog we will be looking at two that use a square
+      lattice (a grid).
+      <br />
+      Although the square lattice is the most common, it is possible to use a hexagonal lattice, a triangular lattice,
+      or
+      even a three-dimensional lattice (a cube).
+      <br />
+      It is also possible to make a simpler automaton, for example, a one-dimensional automaton.
+      Take a look at <a href="https://www.wolframalpha.com/input?i=rule+30" target="_blank">Wolfram's Automata</a>.
+    </p>
+  </div>
+  <h2>The parity rule</h2>
+  <p>
+    In the first example, we will look at an automaton that uses the <b>parity rule</b>.
+    <br />
+    Here a cell has only two states, dead or alive (0 or 1), a dead cell is a white cell, and an alive cell is a black
+    cell. Each cell sums up the states of its four neighbors (up, down, left, right).
+    <br />
+    If the sum is even, the new state of the cell is 0, otherwise, it is 1.
+  </p>
+  <p>
+    Each cell sums up the states of its four neighbors, we can see the neighboring cells in the image.
+    These are the four white cells that have a black border.
+  </p>
+  <img src="./media/parity-rule.png" alt="can't load image" />
+
+  <p>
+    If we start with only one cell alive, the next generation will look so
+  </p>
+  <img src="./media/parity-initial.png" alt="can't load image" />
+  <h2>Boundary Conditions</h2>
+  <div>
+    <p>
+      Implementing the rule is pretty simple for the inner cells, but what about the cells on the edge?
+      <br />
+      How do we handle the cells that don't have four neighbors?
+      <br />
+      There are many ways to handle such cells (this is called boundary conditions) here are a few examples:
+    </p>
+    <ul>
+      <li>Fixed, an imaginary cell would exist with a permanent state</li>
+      <li>Adiabatic, the same cell would be considered a neighbor</li>
+      <li>Periodic, the cells on the edge are regarded as neighbors of the cells on the other side of the grid</li>
+    </ul>
+    <p>
+      When applying the periodic boundary condition, the neighboring cells for the top left cell would be:
+    </p>
+    <ol>
+      <li>The next on the right</li>
+      <li>The next on the bottom</li>
+      <li>The bottom left cell (this is the north neighbor)</li>
+      <li>The top right cell (this is the west neighbor)</li>
+    </ol>
+    <p>
+      In this blog, we will be using the periodic boundary condition.
+    </p>
+    </p>
+  </div>
+  <!-- TODO: continue spelling fixes here -->
+  <h3>P5.js implementation</h3>
+  <div>
+    <p>
+      It is relatively easy to create a cellular automaton in p5.js. You can take a look at the complete code
+      <a href="https://github.com/AhmadHamze/simple-simulations" target="_blank">here</a>.
+      <br />
+
+      We have a grid of cells that saves the state of each cell, when one is clicked its state is flipped, and
+      when the start button is clicked the simulation starts.
+      <br />
+      The most important part is how to implement a certain rule for the automaton (in this case the parity rule), and
+      how
+      to enforce the boundary conditions (in this case the periodic boundary condition).
+    </p>
+    <p>
+      To implement the parity rule, we need to sum up the states of the four neighbors, and then check if the sum is
+      even or odd.
+      <br />
+      At each iteration, every cell needs to be updated, so we need to save the new state of each cell in a temporary
+      grid. Then we can sum up the four neighbors of each cell and check the parity.
+      <br />
+      There are many ways to sum up the four neighbors, the best and the most efficient one is to use the modulo
+      operator. By doing so, not only we can sum up the neighbors, but we can also enforce the periodic boundary.
+    </p>
+    <!-- prettier-ignore -->
+    <pre>
+    <code>
+      for (let i = 0; i < gridVSize; i++) {
+        for (let j = 0; j < gridHSize; j++) {
+          iM = (i - 1) % gridVSize;
+          iP = (i + 1) % gridVSize;
+          jM = (j - 1) % gridHSize;
+          jP = (j + 1) % gridHSize;
+          grid[i][j].alive =
+            (gridCopy.at(iM).at(j).alive +
+              gridCopy.at(iP).at(j).alive +
+              gridCopy.at(i).at(jM).alive +
+              gridCopy.at(i).at(jP).alive) %
+            2;
+        }
+      }
+    </code>
+  </pre>
+    <p>
+      Here <code>gridVSize</code> and <code>girdHSize</code> are the vertical and horizontal sizes of the grid
+      respectively.
+      <br />
+      The modulo operator ensures that when the index equals the size of the grid, it will be set to 0, so back at the
+      start of the grid.
+      <br />
+      On the other hand, the Javascript <code>at</code> function is used to access the element at a certain index, if
+      the index is -1, it will be set to the last element.
+      <br />
+      This is how the periodic boundary condition is enforced.
+    </p>
+  </div>
+  <h3>The Parity Automaton</h3>
+  <div>
+    <p>
+      Let's take a look at the parity automaton in action. We will begin with a single cell alive approximately in the
+      middle of a 64x64 grid.
+    </p>
+    <p>The gif below shows the first 7 iterations of the parity rule</p>
+    <img src="media/cell.gif" />
+    <p>Despite the simplicity of the, rule we can already see complex shapes forming, a shape that "copies" itself</p>
+    <p>
+      Let's see an example of a more complex initial state, take a look at this video,
+      the initial shape is somewhat triangular.
+    </p>
+    <div id="videoContainer">
+      <video width="100%" controls>
+        <source src="media/triangle.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p>
+      We can see that the automaton generates the same shape multiple times in different positions.
+      <br />
+      Pause at iteration 4, the triangular shape is reproduced, there are now 4 shapes instead of one.
+      <br />
+      At iteration 12, the triangular shape is reproduced again, now there are 16 shapes instead of 4.
+    </p>
+    <p>
+      At different iterations we can see intricate patterns forming, this is the beauty of cellular automata,
+      we began with a simple rule and a simple initial state, and we ended up with complex patterns.
+    </p>
+    <p>
+      If you watched the video till the end, you would have noticed that at iteration 32, the grid is empty, and all
+      cells
+      are white. This is not an error, this is the expected behavior of the parity rule given the grid size.
+    </p>
+    <p>
+      We can mathematically prove that a cellular automaton of size \( 2^k \) with periodic boundary conditions will
+      reach a whole zero state at iteration \( 2 ^ {k - 1} \).
+    </p>
+    <p>You can find proof in this book
+      <a href="https://www.cambridge.org/core/books/cellular-automata-modeling-of-physical-systems/4FCAFAFE90617620C3207FE8A31A8604"
+        target="_blank">
+        Cellular Automata Modeling of Physical Systems
+      </a> I won't get into the details here.
+    </p>
+    <p>
+      In our case, the grid size is \( 64 = 2^6 \), so the automaton will reach a whole zero state at iteration
+      \( 2^{6 - 1} = 32 \).
+    </p>
+    <p>
+      This is an example of the fact that cellular automata is indeed a mathematical object, we can study it
+      mathematically.
+      Here is a randomly generated grid, watch the video till the end, you will see that the automaton reaches a whole
+      zero state at iteration 32.
+    </p>
+    <div id="videoContainer">
+      <video width="100%" controls>
+        <source src="media/random.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+  <h2>Conway's Game of Life </h2>
+  <div>
+    <p>
+      The most famous example of a cellular automaton is Conway's Game of Life. Unlike the parity automaton, the game
+      of life has a more complex rule.
+      <br />
+      The affected cells when determining the state of a cell are the eight
+      neighbors, not just the four we saw earlier, here is an image.
+    </p>
+    <img src="media/conway.png" />
+    <p>
+      The rule is as follows:
+      <br />
+      If a cell is alive and has 2 or 3 alive neighbors, it stays alive, otherwise, it dies.
+      <br />
+      If a cell is dead and has exactly 3 alive neighbors, it becomes alive, otherwise, it stays dead.
+    </p>
+    <p>
+      The game of life has been studied and analyzed extensively, there is an online community of enthusiasts that
+      study the game of life, and they have found many interesting patterns and shapes.
+      <br />
+      Take a look at <a href="https://conwaylife.com/wiki/" target="_blank">LifeWiki</a>
+    </p>
+  </div>
+  <h3>A universal computer</h3>
+  <p>
+    Conway's Game of Life is a universal computer, which means that it can simulate any other computer.
+    Think of any type of computation a computer can do, the game of life can do it too!
+  </p>
+  <p>
+    The first step to building a computer is to build logic gates, we can do so with glider guns.
+    <br />
+    This is a pattern that can create gliders which in turn is a smaller pattern that can "move" across the world.
+    <br />
+    The following video shows a glider gun in action, the shapes that are moving through the grid are the gliders
+  </p>
+  <div id="videoContainer">
+    <video width="100%" controls>
+      <source src="media/glider-gun.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <p>
+    This gun keeps creating gliders (in our case we have a small grid so the gliders will eventually hit the gun and
+    disturb the process), we can use multiple gliders to build logic gates, and then use these gates to build
+    more complex circuits.
+  </p>
+  <p>
+    There are many mind-blowing videos online showing some examples of what can be done with the game of life.
+    The fact that we can build a computer with something as simple as the Game of Life is a testament to the power
+    of cellular automata.
+  </p>
+  <h2>Application and implications</h2>
+  <div>
+    <p>
+      The examples we saw above are theoretical, but cellular automata can be used to model real-world systems.
+      <br />
+      From simulating diffusion to modeling the spread of diseases, the spread of forest fires, growth models in
+      physics,
+      fluid mechanics, and many more, cellular automata is a powerful scientific tool.
+    </p>
+    <p>
+      Scientists have contemplated the implications of cellular automata, how could something so simple be able to
+      simulate real-world phenomena?
+      <br />
+      What does that say about the nature of reality? How could a discrete world be able to simulate a continuous
+      world?
+    </p>
+    <p>
+      Lots of questions are raised by cellular automata, and it is a fascinating field of study.
+      <br />
+      I will be writing more about cellular automata in the future, so stay tuned!
+    </p>
+  </div>
+</body>
+
+</html>
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/cellular-automata/cellular-automata/index.html">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        <div class="col-md-12 next-article">
+          <a href="/posts/algorithmics/memoization/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>Enhancing Recursion with Memoization</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);">
+</script>
+
+
+
+  </body>
+</html>

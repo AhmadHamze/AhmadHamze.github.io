@@ -6,7 +6,16 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cellular Automata</title>
+      <link>http://AhmadHamze.github.io/posts/cellular-automata/cellular-automata/</link>
+      <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/cellular-automata/cellular-automata/</guid>
+      <description>&lt;!DOCTYPE html&gt; In the 1940s, John Von Neumann and Stanislaw Ulam wanted to design a computer able to self-repair. In the real world an object can be produced only from a more complex object. Consider replicating a piece of paper. To create one, we need to have a more complex object, a printer, the printer is a much more complex system than paper, and to create a printer, we need a lot of smaller components which are themselves complex and so on.</description>
+    </item>
+    
     <item>
       <title>Enhancing Recursion with Memoization</title>
       <link>http://AhmadHamze.github.io/posts/algorithmics/memoization/</link>
