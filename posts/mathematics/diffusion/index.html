@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>From random walk to diffusion</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="From random walk to diffusion" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/mathematics/diffusion/hero.png);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/my-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>October 22, 2023</p>
+        </div>
+
+        <div class="title">
+          <h1>From random walk to diffusion</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>Randomness is an interesting concept, we have seen in previous blogs how it can be harnessed to <a href="https://ahmadhamze.github.io/posts/estimating-pi/">compute mathematical constants</a>, and even create a <a href="https://ahmadhamze.github.io/posts/cellular-automata/cellular-automata/">universal computer</a>. In this blog we will see how randomness can be used to model diffusion.
+Diffusion can be defined as the movement of particles from a region of higher concentration to a region of lower concentration.
+This is a common phenomenon and can be observed in our daily lives. Heat transfer is a form of diffusion, when you heat a metal rod at one end, the heat will diffuse through the rod until it reaches the other end.
+We will see how we can model diffusion using random walks.</p>
+<h2 id="mathematical-model-of-diffusion">Mathematical model of diffusion</h2>
+<p>Let&rsquo;s start by defining our problem mathematically, we will use a method known as descritization to model our problem.</p>
+<p>Our world will be a two dimensional grid, particles exist inside the grid and can move in four directions: up, down, left and right. We will assume that the particles cannot move outside the grid.</p>
+<p>This picture illustrates the model.</p>
+<div align="center">
+<img src="./images/grid.png" alt="grid-image" />
+</div>
+<p>
+We track the walker (represented by the red dot) as it moves through the grid. During a time incrementation \( \Delta_t \), it has an equal chance of moving in any of the four directions (the blue arrows), or staying in its current position.
+</p>
+<p>
+Therefore the probability of the walker moving in any direction is \( \frac{1}{5} \), and the probability of the walker staying in its current position is also \( \frac{1}{5} \).
+</p>
+<p>
+The grid being square, we can assume that \( \Delta_x = \Delta_y \), so at each time step \( \Delta_t \), the walker may move a distance \( \Delta_x \).
+</p>
+<p>
+ The position of a particle at a given time \( t \) is \( \left(x(t), y(t)\right) \), to find the position of the particle at time \( t + \Delta_t \), we can use the following equations:
+</p>
+<div align="center">
+  <p>
+  \( x(t + \Delta_t) = x(t) + \Delta_t \cdot v_x(t) \)
+  </p>
+  <p>
+  \(y(t + \Delta_t) = y(t) + \Delta_t \cdot v_y(t) \)
+  </p>
+</div>
+<p>
+The distance the particle has moved in the time interval \( \Delta_t \) is given by \( \Delta_t \cdot v_x(t) \), where 
+\( v_x(t) \) is the velocity of the particle at time \( t \) (same for \( y \)).
+</p>
+<p>
+This equation is basically stating that in order to find the particle's position at time \( t + \Delta_t \), we need to add the distance it has moved in the time interval \( \Delta_t \) to its position at time \( t \).
+</p>
+<p>
+\(v_x, v_y \) is chosen randomly from the following set
+</p>
+<p align="center">
+ \( \left\{ \left(\dfrac{\Delta_x}{\Delta_t}, 0\right), \left(- \dfrac{\Delta_x}{\Delta_t}, 0\right), \left(0, 0\right), \left(0, \dfrac{\Delta_y}{\Delta_t}\right), \left(0, - \dfrac{\Delta_y}{\Delta_t}\right) \right\} \)
+</p>
+<p>
+This covers the cases when the particle moves right, left, stay in position, up, and down respectively.
+</p>
+<p>
+Using this model, and with some math, we can prove that on average, after some time, the position of a random walker is the same as its starting position. In addition, the average displacement of the walker is \( d = \sqrt{4 D \cdot t} \) where \( D \) is a constant called the diffusion coefficient, and \( t \) is the time.
+<p>This is equivalent to the following equation</p>
+</p>
+<p align="center">
+\( \partial _t \rho(x, y, t) = D(\partial^2_x + \partial^2_y)\rho(x, y, t) \)
+</p>
+<p>
+This is the famous diffusion equation, which is a partial differential equation that describes the time evolution of a density function \( \rho(x, y, t) \).
+</p>
+<h2 id="solution">Solution</h2>
+<p>This is a partial differential equation, it has been the subject of many studies and a mathematical solution exists.
+We will not go into the analytical solution, but here is a plot showing it.</p>
+<div align="center">
+<img src="./images/diffusion-analytical.png" alt="analytical solution of the diffsion equation" />
+</div>
+<p>We can see a disc with different colors, at the center, the color is red signaling a higher concentration of particles, and as we move away from the center, the color changes to blue signaling a lower concentration of particles.</p>
+<p>Think of heating a metal plate on a stove, the heat will diffuse from the center of the plate to its edges. The closer to the center, the hotter the plate will be.</p>
+<h2 id="simulation">Simulation</h2>
+<p>We will now simulate the diffusion equation using the random walk model we have defined earlier.</p>
+<p>We will start with a grid just like we did in the <a href="https://ahmadhamze.github.io/posts/cellular-automata/cellular-automata/">cellular automata</a> blog. The difference here is that each cell will have a color representing the concentration of particles in that cell.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ColoredCell</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Cell</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">size</span>, <span style="color:#a6e22e">alive</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">size</span>, <span style="color:#a6e22e">alive</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">color</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">drawCell</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">alive</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">startColor</span>, <span style="color:#a6e22e">endColor</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.5</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">startColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">color</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">255</span>); <span style="color:#75715e">// light blue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">endColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">color</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">128</span>); <span style="color:#75715e">// light green
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">startColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">color</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">128</span>); <span style="color:#75715e">// light green
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">endColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">color</span>(<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>); <span style="color:#75715e">// red
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// lerpColor is a p5 function that returns a color between two colors
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">lerpedColor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">lerpColor</span>(<span style="color:#a6e22e">startColor</span>, <span style="color:#a6e22e">endColor</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">color</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fill</span>(<span style="color:#a6e22e">lerpedColor</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">rect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">size</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">size</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fill</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">stroke</span>(<span style="color:#ae81ff">255</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">rect</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">size</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">size</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The property <code>color</code> of the cell is a number between 0 and 1, the value of zero designates a white cell, i.e. a cell where the walker never stopped. The higher the value, the redder the cell, i.e. the more times the walker stopped in that cell.</p>
+<h3 id="the-walker">The walker</h3>
+<p>The walker is simply a position on the grid that can move in the four directions explained above or stay in the same position.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Walker</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">y</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// This method is used for debugging
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">drawWalker</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">stroke</span>(<span style="color:#e6db74">&#34;purple&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fill</span>(<span style="color:#e6db74">&#34;purple&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ellipse</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">move</span>(<span style="color:#a6e22e">sizeOfCell</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// NOTE: Picking 5 numbers, 0 to 4, one of them designates staying in the same position (i.e. do nothing)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">direction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">floor</span>(<span style="color:#a6e22e">random</span>(<span style="color:#ae81ff">5</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">direction</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">sizeOfCell</span>) <span style="color:#f92672">%</span> <span style="color:#a6e22e">height</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">sizeOfCell</span>) <span style="color:#f92672">%</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">sizeOfCell</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">sizeOfCell</span>) <span style="color:#f92672">%</span> <span style="color:#a6e22e">height</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">4</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">sizeOfCell</span>) <span style="color:#f92672">%</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">sizeOfCell</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The <code>move</code> method above is where the magic happens, we pick a random number between 0 and 4, and depending on the value of that number, we move the walker in one of the four directions or stay in the same position.</p>
+<p>One thing remains, at the end of each time iteration, increment the color by a certain value. For this purpose the following function is created</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">increaseCellColor</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">gridVSize</span>, <span style="color:#a6e22e">gridHSize</span>, <span style="color:#a6e22e">posX</span>, <span style="color:#a6e22e">posY</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">gridVSize</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">gridHSize</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cell</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>];
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">distance</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">dist</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">posX</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">posY</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">y</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      );
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">distance</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">alive</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">cell</span>.<span style="color:#a6e22e">color</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This function takes the grid, the size of the grid, the position of the walker, and increments the color of the cell that contains the walker by a certain value. It is called at the end of each time iteration, we will consider that the walker moves 100 times during each time iteration.</p>
+<p>All the pieces of the code is combined inside p5.js <code>draw</code> function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">draw</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">background</span>(<span style="color:#ae81ff">51</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">gridVSize</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">gridHSize</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">grid</span>[<span style="color:#a6e22e">i</span>][<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">drawCell</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">walker</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Walker</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">gridHSize</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">gridHSize</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  );
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">startButton</span>.<span style="color:#a6e22e">html</span>(<span style="color:#e6db74">&#34;Start&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">running</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">100</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">walker</span>.<span style="color:#a6e22e">move</span>(<span style="color:#a6e22e">height</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">gridHSize</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">increaseCellColor</span>(<span style="color:#a6e22e">grid</span>, <span style="color:#a6e22e">gridVSize</span>, <span style="color:#a6e22e">gridHSize</span>, <span style="color:#a6e22e">walker</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">walker</span>.<span style="color:#a6e22e">y</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// * You can draw the walker, useful for debugging
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// walker.drawWalker();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">iteration</span>.<span style="color:#a6e22e">html</span>(<span style="color:#e6db74">&#34;Iteration: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">iter</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">startButton</span>.<span style="color:#a6e22e">html</span>(<span style="color:#e6db74">&#34;Stop&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">iter</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="result">Result</h3>
+<p>This simulation takes some time to run, just like the Monte Carlo simulation, the more iterations you run, the better the result will be.</p>
+<p>After one thousand iterations, this is the result</p>
+<div align="center">
+<img src="./images/1000.png" alt="1000 iterations" />
+</div>
+<p>We can&rsquo;t see much going on here, all what we see is a bunch of blue cells. Let&rsquo;s run the simulation for 10000 iterations.</p>
+<div align="center">
+<img src="./images/10000.png" alt="1000 iterations" />
+</div>
+<p>Still not much, but we can see two colors now, blue and green. Let&rsquo;s run the simulation for 22000 iterations.</p>
+<div align="center">
+<img src="./images/22000.png" alt="1000 iterations" />
+</div>
+<p>This is more like it! We can see a disc with a red center and a blue edge, green cells form a circle around the red center.</p>
+<p>At 41000 iterations, the red disc is more defined and takes more space. we can also see different shades of red, the cells closer to the center have a stronger red color than those farther away. The green cells still form a disc around the red center.</p>
+<div align="center">
+<img src="./images/41000.png" alt="1000 iterations" />
+</div>
+<p>This image is quite similar to the analytical solution we have seen above.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The natural phenomena of diffusion can be modeled using random walks, this is a simple model that can be implemented in not too many lines of code. The results are very similar to the analytical solution of the diffusion equation.</p>
+<p>Why does this work? Scientists still speculate this question, when it comes to the diffusion case, there are two similar behaviors between the random walk model and the diffusion equation.</p>
+<p>The physical particles in the diffusion equation go back to their initial position after some time, this is the same for the random walker, on average, the walker goes back to its initial position after some time.</p>
+<p>We just saw a discrete model simulating a continuous phenomenon, this is a common theme in simulation, many real world phenomena can be modeled using discrete models.</p>
+<blockquote>
+<p>You can find the code for the simulation <a href="https://github.com/AhmadHamze/simple-simulations">here</a></p>
+</blockquote>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/mathematics/diffusion/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/algorithmics/memoization/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>Enhancing Recursion with Memoization</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);">
+</script>
+
+
+
+  </body>
+</html>
