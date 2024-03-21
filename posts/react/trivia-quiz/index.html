@@ -405,11 +405,11 @@ The <strong>Answer</strong> component is built this way:</p>
 </span></span><span style="display:flex;"><span>  );
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>Pay attention to the <em>className</em> attribute inside the button tag, it&rsquo;s a string built by combining three css classes, one of which is the <em>state</em> which starts as &ldquo;neutral&rdquo;, this is when the user hasn&rsquo;t answered yet.</p>
-<p><img src="./images/neutral_ans.png" alt="neutral ans"></p>
+<p><img alt="neutral ans" src="./images/neutral_ans.png"></p>
 <p>If the answer given is correct, the answer&rsquo;s background becomes green</p>
-<p><img src="./images/correct_ans.png" alt="correct ans"></p>
+<p><img alt="correct ans" src="./images/correct_ans.png"></p>
 <p>Red if it&rsquo;s incorrect</p>
-<p><img src="./images/wrong_ans.png" alt="wrong ans"></p>
+<p><img alt="wrong ans" src="./images/wrong_ans.png"></p>
 <h3 id="questioncard">QuestionCard</h3>
 <p>First, define the type of an answer given by the user</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">AnswerType</span> <span style="color:#f92672">=</span> {
@@ -438,7 +438,7 @@ The <strong>Answer</strong> component is built this way:</p>
 </ul>
 <p>As stated before, the <strong>QuestionCard</strong> component is formed of other components.<br>
 For each <em>answer</em> provided by the API, it returns a div containing an <strong>Answer</strong> component, each of which is clickable.</p>
-<p><img src="./images/choose_answer.png" alt="choose_answer.png"></p>
+<p><img alt="choose_answer.png" src="./images/choose_answer.png"></p>
 <p>This is how the <strong>Answer</strong> component is called inside <strong>QuestionCard</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>          &lt;<span style="color:#f92672">Answer</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">state</span><span style="color:#f92672">=</span>{
@@ -461,11 +461,11 @@ For each <em>answer</em> provided by the API, it returns a div containing an <st
 <blockquote>
 <p>A wrong answer is given, the background turns red, and the &ldquo;Next Question&rdquo; button appears (more about that in the next segment)</p>
 </blockquote>
-<p><img src="./images/wrong_answer.png" alt="Wrong answer"></p>
+<p><img alt="Wrong answer" src="./images/wrong_answer.png"></p>
 <blockquote>
 <p>The correct answer is given, the background turns green, and the &ldquo;Next Question&rdquo; button appears</p>
 </blockquote>
-<p><img src="./images/correct_answer.png" alt="Correct answer"></p>
+<p><img alt="Correct answer" src="./images/correct_answer.png"></p>
 <h2 id="main-application">Main Application</h2>
 <p>The <code>App</code> function starts by defining a few states</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">setLoading</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
@@ -493,7 +493,7 @@ This function is called when the user clicks the start button, which will only b
 <blockquote>
 <p>This is the first thing seen by the user when launching the application</p>
 </blockquote>
-<p><img src="./images/start.png" alt="Start"></p>
+<p><img alt="Start" src="./images/start.png"></p>
 <ol start="2">
 <li>checkAnswer</li>
 </ol>
@@ -509,9 +509,9 @@ Note that this component is displayed only if the <em>gameOver</em> is <code>tru
 answered the current question.</p>
 <h3 id="the-result">The Result</h3>
 <p>After answering the last question, the &ldquo;Show Result&rdquo; button is displayed</p>
-<p><img src="./images/final_answer.png" alt="Final answer"></p>
+<p><img alt="Final answer" src="./images/final_answer.png"></p>
 <p>Clicking the button shows the final screen</p>
-<p><img src="./images/result.png" alt="Result"></p>
+<p><img alt="Result" src="./images/result.png"></p>
 <p>The correct answers are highlighted in green, the wrong answers in red.</p>
 <p>You can start a new quiz by clicking &ldquo;Start Quiz&rdquo;.</p>
 

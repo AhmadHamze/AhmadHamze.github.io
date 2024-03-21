@@ -349,7 +349,7 @@ For example, a header component could have a story that showcases the header in 
 <h2 id="installation">Installation</h2>
 <p>To install Storybook, you can use Yarn or npm (<code>yarn install storybook</code>), a &ldquo;stories&rdquo; folder will be added into the &ldquo;src&rdquo; folder, it contains some boilerplate stories which you can explore.</p>
 <p>To start Storybook run <code>yarn run storybook</code>.</p>
-<p><img src="./images/storybook_default.png" alt="Default stories"></p>
+<p><img alt="Default stories" src="./images/storybook_default.png"></p>
 <p>However, if you&rsquo;re using React you might get an error with a message mentioning conflicting babel-loader versions.<br>
 This is a known issue, to solve it just add the following lines in the package.json file</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;resolutions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
@@ -375,15 +375,15 @@ This is a known issue, to solve it just add the following lines in the package.j
 </span></span></code></pre></div><p>This format is called &ldquo;component story&rdquo;, it has a default export and one or more named exports (in this case it has two).</p>
 <p>The <em>Button</em> story is comprised of <em>Navigation</em> and <em>Start</em> building. Building each component story is quite simple, just call the React component with the needed prop.</p>
 <p>The <code>title</code> property inside the default export is mandatory, also, it should be unique. This is the text you see in the left navigation panel in Storybook.<br></p>
-<p><img src="./images/navigation_storybook.png" alt="Navigation bar"></p>
+<p><img alt="Navigation bar" src="./images/navigation_storybook.png"></p>
 <p>As you can see, both stories that we created are present in the navigation bar, you can click on each one to see the component.</p>
 <p>Here is the <em>Navigation</em> story</p>
-<p><img src="./images/navigation_story.png" alt="Navigation story"></p>
+<p><img alt="Navigation story" src="./images/navigation_story.png"></p>
 <p>and the <em>Start</em> story</p>
-<p><img src="./images/start_story.png" alt="Start story"></p>
+<p><img alt="Start story" src="./images/start_story.png"></p>
 <p>This is great, but it barely scratches the surface of what Storybook can do.</p>
 <p>If you look at the bottom of the page, you will see a panel with a message saying &ldquo;This story is not configured to handle controls. Learn how to add controls&rdquo;.</p>
-<p><img src="./images/no_controls.png" alt="No controls"></p>
+<p><img alt="No controls" src="./images/no_controls.png"></p>
 <p>Controls literally allows you to control your stories, here&rsquo;s how to add them</p>
 <h3 id="controls">Controls</h3>
 <p>Let&rsquo;s see how to build controls on a new component, <strong>QuestionCard</strong>.</p>
@@ -414,7 +414,7 @@ the props of a component are considered arguments.</p>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p>The <em>Card</em> story now has a state called <strong>QuestionCardNoAnswerYet</strong>, the argument <code>userAnswer: undefined</code> mimics the state of the component before the user chooses an answer.</p>
 <p>Here is how this state of the story looks like</p>
-<p><img src="./images/story_before.png" alt="Card no answer"></p>
+<p><img alt="Card no answer" src="./images/story_before.png"></p>
 <p>Similarly, we can create a state that mimics the component when the user gives the correct answer.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">QuestionCardCorrectAnswerGiven</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Template</span>.<span style="color:#a6e22e">bind</span>({});
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">QuestionCardCorrectAnswerGiven</span>.<span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> {
@@ -437,17 +437,17 @@ the props of a component are considered arguments.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">true</span>,
 </span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><p>Pay attention to <code>isCorrect: true</code>, this is what is going to make the difference between a correct answer and an incorrect one.</p>
-<p><img src="./images/story_correct.png" alt="Card correct answer"></p>
+<p><img alt="Card correct answer" src="./images/story_correct.png"></p>
 <p>Now, the best part!</p>
 <p>Take a look at the controls panel</p>
-<p><img src="./images/controls.png" alt="Controls"></p>
+<p><img alt="Controls" src="./images/controls.png"></p>
 <p>Not only you can see the arguments given to the current state, but you can edit them.</p>
 <p>I will change  <code>userAnswer.isCorrect</code> to <code>false</code></p>
-<p><img src="./images/userAnswer_false.png" alt="Change isCorrect"></p>
+<p><img alt="Change isCorrect" src="./images/userAnswer_false.png"></p>
 <p>and the main question to <code>hello world!</code></p>
-<p><img src="./images/question_hello.png" alt="Change question"></p>
+<p><img alt="Change question" src="./images/question_hello.png"></p>
 <p>You can see the effects of these changes immediately on the story</p>
-<p><img src="./images/story_changed.png" alt=""></p>
+<p><img src="./images/story_changed.png"></p>
 <p>This is how powerful Storybook is, it allows you to edit your components in an isolated space allowing different ways to test them.<br></p>
 <h3 id="final-words">Final Words</h3>
 <p>This is a glimpse of the capabilities of Storybook, there is much more you can do with it.</p>
