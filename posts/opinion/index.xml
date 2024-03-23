@@ -6,8 +6,15 @@
     <description>Recent content in Opinion on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://AhmadHamze.github.io/posts/opinion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>With due apology to front-end developers</title>
+      <link>http://AhmadHamze.github.io/posts/opinion/apology-frontend/</link>
+      <pubDate>Sat, 23 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://AhmadHamze.github.io/posts/opinion/apology-frontend/</guid>
+      <description>Dear front-end developers, I owe you all an apology!&#xA;Let me start by introducing myself a bit. I studied mathematics at university, and during that time I did some scientific programming, mostly solving differential equations, linear algebra, statistics, and optimization problems. This was done using Python and Matlab.&#xA;After graduation, I delved more into &amp;ldquo;serious programming&amp;rdquo; and started learning C++ and Java, I liked working with C++ and did a few projects with it.</description>
+    </item>
     <item>
       <title>Lessons Learned From My First Web Dev Job</title>
       <link>http://AhmadHamze.github.io/posts/opinion/first-react-job/</link>

@@ -6,7 +6,7 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cellular Automata</title>
@@ -21,6 +21,13 @@
       <pubDate>Wed, 03 Mar 2021 00:00:00 +0000</pubDate>
       <guid>http://AhmadHamze.github.io/posts/estimating-pi/</guid>
       <description>&lt;!DOCTYPE html&gt;&#xD;Using the Monte-Carlo simulation to estimate the value of &amp;#x03C0;&#xD;First of all, let&#39;s talk briefly about what is a Monte-Carlo simulation.&#xA;Simply put, it is a computational method that uses a large number of random samples to obtain a result. It&#xD;is used in a&#xD;wide range of disciplines like mathematics, computer graphics, and physical sciences.&#xD;In this blog, we will see how we can use this method to estimate the value of the mathematical constant \(&#xD;\pi \).</description>
+    </item>
+    <item>
+      <title>With due apology to front-end developers</title>
+      <link>http://AhmadHamze.github.io/posts/opinion/apology-frontend/</link>
+      <pubDate>Sat, 23 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://AhmadHamze.github.io/posts/opinion/apology-frontend/</guid>
+      <description>Dear front-end developers, I owe you all an apology!&#xA;Let me start by introducing myself a bit. I studied mathematics at university, and during that time I did some scientific programming, mostly solving differential equations, linear algebra, statistics, and optimization problems. This was done using Python and Matlab.&#xA;After graduation, I delved more into &amp;ldquo;serious programming&amp;rdquo; and started learning C++ and Java, I liked working with C++ and did a few projects with it.</description>
     </item>
     <item>
       <title>From random walk to diffusion</title>

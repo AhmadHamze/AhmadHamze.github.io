@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>With due apology to front-end developers</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="With due apology to front-end developers" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/opinion/apology-frontend/">With due apology to front-end developers</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/opinion/apology-frontend/hero.png);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/my-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>March 23, 2024</p>
+        </div>
+
+        <div class="title">
+          <h1>With due apology to front-end developers</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>Dear front-end developers, I owe you all an apology!</p>
+<p>Let me start by introducing myself a bit. I studied mathematics at university, and during that time I did some scientific programming, mostly solving differential equations, linear algebra, statistics, and optimization problems. This was done using Python and Matlab.</p>
+<p>After graduation, I delved more into &ldquo;serious programming&rdquo; and started learning C++ and Java, I liked working with C++ and did a few projects with it. However, my heart was still attached to the scientific side of programming, so I did some data science and machine learning with Python.</p>
+<h2 id="my-first-encounter-with-front-end-development">My first encounter with front-end development</h2>
+<p>During this period of my life, I was in constant learning, it was only a matter of time before I encountered front-end development. I remember hearing a lot about Angular, React, and Javascript, but I did not have the time to learn any of them.</p>
+<p>One day, I had a job interview for a back-end role, and the interviewer asked me if I knew any front-end technologies.
+I said no, the interviewer said that they have an online test that was initially created for a full-stack role and that they couldn&rsquo;t find the time to remove the front-end parts.
+She asked me if I could do the test and ignore the front-end parts. I said yes, and I did the test.</p>
+<p>This was my first ever encounter with HTML, CSS, and Javascript. The Javascript part wasn&rsquo;t surprising, after all, I had some experience with Python and C++.
+But the HTML and CSS parts were out of this world, I had no idea what this was, it didn&rsquo;t even look like programming to me.</p>
+<p>After a week, I got a call from the company, they said that I did well in the back-end part, but the front-end part was no good and it wouldn&rsquo;t be possible to hire me for the back-end role.</p>
+<blockquote>
+<p>Yeah, it turns out they were looking for a full-stack developer, not just a back-end, I guess the HR said one thing and the hiring manager wanted something else.</p>
+</blockquote>
+<p>I didn&rsquo;t get upset much, however, my ego was hurt and I kept thinking what if I knew a bit of front-end development? That couldn&rsquo;t hurt me, right?</p>
+<p>I thought to myself, give it a go, just a few days of front-end and see where that takes you.</p>
+<h3 id="initial-thoughts">Initial thoughts</h3>
+<p>I started with just HTML and CSS, but <strong>I didn&rsquo;t like it!</strong> I thought it was boring, I thought it was not real programming.</p>
+<p>Who cares about how a website looks anyway? If I need to use the website, I&rsquo;m going to suck it up and use it, I don&rsquo;t care about the colors, the fonts, the animations, etc.
+And Javascript? Well, you can find a list on the page and insert a new element in it, what&rsquo;s the big deal?</p>
+<p>That was it, I was done with the front-end, and went back to what I was doing before.</p>
+<h2 id="second-encounter">Second encounter</h2>
+<p>After more than a year, I just had finished a role in AI and was looking for a new job. A group of friends told me that they are working on a project and they need a React developer.
+My lack of skills (non-existent at the time) was not a problem for them, after all, the group&rsquo;s dedication will make or break the project.</p>
+<p>So, here I am working with React! I was afraid at the beginning, I thought that I would be doing CSS all the time, however, because we were using Material UI, I didn&rsquo;t have to write a lot of CSS, and the JSX part was copied and pasted.</p>
+<p>I spent most of the time handling states, passing props, using hooks, and creating typescript interfaces.
+I was enjoying what I was doing, it wasn&rsquo;t boring, and most importantly it wasn&rsquo;t easy!</p>
+<p>After not that long, the project was finished, and I had a new perception of what front-end developers do, however, I still thought that at least when it comes to HTML and CSS, it&rsquo;s not that valuable of a thing. Just use a front-end library and you&rsquo;re good to go!</p>
+<h3 id="working-with-the-experts">Working with the experts</h3>
+<p>Fast forward a few months, and I am working as a full-stack developer with React in the front-end. The difference this time was the team, I was working with front-end developers who were experts in their field.</p>
+<p>Unlike my first experience with React, out-of-the-box components were not enough, they either needed a lot of customization or we needed to build components from scratch.</p>
+<p>Building context menus and tooltips was very hard! Tooltips just don&rsquo;t work like you want them all the time. You always find cases where your tooltip doesn&rsquo;t show up, or it shows up in the wrong place, or it&rsquo;s not styled correctly.</p>
+<p>And context menus? Handling their position, their visibility, their content, and their animations was a nightmare!
+I found myself struggling between building from scratch or customizing pre-existing components. The code was just getting harder and longer and the components were not behaving as they should.</p>
+<p>I would ask for help from the seniors from time to time, sometimes they would fix the issue I&rsquo;m stuck at within minutes!
+They would always blow my mind with their knowledge of CSS.
+Most important, however, is how they think about the component they&rsquo;re creating. They don&rsquo;t just create a component so that it works, they always have in mind how it will <strong>evolve in the future</strong>.</p>
+<p>Will it be easy to add new features to it? Customize it? Maintain it?
+What about the performance? How will it behave in different screen sizes? How do we handle the edge cases?</p>
+<blockquote>
+<p>Side note here, unlike when you are doing a leet code problem, edge cases in front-end development are not just about the input, it&rsquo;s much more complicated.</p>
+</blockquote>
+<p>It took me a while to figure it out, but yes, it matters how the buttons on the screen are placed, the colors matter, the tooltips, the menus, the tables, the modals, the forms, the responsiveness, it all matters.</p>
+<p>If you can&rsquo;t do HTML and CSS, you can&rsquo;t do any of the above and that&rsquo;s a big problem.</p>
+<h3 id="debugging">Debugging</h3>
+<p>Senior front-end engineers almost always have the devtools opened when working.</p>
+<p>In the front-end, debugging is a completely different game, it&rsquo;s not just about inserting a breakpoint and checking the values of the variables.
+The browser has an extensive set of tools that you need to know how to use. If you do that, you can debug the CSS, the HTML, Javascript, the network, the performance, and much more.</p>
+<p>With the devtools, you can find out why your page is so laggy, is there any components rendering when they should not? Are there any network requests that are taking too long?</p>
+<p>This is another aspect of front-end development that makes it special. When you keep your eyes on the devtools, CSS just becomes much easier. Instead of making changes and refreshing the page, you can just do it live and see the changes immediately.</p>
+<p>When building something feels more comfortable, the task becomes more enjoyable. This made all the difference for me, I started to enjoy CSS more because of the devtools.</p>
+<h2 id="why-did-i-have-such-a-bad-perception-of-front-end-development">Why did I have such a bad perception of front-end development?</h2>
+<p>I think that front-end development is not advertised correctly by front-end developers themselves.</p>
+<p>Everyone seems to be talking about Python, AI, Machine Learning, and Big Data. You just don&rsquo;t hear a lot about the front-end.
+When web development is discussed, it&rsquo;s mostly about the back-end, and the front-end is just a side note.</p>
+<p>When it does get discussed, it&rsquo;s mostly about the frameworks and the libraries, the difficulties and the challenges are not talked about much.</p>
+<p>Also, when you learn programming, you start by learning the basics, that is the logic, the data structures, and the algorithms. At this point, you aim to become good at leet code style problems, and you might end up making the mistake of thinking that this is what matters.</p>
+<blockquote>
+<p>With the advancement of AI, leet code style problems are getting less important</p>
+</blockquote>
+<p>When you start learning the front-end, you start with HTML, it is much different than what you&rsquo;re used to and it might discourage you from learning more. You end up having this distorted view of what front-end development is.</p>
+<h2 id="the-apology">The apology</h2>
+<p>Dear front-end developers, I am sorry that I underestimated your work. I am sorry that I thought that what you do is not real programming. I know better now, and I hope that you will accept me among you.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/opinion/apology-frontend/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/mathematics/diffusion/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>From random walk to diffusion</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
