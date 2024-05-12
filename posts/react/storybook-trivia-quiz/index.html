@@ -334,7 +334,7 @@
       
       <div class="page-content">
         <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/my-photo.jpg'/>
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
           <h5 class="author-name">Ahmad Hamze</h5>
           <p>October 24, 2021</p>
         </div>
@@ -358,13 +358,13 @@ For example, a header component could have a story that showcases the header in 
 <h2 id="installation">Installation</h2>
 <p>To install Storybook, you can use Yarn or npm (<code>yarn install storybook</code>), a &ldquo;stories&rdquo; folder will be added into the &ldquo;src&rdquo; folder, it contains some boilerplate stories which you can explore.</p>
 <p>To start Storybook run <code>yarn run storybook</code>.</p>
-<p><img alt="Default stories" src="./images/storybook_default.png"></p>
+<p><img src="./images/storybook_default.png" alt="Default stories"></p>
 <p>However, if you&rsquo;re using React you might get an error with a message mentioning conflicting babel-loader versions.<br>
 This is a known issue, to solve it just add the following lines in the package.json file</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;resolutions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;babel-loader&#34;</span>: <span style="color:#e6db74">&#34;8.1.0&#34;</span>
-</span></span><span style="display:flex;"><span>  }
-</span></span></code></pre></div><h2 id="creating-stories">Creating Stories</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">  <span style="color:#e6db74">&#34;resolutions&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+    <span style="color:#f92672">&#34;babel-loader&#34;</span>: <span style="color:#e6db74">&#34;8.1.0&#34;</span>
+  }
+</code></pre></div><h2 id="creating-stories">Creating Stories</h2>
 <p>To showcase Storybook, I will be using a React trivia quiz project, you can find it on <a href="https://github.com/AhmadHamze/Trivia-Quizz-React">Github</a>, there is also a <a href="https://ahmadhamze.github.io/posts/react/trivia-quiz/">blog</a> explaining some of the code.</p>
 <p>Let&rsquo;s start with creating the most basic story.</p>
 <h3 id="a-basic-story">A Basic Story</h3>
@@ -372,91 +372,91 @@ This is a known issue, to solve it just add the following lines in the package.j
 <p>This prop controls the <em>className</em> of <strong>Button</strong>, in case <em>navigation</em> is true, the background color of the button will be blue, otherwise, it will be green.</p>
 <p>We can say that this component has two states, depending on the value of the boolean <em>navigation</em>, we want a story that showcases both states, let&rsquo;s see how to do it.</p>
 <p>Create a <strong>Button.stories.tsx</strong> file (use the <em>js</em> extension if you&rsquo;re not using Typescript), containing this code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Button</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./Button&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Fuctionality/Button&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">component</span>: <span style="color:#66d9ef">Button</span>,
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Navigation</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">navigation</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">true</span>}&gt;<span style="color:#a6e22e">Next</span>&lt;/<span style="color:#f92672">Button</span>&gt;;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Start</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">navigation</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">false</span>}&gt;<span style="color:#a6e22e">Start</span>&lt;/<span style="color:#f92672">Button</span>&gt;;
-</span></span></code></pre></div><p>This format is called &ldquo;component story&rdquo;, it has a default export and one or more named exports (in this case it has two).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Button</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./Button&#34;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Fuctionality/Button&#34;</span>,
+  <span style="color:#a6e22e">component</span>: <span style="color:#66d9ef">Button</span>,
+};
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Navigation</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">navigation</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">true</span>}&gt;<span style="color:#a6e22e">Next</span>&lt;/<span style="color:#f92672">Button</span>&gt;;
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Start</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> &lt;<span style="color:#f92672">Button</span> <span style="color:#a6e22e">navigation</span><span style="color:#f92672">=</span>{<span style="color:#66d9ef">false</span>}&gt;<span style="color:#a6e22e">Start</span>&lt;/<span style="color:#f92672">Button</span>&gt;;
+</code></pre></div><p>This format is called &ldquo;component story&rdquo;, it has a default export and one or more named exports (in this case it has two).</p>
 <p>The <em>Button</em> story is comprised of <em>Navigation</em> and <em>Start</em> building. Building each component story is quite simple, just call the React component with the needed prop.</p>
 <p>The <code>title</code> property inside the default export is mandatory, also, it should be unique. This is the text you see in the left navigation panel in Storybook.<br></p>
-<p><img alt="Navigation bar" src="./images/navigation_storybook.png"></p>
+<p><img src="./images/navigation_storybook.png" alt="Navigation bar"></p>
 <p>As you can see, both stories that we created are present in the navigation bar, you can click on each one to see the component.</p>
 <p>Here is the <em>Navigation</em> story</p>
-<p><img alt="Navigation story" src="./images/navigation_story.png"></p>
+<p><img src="./images/navigation_story.png" alt="Navigation story"></p>
 <p>and the <em>Start</em> story</p>
-<p><img alt="Start story" src="./images/start_story.png"></p>
+<p><img src="./images/start_story.png" alt="Start story"></p>
 <p>This is great, but it barely scratches the surface of what Storybook can do.</p>
 <p>If you look at the bottom of the page, you will see a panel with a message saying &ldquo;This story is not configured to handle controls. Learn how to add controls&rdquo;.</p>
-<p><img alt="No controls" src="./images/no_controls.png"></p>
+<p><img src="./images/no_controls.png" alt="No controls"></p>
 <p>Controls literally allows you to control your stories, here&rsquo;s how to add them</p>
 <h3 id="controls">Controls</h3>
 <p>Let&rsquo;s see how to build controls on a new component, <strong>QuestionCard</strong>.</p>
 <p>Just like before, we need a file <strong>QuestionCard.stories.tsx</strong>, we begin by the default export</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Story</span>, <span style="color:#a6e22e">Meta</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@storybook/react/types-6-0&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">QuestionCard</span>, <span style="color:#a6e22e">QuestionCardProps</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./QuestionCard&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;QuestionCard/Card&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">component</span>: <span style="color:#66d9ef">QuestionCard</span>,
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">Meta</span>;
-</span></span></code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Story</span>, <span style="color:#a6e22e">Meta</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;@storybook/react/types-6-0&#34;</span>;
+<span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">QuestionCard</span>, <span style="color:#a6e22e">QuestionCardProps</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#34;./QuestionCard&#34;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;QuestionCard/Card&#34;</span>,
+  <span style="color:#a6e22e">component</span>: <span style="color:#66d9ef">QuestionCard</span>,
+} <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">Meta</span>;
+</code></pre></div><blockquote>
 <p>Notice that <strong>QuestionCardProps</strong> are imported as well, I suggest taking a look at the React component <strong>QuestionCard</strong> to better understand what&rsquo;s going on, especially how it&rsquo;s built using different components.</p>
 </blockquote>
 <p>We will be using a feature added in version 6, that is arguments, it allows the sending of arguments to a story,
 the props of a component are considered arguments.</p>
 <p>The first thing we need to do is to create a template</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Template</span>: <span style="color:#66d9ef">Story</span>&lt;<span style="color:#f92672">QuestionCardProps</span>&gt; <span style="color:#f92672">=</span> (<span style="color:#a6e22e">args</span>) <span style="color:#f92672">=&gt;</span> &lt;<span style="color:#f92672">QuestionCard</span> {<span style="color:#a6e22e">...args</span>} /&gt;;
-</span></span></code></pre></div><p>Then, we need to bind this template to the story before sending the arguments to the story.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">QuestionCardNoAnswerYet</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Template</span>.<span style="color:#a6e22e">bind</span>({});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">QuestionCardNoAnswerYet</span>.<span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">answers</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;answer 1&#34;</span>, <span style="color:#e6db74">&#34;answer 2&#34;</span>, <span style="color:#e6db74">&#34;answer 3&#34;</span>, <span style="color:#e6db74">&#34;answer 4&#34;</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">questionNr</span>: <span style="color:#66d9ef">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userAnswer</span>: <span style="color:#66d9ef">undefined</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">totalQuestions</span>: <span style="color:#66d9ef">10</span>,
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>The <em>Card</em> story now has a state called <strong>QuestionCardNoAnswerYet</strong>, the argument <code>userAnswer: undefined</code> mimics the state of the component before the user chooses an answer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Template</span>: <span style="color:#66d9ef">Story</span>&lt;<span style="color:#f92672">QuestionCardProps</span>&gt; <span style="color:#f92672">=</span> (<span style="color:#a6e22e">args</span>) <span style="color:#f92672">=&gt;</span> &lt;<span style="color:#f92672">QuestionCard</span> {<span style="color:#a6e22e">...args</span>} /&gt;;
+</code></pre></div><p>Then, we need to bind this template to the story before sending the arguments to the story.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">QuestionCardNoAnswerYet</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Template</span>.<span style="color:#a6e22e">bind</span>({});
+
+<span style="color:#a6e22e">QuestionCardNoAnswerYet</span>.<span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">answers</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;answer 1&#34;</span>, <span style="color:#e6db74">&#34;answer 2&#34;</span>, <span style="color:#e6db74">&#34;answer 3&#34;</span>, <span style="color:#e6db74">&#34;answer 4&#34;</span>],
+  <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
+  <span style="color:#a6e22e">questionNr</span>: <span style="color:#66d9ef">1</span>,
+  <span style="color:#a6e22e">userAnswer</span>: <span style="color:#66d9ef">undefined</span>,
+  <span style="color:#a6e22e">totalQuestions</span>: <span style="color:#66d9ef">10</span>,
+};
+</code></pre></div><p>The <em>Card</em> story now has a state called <strong>QuestionCardNoAnswerYet</strong>, the argument <code>userAnswer: undefined</code> mimics the state of the component before the user chooses an answer.</p>
 <p>Here is how this state of the story looks like</p>
-<p><img alt="Card no answer" src="./images/story_before.png"></p>
+<p><img src="./images/story_before.png" alt="Card no answer"></p>
 <p>Similarly, we can create a state that mimics the component when the user gives the correct answer.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">QuestionCardCorrectAnswerGiven</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Template</span>.<span style="color:#a6e22e">bind</span>({});
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">QuestionCardCorrectAnswerGiven</span>.<span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">answers</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;answer 1&#34;</span>, <span style="color:#e6db74">&#34;answer 2&#34;</span>, <span style="color:#e6db74">&#34;answer 3&#34;</span>, <span style="color:#e6db74">&#34;answer 4&#34;</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">questionNr</span>: <span style="color:#66d9ef">1</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userAnswer</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">answer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">correctAnswer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">totalQuestions</span>: <span style="color:#66d9ef">10</span>,
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>The <strong>QuestionCardCorrectAnswerGiven</strong> has the argument</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span> <span style="color:#a6e22e">userAnswer</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">answer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">correctAnswer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>  }
-</span></span></code></pre></div><p>Pay attention to <code>isCorrect: true</code>, this is what is going to make the difference between a correct answer and an incorrect one.</p>
-<p><img alt="Card correct answer" src="./images/story_correct.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">QuestionCardCorrectAnswerGiven</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Template</span>.<span style="color:#a6e22e">bind</span>({});
+<span style="color:#a6e22e">QuestionCardCorrectAnswerGiven</span>.<span style="color:#a6e22e">args</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">answers</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#34;answer 1&#34;</span>, <span style="color:#e6db74">&#34;answer 2&#34;</span>, <span style="color:#e6db74">&#34;answer 3&#34;</span>, <span style="color:#e6db74">&#34;answer 4&#34;</span>],
+  <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
+  <span style="color:#a6e22e">questionNr</span>: <span style="color:#66d9ef">1</span>,
+  <span style="color:#a6e22e">userAnswer</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
+    <span style="color:#a6e22e">answer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
+    <span style="color:#a6e22e">correctAnswer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
+    <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">true</span>,
+  },
+  <span style="color:#a6e22e">totalQuestions</span>: <span style="color:#66d9ef">10</span>,
+};
+</code></pre></div><p>The <strong>QuestionCardCorrectAnswerGiven</strong> has the argument</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"> <span style="color:#a6e22e">userAnswer</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">question</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;question 1&#34;</span>,
+    <span style="color:#a6e22e">answer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
+    <span style="color:#a6e22e">correctAnswer</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;answer 2&#34;</span>,
+    <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">true</span>,
+  }
+</code></pre></div><p>Pay attention to <code>isCorrect: true</code>, this is what is going to make the difference between a correct answer and an incorrect one.</p>
+<p><img src="./images/story_correct.png" alt="Card correct answer"></p>
 <p>Now, the best part!</p>
 <p>Take a look at the controls panel</p>
-<p><img alt="Controls" src="./images/controls.png"></p>
+<p><img src="./images/controls.png" alt="Controls"></p>
 <p>Not only you can see the arguments given to the current state, but you can edit them.</p>
 <p>I will change  <code>userAnswer.isCorrect</code> to <code>false</code></p>
-<p><img alt="Change isCorrect" src="./images/userAnswer_false.png"></p>
+<p><img src="./images/userAnswer_false.png" alt="Change isCorrect"></p>
 <p>and the main question to <code>hello world!</code></p>
-<p><img alt="Change question" src="./images/question_hello.png"></p>
+<p><img src="./images/question_hello.png" alt="Change question"></p>
 <p>You can see the effects of these changes immediately on the story</p>
-<p><img src="./images/story_changed.png"></p>
+<p><img src="./images/story_changed.png" alt=""></p>
 <p>This is how powerful Storybook is, it allows you to edit your components in an isolated space allowing different ways to test them.<br></p>
 <h3 id="final-words">Final Words</h3>
 <p>This is a glimpse of the capabilities of Storybook, there is much more you can do with it.</p>

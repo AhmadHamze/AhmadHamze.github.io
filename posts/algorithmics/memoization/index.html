@@ -334,7 +334,7 @@
       
       <div class="page-content">
         <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/my-photo.jpg'/>
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
           <h5 class="author-name">Ahmad Hamze</h5>
           <p>April 17, 2022</p>
         </div>
@@ -393,11 +393,11 @@ speed of the code.</p>
 </blockquote>
 <h3 id="simple-recursion">Simple Recursion</h3>
 <p>Recursion comes into mind when dealing with such a problem, after all the definition of the sequence is itself recursive, so let&rsquo;s write a Python function that computes the nth value of the sequence.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib_rec</span>(n):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> fib_rec(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib_rec(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>)
-</span></span></code></pre></div><p>The code above is imitating the sequence verbatim, if the input is 0 or 1 return the input itself, otherwise, return the sum of the previous element and the one before it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib_rec</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
+    <span style="color:#66d9ef">return</span> fib_rec(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib_rec(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>)
+</code></pre></div><p>The code above is imitating the sequence verbatim, if the input is 0 or 1 return the input itself, otherwise, return the sum of the previous element and the one before it.</p>
 <blockquote>
 <p>You can test this code quickly on <a href="https://www.mycompiler.io/new/python">myCompiler.io</a>, it&rsquo;s an online code editor that allows you to run code using different programming languages.</p>
 </blockquote>
@@ -407,26 +407,26 @@ Then try <strong>fib_rec(30)</strong>, you should get 832040, but you will notic
 <p>You might be thinking, well that might be normal, there are things out there that just need time, the Fibonacci sequence is probably one of those.</p>
 <h3 id="non-recursive-approach">Non-Recursive Approach</h3>
 <p>Look at the following code then</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n
-</span></span><span style="display:flex;"><span>    a, b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>        a, b <span style="color:#f92672">=</span> b, a <span style="color:#f92672">+</span> b
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> b
-</span></span></code></pre></div><p>Instead of using recursion, we&rsquo;re just using a for loop to add the last two sequences together, and updating the values to always get the latest two elements of the sequence.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> n
+    a, b <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
+        a, b <span style="color:#f92672">=</span> b, a <span style="color:#f92672">+</span> b
+    <span style="color:#66d9ef">return</span> b
+</code></pre></div><p>Instead of using recursion, we&rsquo;re just using a for loop to add the last two sequences together, and updating the values to always get the latest two elements of the sequence.</p>
 <p>Let&rsquo;s try this function, <strong>fib(40)</strong> returns 102334155 almost instantly! Why don&rsquo;t we create a function to measure the time taken by both functions to compute values.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> time
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib_time</span>(func, arg):
-</span></span><span style="display:flex;"><span>    start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Call the method with the argument</span>
-</span></span><span style="display:flex;"><span>    func(arg)
-</span></span><span style="display:flex;"><span>    end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Took </span><span style="color:#e6db74">{</span>end <span style="color:#f92672">-</span> start<span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>
-</span></span></code></pre></div><p>First, let&rsquo;s see how fast <strong>fib_rec</strong> is when passed the value 30.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print (fib_time(fib_rec, <span style="color:#ae81ff">30</span>))
-</span></span></code></pre></div><p>It takes <strong>3.06 seconds</strong>, needles to say <strong>fib</strong> is much faster, how much faster? Well, we can simply try passing larger values and see when it takes 3 seconds to finish.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> time
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib_time</span>(func, arg):
+    start <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+    <span style="color:#75715e"># Call the method with the argument</span>
+    func(arg)
+    end <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>perf_counter()
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Took </span><span style="color:#e6db74">{</span>end <span style="color:#f92672">-</span> start<span style="color:#e6db74">}</span><span style="color:#e6db74"> seconds&#34;</span>
+</code></pre></div><p>First, let&rsquo;s see how fast <strong>fib_rec</strong> is when passed the value 30.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">print (fib_time(fib_rec, <span style="color:#ae81ff">30</span>))
+</code></pre></div><p>It takes <strong>3.06 seconds</strong>, needles to say <strong>fib</strong> is much faster, how much faster? Well, we can simply try passing larger values and see when it takes 3 seconds to finish.</p>
 <p>Turns out the value is 215,000! That is 7167 times faster!</p>
 <h2 id="why-bother-with-recursion">Why bother with recursion</h2>
 <p>You might be thinking, why did I waste your time? I could&rsquo;ve just shown you the non-recursive version and been done with it.</p>
@@ -445,43 +445,43 @@ Then try <strong>fib_rec(30)</strong>, you should get 832040, but you will notic
 <h3 id="building-a-memoized-function">Building a memoized function</h3>
 <p>We want a function that stores each argument for the Fibonacci sequence alongside its value, An array will store these pairs.</p>
 <p>A helper function will be used to check if the passed value exists inside the storage.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># takes an element and a list of pairs, if the element is equal to the first part of a pair,</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># return the second part, otherwise return false</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_value</span>(element, pairs):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (p1, p2) <span style="color:#f92672">in</span> pairs:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> element <span style="color:#f92672">==</span> p1:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> p2
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
-</span></span></code></pre></div><p>Now, the memoized recursive Fibonacci sequence</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib_memo</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># the cache, it starts empty, it will contain elements that looks like this (n, Fib(n))</span>
-</span></span><span style="display:flex;"><span>    memo <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># This computes Fibonacci recursively just like we&#39;ve seen before, however, the difference is</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># that it checks if the argument exists inside the memo array, if it does, the corresponding value</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># will be returnd instead of recomputing</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(n):
-</span></span><span style="display:flex;"><span>        ans <span style="color:#f92672">=</span> check_value(n, memo)
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ans:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> ans
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>            new_ans <span style="color:#f92672">=</span> n <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> f(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> f(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># insert the new pair at the beginning of the array, this makes the code faster</span>
-</span></span><span style="display:flex;"><span>            memo<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, (n, new_ans))
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># return the answer that was just computed</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> new_ans
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># fib_memo() is returning the function f </span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> f
-</span></span></code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># takes an element and a list of pairs, if the element is equal to the first part of a pair,</span>
+<span style="color:#75715e"># return the second part, otherwise return false</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check_value</span>(element, pairs):
+    <span style="color:#66d9ef">for</span> (p1, p2) <span style="color:#f92672">in</span> pairs:
+        <span style="color:#66d9ef">if</span> element <span style="color:#f92672">==</span> p1:
+            <span style="color:#66d9ef">return</span> p2
+    
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</code></pre></div><p>Now, the memoized recursive Fibonacci sequence</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib_memo</span>():
+    <span style="color:#75715e"># the cache, it starts empty, it will contain elements that looks like this (n, Fib(n))</span>
+    memo <span style="color:#f92672">=</span> []
+    <span style="color:#75715e"># This computes Fibonacci recursively just like we&#39;ve seen before, however, the difference is</span>
+    <span style="color:#75715e"># that it checks if the argument exists inside the memo array, if it does, the corresponding value</span>
+    <span style="color:#75715e"># will be returnd instead of recomputing</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">f</span>(n):
+        ans <span style="color:#f92672">=</span> check_value(n, memo)
+        <span style="color:#66d9ef">if</span> ans:
+            <span style="color:#66d9ef">return</span> ans
+        <span style="color:#66d9ef">else</span>:
+            new_ans <span style="color:#f92672">=</span> n <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span> f(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> f(n <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>)
+            <span style="color:#75715e"># insert the new pair at the beginning of the array, this makes the code faster</span>
+            memo<span style="color:#f92672">.</span>insert(<span style="color:#ae81ff">0</span>, (n, new_ans))
+        <span style="color:#75715e"># return the answer that was just computed</span>
+        <span style="color:#66d9ef">return</span> new_ans
+    <span style="color:#75715e"># fib_memo() is returning the function f </span>
+    <span style="color:#66d9ef">return</span> f
+</code></pre></div><blockquote>
 <p>Notice that fib_memo returns a function, so to get the Fibonacci value, you will have to call it this way <code>fib_memo()(n)</code></p>
 </blockquote>
 <p>We&rsquo;re done, let&rsquo;s check if this works, how about we try 10,000. To do so we need to increase the default recursion depth in Python.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Increase the recursion depth</span>
-</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">100000</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print (fib_time(fib_memo(), <span style="color:#ae81ff">10_000</span>))
-</span></span></code></pre></div><p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+<span style="color:#75715e"># Increase the recursion depth</span>
+sys<span style="color:#f92672">.</span>setrecursionlimit(<span style="color:#ae81ff">100000</span>)
+
+print (fib_time(fib_memo(), <span style="color:#ae81ff">10_000</span>))
+</code></pre></div><p>
 This takes around 0.28 seconds!
 This function is incredibly fast, using memoization a function that takes 
 \( O(2^n) \) will now take \( O(n) \).

@@ -334,7 +334,7 @@
       
       <div class="page-content">
         <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/my-photo.jpg'/>
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
           <h5 class="author-name">Ahmad Hamze</h5>
           <p>October 23, 2021</p>
         </div>
@@ -350,34 +350,34 @@
 <p>The code is in <code>api/quizz-api.ts</code>.</p>
 <p>The first thing to do is to create a type that handles the response returned by the API.<br>
 The <strong>Question</strong> type mirrors the JSON object retrieved from the API</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Question</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">category</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">correct_answer</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">difficult</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">incorrect_answers</span>: <span style="color:#66d9ef">string</span>[];
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>The data returned by the API separates the correct answer from the incorrect ones,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Question</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">category</span>: <span style="color:#66d9ef">string</span>;
+    <span style="color:#a6e22e">correct_answer</span>: <span style="color:#66d9ef">string</span>;
+    <span style="color:#a6e22e">difficult</span>: <span style="color:#66d9ef">string</span>;
+    <span style="color:#a6e22e">incorrect_answers</span>: <span style="color:#66d9ef">string</span>[];
+    <span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">string</span>;
+    <span style="color:#66d9ef">type</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span>;
+}
+</code></pre></div><p>The data returned by the API separates the correct answer from the incorrect ones,
 we want a type where all answers exist in the same array, so we can shuffle it (otherwise the answer will always be at the same place!) and return it to the user.</p>
 <p>To do so we can use <a href="https://www.typescripttutorial.net/typescript-tutorial/typescript-intersection-types/">Intersection types</a> to create a new type containing a new array of strings (<em>answers</em>) holding
 the answers in the way we want it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">QuestionExtended</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Question</span> <span style="color:#f92672">&amp;</span> {<span style="color:#a6e22e">answers</span>: <span style="color:#66d9ef">string</span>[]};
-</span></span></code></pre></div><p>To shuffle an array you can use this function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">shuffleArray</span>(<span style="color:#a6e22e">array</span>: <span style="color:#66d9ef">any</span>[]) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">array</span>].<span style="color:#a6e22e">sort</span>(() <span style="color:#f92672">=&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Now, for the function that fetches the data, and returns it in a shuffled manner</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getQuizzData</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">QuestionExtended</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://opentdb.com/api.php?amount=10&amp;difficulty=easy&amp;type=multiple&#39;</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">Question</span>) <span style="color:#f92672">=&gt;</span> ({
-</span></span><span style="display:flex;"><span>        ...<span style="color:#a6e22e">question</span>,
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">answers</span>: <span style="color:#66d9ef">shuffleArray</span>([...<span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">incorrect_answers</span>, <span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">correct_answer</span>]),
-</span></span><span style="display:flex;"><span>    }));
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p><code>getQuizzData()</code> maps each element of the data returned (a <strong>Question</strong> object) into a new object having
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">QuestionExtended</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Question</span> <span style="color:#f92672">&amp;</span> {<span style="color:#a6e22e">answers</span>: <span style="color:#66d9ef">string</span>[]};
+</code></pre></div><p>To shuffle an array you can use this function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">shuffleArray</span>(<span style="color:#a6e22e">array</span>: <span style="color:#66d9ef">any</span>[]) {
+    <span style="color:#66d9ef">return</span> [...<span style="color:#a6e22e">array</span>].<span style="color:#a6e22e">sort</span>(() <span style="color:#f92672">=&gt;</span> Math.<span style="color:#a6e22e">random</span>() <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>);
+}
+</code></pre></div><p>Now, for the function that fetches the data, and returns it in a shuffled manner</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getQuizzData</span>()<span style="color:#f92672">:</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">QuestionExtended</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://opentdb.com/api.php?amount=10&amp;difficulty=easy&amp;type=multiple&#39;</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>);
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">Question</span>) <span style="color:#f92672">=&gt;</span> ({
+        ...<span style="color:#a6e22e">question</span>,
+        <span style="color:#a6e22e">answers</span>: <span style="color:#66d9ef">shuffleArray</span>([...<span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">incorrect_answers</span>, <span style="color:#a6e22e">question</span>.<span style="color:#a6e22e">correct_answer</span>]),
+    }));
+};
+</code></pre></div><p><code>getQuizzData()</code> maps each element of the data returned (a <strong>Question</strong> object) into a new object having
 the same properties as the original but with a new property, <em>answers</em>, where we have all the shuffled answers to a question.</p>
 <h2 id="components">Components</h2>
 <p>Here is the list of components used in the app</p>
@@ -391,53 +391,53 @@ the same properties as the original but with a new property, <em>answers</em>, w
 <p>Let&rsquo;s take a look at a few components</p>
 <h3 id="answer">Answer</h3>
 <p>This is the interface for the props used by the component:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AnswerProps</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">children</span>: <span style="color:#66d9ef">React.ReactNode</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">disabled?</span>: <span style="color:#66d9ef">boolean</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">onClick</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.MouseEvent</span>&lt;<span style="color:#f92672">HTMLButtonElement</span>&gt;) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">state</span><span style="color:#f92672">?:</span> <span style="color:#e6db74">&#34;neutral&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;correct&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;false&#34;</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">value?</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Notice the <strong>state</strong> prop, it&rsquo;s making sure that a state can only be one of the following &ldquo;neutral&rdquo;, &ldquo;correct&rdquo;, or &ldquo;false&rdquo; (it can also be undefined).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">AnswerProps</span> {
+  <span style="color:#a6e22e">children</span>: <span style="color:#66d9ef">React.ReactNode</span>;
+  <span style="color:#a6e22e">disabled?</span>: <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#a6e22e">onClick</span><span style="color:#f92672">?:</span> (<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.MouseEvent</span>&lt;<span style="color:#f92672">HTMLButtonElement</span>&gt;) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">state</span><span style="color:#f92672">?:</span> <span style="color:#e6db74">&#34;neutral&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;correct&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;false&#34;</span>;
+  <span style="color:#a6e22e">value?</span>: <span style="color:#66d9ef">string</span>;
+}
+</code></pre></div><p>Notice the <strong>state</strong> prop, it&rsquo;s making sure that a state can only be one of the following &ldquo;neutral&rdquo;, &ldquo;correct&rdquo;, or &ldquo;false&rdquo; (it can also be undefined).</p>
 <p>This prop is used to specify the background color of the answer based on whether the user answered correctly or not.</p>
 <p>Take a look at the &ldquo;answers.css&rdquo; file, you will find three css classes named just like each of the three possible states.<br>
 The <strong>Answer</strong> component is built this way:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Answer</span>: <span style="color:#66d9ef">React.FC</span>&lt;<span style="color:#f92672">AnswerProps</span>&gt; <span style="color:#f92672">=</span> ({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">children</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;neutral&#34;</span>,
-</span></span><span style="display:flex;"><span>  ...<span style="color:#a6e22e">props</span>
-</span></span><span style="display:flex;"><span>}) <span style="color:#f92672">=&gt;</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{[<span style="color:#e6db74">&#34;answer&#34;</span>, <span style="color:#e6db74">&#34;size&#34;</span>, <span style="color:#a6e22e">state</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>)} {<span style="color:#a6e22e">...props</span>}&gt;
-</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">children</span>}
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">button</span>&gt;
-</span></span><span style="display:flex;"><span>  );
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>Pay attention to the <em>className</em> attribute inside the button tag, it&rsquo;s a string built by combining three css classes, one of which is the <em>state</em> which starts as &ldquo;neutral&rdquo;, this is when the user hasn&rsquo;t answered yet.</p>
-<p><img alt="neutral ans" src="./images/neutral_ans.png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Answer</span>: <span style="color:#66d9ef">React.FC</span>&lt;<span style="color:#f92672">AnswerProps</span>&gt; <span style="color:#f92672">=</span> ({
+  <span style="color:#a6e22e">children</span>,
+  <span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;neutral&#34;</span>,
+  ...<span style="color:#a6e22e">props</span>
+}) <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">return</span> (
+    &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{[<span style="color:#e6db74">&#34;answer&#34;</span>, <span style="color:#e6db74">&#34;size&#34;</span>, <span style="color:#a6e22e">state</span>].<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34; &#34;</span>)} {<span style="color:#a6e22e">...props</span>}&gt;
+      {<span style="color:#a6e22e">children</span>}
+    &lt;/<span style="color:#f92672">button</span>&gt;
+  );
+};
+</code></pre></div><p>Pay attention to the <em>className</em> attribute inside the button tag, it&rsquo;s a string built by combining three css classes, one of which is the <em>state</em> which starts as &ldquo;neutral&rdquo;, this is when the user hasn&rsquo;t answered yet.</p>
+<p><img src="./images/neutral_ans.png" alt="neutral ans"></p>
 <p>If the answer given is correct, the answer&rsquo;s background becomes green</p>
-<p><img alt="correct ans" src="./images/correct_ans.png"></p>
+<p><img src="./images/correct_ans.png" alt="correct ans"></p>
 <p>Red if it&rsquo;s incorrect</p>
-<p><img alt="wrong ans" src="./images/wrong_ans.png"></p>
+<p><img src="./images/wrong_ans.png" alt="wrong ans"></p>
 <h3 id="questioncard">QuestionCard</h3>
 <p>First, define the type of an answer given by the user</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">AnswerType</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">answer</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">correctAnswer</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">boolean</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>This type is key in being able to figure out if the user answered correctly or not, it&rsquo;s also used to show the answers alongside the correct ones at the end of the quiz.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">AnswerType</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">answer</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">correctAnswer</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">isCorrect</span>: <span style="color:#66d9ef">boolean</span>;
+  <span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">string</span>;
+};
+</code></pre></div><p>This type is key in being able to figure out if the user answered correctly or not, it&rsquo;s also used to show the answers alongside the correct ones at the end of the quiz.</p>
 <p>Now, let&rsquo;s take a look at the props</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">QuestionCardProps</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">answers</span>: <span style="color:#66d9ef">string</span>[];
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">callback</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.MouseEvent</span>&lt;<span style="color:#f92672">HTMLButtonElement</span>&gt;) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">string</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">questionNr</span>: <span style="color:#66d9ef">number</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userAnswer</span>: <span style="color:#66d9ef">AnswerType</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">undefined</span>;
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">totalQuestions</span>: <span style="color:#66d9ef">number</span>;
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">QuestionCardProps</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">answers</span>: <span style="color:#66d9ef">string</span>[];
+  <span style="color:#a6e22e">callback</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">e</span>: <span style="color:#66d9ef">React.MouseEvent</span>&lt;<span style="color:#f92672">HTMLButtonElement</span>&gt;) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>;
+  <span style="color:#a6e22e">question</span>: <span style="color:#66d9ef">string</span>;
+  <span style="color:#a6e22e">questionNr</span>: <span style="color:#66d9ef">number</span>;
+  <span style="color:#a6e22e">userAnswer</span>: <span style="color:#66d9ef">AnswerType</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">undefined</span>;
+  <span style="color:#a6e22e">totalQuestions</span>: <span style="color:#66d9ef">number</span>;
+};
+</code></pre></div><ul>
 <li><em>answers</em> is where all the answers of each question are stored</li>
 <li><em>callback</em> is called when the user clicks an answer</li>
 <li><em>question</em> is the question</li>
@@ -447,43 +447,43 @@ The <strong>Answer</strong> component is built this way:</p>
 </ul>
 <p>As stated before, the <strong>QuestionCard</strong> component is formed of other components.<br>
 For each <em>answer</em> provided by the API, it returns a div containing an <strong>Answer</strong> component, each of which is clickable.</p>
-<p><img alt="choose_answer.png" src="./images/choose_answer.png"></p>
+<p><img src="./images/choose_answer.png" alt="choose_answer.png"></p>
 <p>This is how the <strong>Answer</strong> component is called inside <strong>QuestionCard</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>          &lt;<span style="color:#f92672">Answer</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">state</span><span style="color:#f92672">=</span>{
-</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">userAnswer</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">isCorrect</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;neutral&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#a6e22e">userAnswer</span>.<span style="color:#a6e22e">answer</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">answer</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">userAnswer</span>.<span style="color:#a6e22e">isCorrect</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;correct&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#a6e22e">userAnswer</span>.<span style="color:#a6e22e">answer</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">answer</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;false&#34;</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;neutral&#34;</span>
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span>{<span style="color:#f92672">!!</span><span style="color:#a6e22e">userAnswer</span>}
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">answer</span>}
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">callback</span>}
-</span></span><span style="display:flex;"><span>          &gt;
-</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">dangerouslySetInnerHTML</span><span style="color:#f92672">=</span>{{ <span style="color:#a6e22e">__html</span>: <span style="color:#66d9ef">answer</span> }} /&gt;
-</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">Answer</span>&gt;
-</span></span></code></pre></div><p>The <em>state</em> prop is evaluated based on if the given answer is correct.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">          &lt;<span style="color:#f92672">Answer</span>
+            <span style="color:#a6e22e">state</span><span style="color:#f92672">=</span>{
+              <span style="color:#a6e22e">userAnswer</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">isCorrect</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">undefined</span>
+                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;neutral&#34;</span>
+                <span style="color:#f92672">:</span> <span style="color:#a6e22e">userAnswer</span>.<span style="color:#a6e22e">answer</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">answer</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">userAnswer</span>.<span style="color:#a6e22e">isCorrect</span>
+                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;correct&#34;</span>
+                <span style="color:#f92672">:</span> <span style="color:#a6e22e">userAnswer</span>.<span style="color:#a6e22e">answer</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">answer</span>
+                <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;false&#34;</span>
+                <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;neutral&#34;</span>
+            }
+            <span style="color:#a6e22e">disabled</span><span style="color:#f92672">=</span>{<span style="color:#f92672">!!</span><span style="color:#a6e22e">userAnswer</span>}
+            <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">answer</span>}
+            <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">callback</span>}
+          &gt;
+            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">dangerouslySetInnerHTML</span><span style="color:#f92672">=</span>{{ <span style="color:#a6e22e">__html</span>: <span style="color:#66d9ef">answer</span> }} /&gt;
+          &lt;/<span style="color:#f92672">Answer</span>&gt;
+</code></pre></div><p>The <em>state</em> prop is evaluated based on if the given answer is correct.</p>
 <p>Once an answer is given the user should no longer be able to answer again, hence the code <code>disabled={!!userAnswer}</code> (if the current question is not yet answered <code>!!userAnswer</code> will be <code>false</code>, otherwise it will be <code>true</code>).</p>
 <blockquote>
 <p>A wrong answer is given, the background turns red, and the &ldquo;Next Question&rdquo; button appears (more about that in the next segment)</p>
 </blockquote>
-<p><img alt="Wrong answer" src="./images/wrong_answer.png"></p>
+<p><img src="./images/wrong_answer.png" alt="Wrong answer"></p>
 <blockquote>
 <p>The correct answer is given, the background turns green, and the &ldquo;Next Question&rdquo; button appears</p>
 </blockquote>
-<p><img alt="Correct answer" src="./images/correct_answer.png"></p>
+<p><img src="./images/correct_answer.png" alt="Correct answer"></p>
 <h2 id="main-application">Main Application</h2>
 <p>The <code>App</code> function starts by defining a few states</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">setLoading</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">setNumber</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">questions</span>, <span style="color:#a6e22e">setQuestions</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">QuestionExtended</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">userAnswers</span>, <span style="color:#a6e22e">setUserAnswers</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">AnswerType</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">score</span>, <span style="color:#a6e22e">setScore</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">gameOver</span>, <span style="color:#a6e22e">setGameOver</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">true</span>);
-</span></span></code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">loading</span>, <span style="color:#a6e22e">setLoading</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
+  <span style="color:#66d9ef">const</span> [<span style="color:#66d9ef">number</span>, <span style="color:#a6e22e">setNumber</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>);
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">questions</span>, <span style="color:#a6e22e">setQuestions</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">QuestionExtended</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">userAnswers</span>, <span style="color:#a6e22e">setUserAnswers</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>&lt;<span style="color:#f92672">AnswerType</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;([]);
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">score</span>, <span style="color:#a6e22e">setScore</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#ae81ff">0</span>);
+  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">gameOver</span>, <span style="color:#a6e22e">setGameOver</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">true</span>);
+</code></pre></div><ul>
 <li><em>loading</em> is to wait for the promise returned by <code>getQuizzData</code> to be handled</li>
 <li><em>number</em> tracks the current question number</li>
 <li><em>questions</em> saves the extended questions</li>
@@ -502,7 +502,7 @@ This function is called when the user clicks the start button, which will only b
 <blockquote>
 <p>This is the first thing seen by the user when launching the application</p>
 </blockquote>
-<p><img alt="Start" src="./images/start.png"></p>
+<p><img src="./images/start.png" alt="Start"></p>
 <ol start="2">
 <li>checkAnswer</li>
 </ol>
@@ -518,9 +518,9 @@ Note that this component is displayed only if the <em>gameOver</em> is <code>tru
 answered the current question.</p>
 <h3 id="the-result">The Result</h3>
 <p>After answering the last question, the &ldquo;Show Result&rdquo; button is displayed</p>
-<p><img alt="Final answer" src="./images/final_answer.png"></p>
+<p><img src="./images/final_answer.png" alt="Final answer"></p>
 <p>Clicking the button shows the final screen</p>
-<p><img alt="Result" src="./images/result.png"></p>
+<p><img src="./images/result.png" alt="Result"></p>
 <p>The correct answers are highlighted in green, the wrong answers in red.</p>
 <p>You can start a new quiz by clicking &ldquo;Start Quiz&rdquo;.</p>
 

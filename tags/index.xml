@@ -5,7 +5,6 @@
     <link>http://AhmadHamze.github.io/tags/</link>
     <description>Recent content in Tags on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="http://AhmadHamze.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="http://AhmadHamze.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

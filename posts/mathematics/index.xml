@@ -5,22 +5,26 @@
     <link>http://AhmadHamze.github.io/posts/mathematics/</link>
     <description>Recent content in Mathematics on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://AhmadHamze.github.io/posts/mathematics/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/mathematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From random walk to diffusion</title>
       <link>http://AhmadHamze.github.io/posts/mathematics/diffusion/</link>
       <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
+      
       <guid>http://AhmadHamze.github.io/posts/mathematics/diffusion/</guid>
       <description>Randomness is an interesting concept, we have seen in previous blogs how it can be harnessed to compute mathematical constants, and even create a universal computer. In this blog we will see how randomness can be used to model diffusion. Diffusion can be defined as the movement of particles from a region of higher concentration to a region of lower concentration. This is a common phenomenon and can be observed in our daily lives.</description>
     </item>
+    
     <item>
       <title>My first C&#43;&#43; console application</title>
       <link>http://AhmadHamze.github.io/posts/mathematics/c&#43;&#43;-matrix/</link>
       <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
       <guid>http://AhmadHamze.github.io/posts/mathematics/c&#43;&#43;-matrix/</guid>
-      <description>Matrix calculator for two by two and three by three real matrices This is a project that I did around three years ago, just after I finished taking my very first comprehensive programming course, it was about the C++ language.&#xA;Back then I knew that there are many better options to do matrix calculation, mostly using the Python Numpy library. I also knew that there are many C++ libraries that provide matrix calculation, most notably Eigen.</description>
+      <description>Matrix calculator for two by two and three by three real matrices This is a project that I did around three years ago, just after I finished taking my very first comprehensive programming course, it was about the C++ language.
+Back then I knew that there are many better options to do matrix calculation, mostly using the Python Numpy library. I also knew that there are many C++ libraries that provide matrix calculation, most notably Eigen.</description>
     </item>
+    
   </channel>
 </rss>
