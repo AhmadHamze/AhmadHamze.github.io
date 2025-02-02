@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reflections on Changing Jobs</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="Changing Jobs and Tech Stacks" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/apology-frontend/">With due apology to front-end developers</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/opinion/changing-jobs/">Changing Jobs and Tech Stacks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>February 2, 2025</p>
+        </div>
+
+        <div class="title">
+          <h1>Reflections on Changing Jobs</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>After a long pause, here I am writing a blog post once again. Recently, I got distracted by many things, and I fell into a cycle of procrastination, but arriving late is better than never.</p>
+<p>I am now working with a new team and using a new tech stack. While writing this post, I had been working with them for about eight months.
+This gave me more than enough time to reflect on the changes happening in my life.</p>
+<p>I want to approach this from two sides, work culture, and tech stacks.</p>
+<h2 id="fast-pace-daily-standups-growing-team">Fast pace, daily standups, growing team</h2>
+<p>These are the first things that come to mind remembering my old job. It is important to note that I only began to feel this way after switching to the new role.</p>
+<p>What do I mean by fast pace? Well, in my old job, we had to deliver features quickly and be ready to change the direction of the project at any time. This was a good thing; it made me learn how to adapt to changes quickly, and it made me learn how to work under pressure.</p>
+<p>The fast pace is not just about writing code quickly, it&rsquo;s also not just learning and trying new packages, it&rsquo;s a mentality.</p>
+<p>It is about expecting your pull request to be merged hours after you open it, writing tests only when you have to, and, most importantly, being ready that your role might change at any time.</p>
+<p>You’re writing styling React components today. Tomorrow, you might have to create Django models and APIs and even deal with some Pandas data frames.
+Be ready to focus on UX for a few days, then come back to writing Cypress tests. Because lots of pull requests are getting merged, be ready to have to fix something that someone else broke by mistake.</p>
+<p>Some people don’t like daily standups, but when you’re working in such an environment, they’re needed. They’re the only way to know what’s going on and what you should be working on.
+You have to pay attention to what your teammates are saying. This is harder than it seems because when things become a habit, you automatically let your guard down.</p>
+<p>On top of that, the team was growing, and it was growing fast. when I joined the team, we were only four developers, and by the time I left, we were ten.
+Responsibilities were changing quickly, communication and planning were becoming harder, and it became quite difficult to keep up with all the changes.</p>
+<h3 id="what-i-learned-from-this">What I learned from this</h3>
+<p>First, it is okay to get tired and to feel overwhelmed. You are not going to be motivated every single day, and your interests will change over time. There is nothing wrong with that; it’s just a sign that you need to change something. It might lead you to a better position or to a worse one, but it has to be done.</p>
+<p>Second, team size matters. You cannot work with ten people just like you work with four. Don’t wait for management to take action on this matter. Do it yourself. They probably don’t have the same problems as you do, so if you don’t mention it, they won’t know about it.</p>
+<p>Finally, burnout is definitely a thing. It’s not lazy people complaining about their jobs. Ideally, you should see it coming and avoid it before it’s too late.</p>
+<p>How do you know you&rsquo;re burning out? You start to feel tired all the time, you don&rsquo;t want to work on your projects anymore, you don&rsquo;t want to learn new things, and you don&rsquo;t want to talk to your teammates.</p>
+<p>Here are some suggestions to avoid it:</p>
+<ol>
+<li>Take a break before you&rsquo;re too tired, it doesn&rsquo;t have to be a one-month vacation, one week is enough, you can do a lot in one week away from work. Don&rsquo;t into the trap of &ldquo;I&rsquo;ll take a break next month&rdquo;, that&rsquo;s nonsense, do it now.</li>
+<li>Tell your boss that you&rsquo;re not feeling ok, whether you&rsquo;re falling behind or not enjoying work like before, just have the courage to say it. Courage is not about not being afraid, it&rsquo;s about doing something that afraid of.</li>
+<li>As a software developer, if the only place you&rsquo;re interacting with code is in your job, that&rsquo;s a sign that you&rsquo;re already deep in the rabbit hole, it&rsquo;s time to get out. Start something on the side, whether it&rsquo;s a project, taking a course, or learning a new language for fun, you have to do it. Take a break from your job and do this, it will help you a lot.</li>
+</ol>
+<h2 id="best-practices-less-communication-designs">Best practices, less communication, designs</h2>
+<p>Here I am at my new job. My first impression was, “It is so different from the old job.” I am not saying it’s better or worse; it’s just different.</p>
+<p>I am back to a small team. However, unlike before, there are much fewer pull requests, and each one spends a lot of time getting reviewed. Almost nothing gets merged unless changes are requested a few times at least.</p>
+<p>Reviews are not just about the code, the types you added, the components, or the functions you wrote; they’re also about the design, the architecture, and the best practices.</p>
+<p>Why do you add a file? Why did you name it such? Why is it in this folder not the other? Why didn&rsquo;t you refactor the code before adding this feature? Why didn&rsquo;t you write tests for this? And much more.</p>
+<p>Be prepared to answer these questions and get back to your old branch from two weeks ago because it turns out it is not done yet. Oh, and the daily standups—there are no such thing anymore. This doesn’t mean that you can relax and do whatever you want; it means that you have to be more responsible and more independent.</p>
+<p>When a meeting comes, knowing what to say and what not to say makes all the difference. You have to be prepared before coming into the meeting, both in terms of what you want to say and what you want to hear.</p>
+<p>Having a bad meeting means that you have to wait for another week to have another one, and you don&rsquo;t want that.</p>
+<p>I have never experienced following a UI/UX design. I expected it to be straightforward; after all, what is so hard about following a design? Well, it turns out that my styling skills are not as good as I thought they were.</p>
+<p>Making a component look exactly like the design does not happen by copying the CSS from the design file; it’s about understanding the design, the CSS, and the component you’re working on.</p>
+<p>We are using Figma, and it&rsquo;s a great tool, It serves well as a communication tool with the designer and the product manager, I am lucky that I found a way to communicate other than meetings, and Figma ended up serving a purpose I didn&rsquo;t expect.</p>
+<h2 id="tech-stacks">Tech stacks</h2>
+<p>I used to work with React and Django, before moving into the new job, I knew I I would be working with React Native and NodeJS.
+I was worried for a few days before starting because I didn&rsquo;t have the time to prepare, I had a very brief introduction to React Native and NodeJS, and I was expected to contribute to the project from day one.</p>
+<p>Once I started working, I was relieved. React Native is really just React for the most part. The things that are special to React Native are not needed in most cases, so it feels like you’re just doing React with a slight difference in syntax.</p>
+<p>NodeJS and GraphQL weren&rsquo;t that hard to grasp either, but they made me appreciate Django even more.
+I didn&rsquo;t know how simple Django is until I started working with Node.
+The main difficulty is that you have to think about SQL queries when working with Node, Django abstracts the SQL part for you, and you don&rsquo;t have to worry about it.</p>
+<p>Sure, you can write SQL with Django if you want to, but I never had to do it before, and that is proof of how good Django is.</p>
+<p>Fundamentally, changing the tech stack didn’t feel like a big deal. I realized that I could learn any tech stack in a few weeks. I am hoping that this is a sign of “growing up” as a developer. I don’t need to watch tutorials anymore. I can just figure things out on my own and learn from the documentation directly. AI also helps a lot, obviously.
+I couldn&rsquo;t do that before, so I guess I am improving.</p>
+<h3 id="building-the-app">Building the app</h3>
+<p>That being said, a major difference between working with React and React Native isn&rsquo;t related to coding at all, it&rsquo;s about the environment.</p>
+<p>You are not supposed to run React Native in a browser; you’re supposed to run it on a mobile device, which can be an Android or iOS device. I don’t use a Mac, so I had to use an Android emulator to emulate an actual device. This was new ground to me.</p>
+<p>You have to build the app and install it on the emulator. To build it, we use a tool called Gradle. A lot can go wrong when building the app, including incompatible libraries, missing dependencies, and more. I had to spend the first few days just trying to build the app. I eventually succeeded, but it was a painful process.</p>
+<p>Later, many accidents happened. Whenever a big change is made, I have to build the app again and make sure that it works on both Android and iOS. With time, I became more comfortable with the process, but it still causes me anxiety whenever I have to do it.</p>
+<p>Debugging is another subject that feels different. The browser is just easier to use for that purpose.
+React Native does offer ways to debug the app, but it&rsquo;s not as good as the browser, and it&rsquo;s not as easy to use.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>Enjoy the moment whatever it is, and remember whatever you&rsquo;re doing, there will be a time when you do it for the last time, and it might happen suddenly.
+So just enjoy the ride and don&rsquo;t stress too much about what&rsquo;s going to happen, change is coming for better or worse.</p>
+<p>Try your best to adapt to changes, keep learning, and explore new domains, you never know what you might find interesting.</p>
+<p>That&rsquo;s it for today, let&rsquo;s hope I won&rsquo;t take another long pause before writing another post.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/opinion/Changing-jobs/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/opinion/apology-frontend/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>With due apology to front-end developers</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

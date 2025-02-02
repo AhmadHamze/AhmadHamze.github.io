@@ -6,7 +6,7 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cellular Automata</title>
       <link>http://AhmadHamze.github.io/posts/cellular-automata/cellular-automata/</link>
@@ -24,6 +24,16 @@
       <guid>http://AhmadHamze.github.io/posts/estimating-pi/</guid>
       <description>Using the Monte-Carlo simulation to estimate the value of &amp;#x03C0;First of all, let&#39;s talk briefly about what is a Monte-Carlo simulation.
 Simply put, it is a computational method that uses a large number of random samples to obtain a result. Itis used in awide range of disciplines like mathematics, computer graphics, and physical sciences.In this blog, we will see how we can use this method to estimate the value of the mathematical constant \(\pi \).</description>
+    </item>
+    
+    <item>
+      <title>Reflections on Changing Jobs</title>
+      <link>http://AhmadHamze.github.io/posts/opinion/changing-jobs/</link>
+      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/opinion/changing-jobs/</guid>
+      <description>After a long pause, here I am writing a blog post once again. Recently, I got distracted by many things, and I fell into a cycle of procrastination, but arriving late is better than never.
+I am now working with a new team and using a new tech stack. While writing this post, I had been working with them for about eight months. This gave me more than enough time to reflect on the changes happening in my life.</description>
     </item>
     
     <item>
