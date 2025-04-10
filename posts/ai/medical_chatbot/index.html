@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RAG Medical Chatbot</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="A medical chatbot using RAG" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/ai/">AI Blogs</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/ai/medical_chatbot/">Medical Chatbot</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/apology-frontend/">With due apology to front-end developers</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/changing-jobs/">Changing Jobs and Tech Stacks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>April 9, 2025</p>
+        </div>
+
+        <div class="title">
+          <h1>RAG Medical Chatbot</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>A few years ago, when I started delving deeper into programming, AI was one of the main topics that captivated my interest.</p>
+<p>It was only natural for me to stumble upon this subject since I was drawn to scientific programming and Python. Back in the day,
+AI wasn&rsquo;t the hype as it is today. Most importantly, when it was discussed, it was associated with different domains, not just LLMs as it is today.</p>
+<p>Most people at some point in their lives tried to play chess with a computer, this was (and still is) a great example of AI.
+Chess engines do not &ldquo;memorize&rdquo; every single possible move, but they are able to calculate the best possible move based on the current state of the game.
+There are many other examples of AI, E.g. image classification, object detection, recommender systems, etc.</p>
+<p>One form of AI that was not so popular was Natural Language Processing (NLP), I remember using some NLP systems a few years ago, and they were impressive, they could answer questions, they could translate text, and they could even tell the sentiment of a text.</p>
+<h2 id="here-comes-chatgpt">Here comes ChatGPT</h2>
+<p>On November 30, 2022, OpenAI released ChatGPT, a chatbot that was able to answer questions in a conversational way.
+It took the world by storm, including my own software development &ldquo;bubble&rdquo;, I would ask ChatGPT to build a React component, and it
+would do it correctly!</p>
+<p>A few months later, I had GitHub Copilot, which was able to suggest code while I was writing it in VSCode.</p>
+<p>The past two years saw incredible advancements and changes in software development and AI. There are now countless AI tools, and AI agents, lots of courses about &ldquo;prompt engineering&rdquo;, and vibe coding is a thing.</p>
+<h2 id="using-an-llm-to-create-something">Using an LLM to create something</h2>
+<p>Naturally, I wanted to create something using an LLM, after all, everyone is talking about it, and I wanted to be part of the hype.</p>
+<p>To be fair, I couldn&rsquo;t come up with an original idea, everyone seems to be doing the same thing, that is building chatbots using an API for an LLM.</p>
+<p>These chatbots basically use a context that might not be available for the LLM, use a combination of tools to find relevant context in a quick and efficient way, and finally utilize the LLM to generate a response based on the context and the question asked by the user.</p>
+<p>One useful method to create chatbots is called RAG which stands for Retrieval-Augmented Generation, it adds new information to the LLM instead of randomly dumping data in the context-window, making it more efficient.
+Giving an LLM context about something decreases the chances of &ldquo;hallucination&rdquo;, which is a term used to describe the fact that LLMs are not always correct, and they can generate false information.</p>
+<p>RAG is created in four steps:</p>
+<ol>
+<li><strong>Parsing</strong>: preparing the data, and transforming it into a format that can be used by the LLM.</li>
+<li><strong>Ingestion</strong>: creating the knowledge database from the processed data.</li>
+<li><strong>Retrieval</strong>: finding the relevant information from the knowledge database.</li>
+<li><strong>Generation</strong>: using the LLM to generate a response based on the retrieved information.</li>
+</ol>
+<h2 id="a-medical-chatbot">A medical chatbot</h2>
+<p>Googling something about your health is probably not the best idea, Google has the habit of telling you that you have cancer when you have a headache.
+LLMs are probably not better than Google, after all, they got their information from the internet, however, suppose you do have an extensive dataset of medical information that is approved by doctors, why not use this data to create a medical chatbot?</p>
+<p>Right from the beginning, you can see that one of the hardest parts is to actually find such a dataset, medical information can be found in PDF files, books, online, etc. More importantly, the data can be textual, images, videos, etc.</p>
+<p>Lucky for me, I am not building a serious medical application, so I ended up using a simple dataset from Hugging Face, which is a collection of medical questions and answers.
+You can find the dataset <a href="https://huggingface.co/datasets/ruslanmv/ai-medical-chatbot">here</a>.</p>
+<h3 id="parsing">Parsing</h3>
+<p>The dataset is a <code>Dataset</code> object, which is a class from the <code>datasets</code> library, provided by Hugging Face. It contains a collection of medical questions and answers, which is perfect for our use case.</p>
+<p>The parsing step will be very easy, we will just convert the dataset into a list of tuples, where each tuple contains a question and an answer.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> datasets <span style="color:#f92672">import</span> load_dataset
+
+ds <span style="color:#f92672">=</span> load_dataset(<span style="color:#e6db74">&#34;ruslanmv/ai-medical-chatbot&#34;</span>)
+qa_pairs <span style="color:#f92672">=</span> [(entry[<span style="color:#e6db74">&#34;Patient&#34;</span>], entry[<span style="color:#e6db74">&#34;Doctor&#34;</span>]) <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> ds[<span style="color:#e6db74">&#34;train&#34;</span>]]
+questions, answers <span style="color:#f92672">=</span> zip(<span style="color:#f92672">*</span>qa_pairs)
+</code></pre></div><p>This code gives two lists, one with the questions and one with the answers, both lists indices correspond to each other.</p>
+<h3 id="ingestion">Ingestion</h3>
+<p>In this step, the &ldquo;AI&rdquo; will learn from the data, it will create a knowledge database that will be used to retrieve relevant information.</p>
+<p>First, we need a model to encode the questions, Hugging Face offers many models for this task, I ended up using <code>all-MiniLM-L6-v2</code>, which is a small model that is fast and efficient, you can read about it <a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">here</a>.</p>
+<p>What this basically does is that it converts sentences into multi-dimensional vectors, these vectors can be clustered together, creating a space where similar sentences are close to each other.</p>
+<h4 id="using-a-gpu">Using a GPU</h4>
+<p>It is best to use a GPU for this task since it is much faster than using a CPU. You can use Google Colab or any other cloud service to get access to a GPU.
+The downloadable dataset size is 142 MB, it gets larger when you load it into memory, but still, this is not considered big in any way.
+On my very humble normal computer, the CPU would take one and a half hours to process the dataset, while the GPU on Google Colab took only 10 minutes.</p>
+<h4 id="saving-the-embeddings">Saving the embeddings</h4>
+<p>The embeddings are the vectors that are created by the model, they are used to find similar sentences. In serious applications, you would want to save them to a vector database, such as Pinecone, Weaviate, or ChromaDB. However, for this simple example, we will just save them to a numpy file.</p>
+<p>This is the code, notice that is it using a GPU:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
+
+embed_model <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#34;all-MiniLM-L6-v2&#34;</span>, device<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cuda&#34;</span>)
+
+<span style="color:#75715e"># Process embeddings in batches</span>
+batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>  <span style="color:#75715e"># Larger batch size for GPU</span>
+question_embeddings <span style="color:#f92672">=</span> embed_model<span style="color:#f92672">.</span>encode(
+    questions,
+    batch_size<span style="color:#f92672">=</span>batch_size,
+    convert_to_numpy<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+    show_progress_bar<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+    device<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cuda&#34;</span>
+)
+
+<span style="color:#75715e"># Save embeddings to avoid recomputing</span>
+np<span style="color:#f92672">.</span>save(<span style="color:#e6db74">&#39;question_embeddings_gpu.npy&#39;</span>, question_embeddings)
+</code></pre></div><p>Once you have the embeddings file, you can download it and use it on your local machine, or you can just run the code on Google Colab and use it there.</p>
+<blockquote>
+<p>Note: do not download the file directly from Colab, instead, copy it to Google Drive and download it from there, it is much faster.</p>
+</blockquote>
+<h3 id="retrieval">Retrieval</h3>
+<p>In this step, we will use the embeddings to find the most similar question to the one asked by the user. We will use the <code>faiss</code> library for this task, which is a library for efficient similarity search and clustering of dense vectors.</p>
+<p>What happens in retrieval is this:</p>
+<ol>
+<li>A question is encoded using the same model that encoded the questions in the dataset.</li>
+<li>The encoded question is used to find the most similar questions in the dataset using the <code>faiss</code> library.</li>
+<li>The most similar questions and answers are returned as a context.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> faiss
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
+
+embed_model <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#34;all-MiniLM-L6-v2&#34;</span>)
+question_embeddings <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>load(EMBEDDINGS_PATH)
+
+<span style="color:#75715e"># Store embeddings in FAISS for fast retrieval</span>
+dimension <span style="color:#f92672">=</span> question_embeddings<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
+index <span style="color:#f92672">=</span> faiss<span style="color:#f92672">.</span>IndexFlatL2(dimension)
+index<span style="color:#f92672">.</span>add(question_embeddings)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">retrieve_context</span>(user_query, top_k<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>):
+    <span style="color:#e6db74">&#34;&#34;&#34;Finds the 3 most relevant stored questions and their answers&#34;&#34;&#34;</span>
+    query_embedding <span style="color:#f92672">=</span> embed_model<span style="color:#f92672">.</span>encode([user_query], convert_to_numpy<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+    _, indices <span style="color:#f92672">=</span> index<span style="color:#f92672">.</span>search(query_embedding, top_k)
+    
+    retrieved_context <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join([<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Patient: </span><span style="color:#e6db74">{</span>questions[i]<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Doctor: </span><span style="color:#e6db74">{</span>answers[i]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> indices[<span style="color:#ae81ff">0</span>]])
+    <span style="color:#66d9ef">return</span> retrieved_context
+</code></pre></div><h3 id="generation">Generation</h3>
+<p>This is the final step, all we need to do here is use an LLM to generate a response based on the context we retrieved in the previous step.</p>
+<p>The code is simple, I will not be putting it here, however, you should know that you have to specify to the model that you don&rsquo;t want it to use its knowledge to answer your questions. Only use the context that you provided, this is important because without it you won&rsquo;t even notice that the context is used.</p>
+<p>Finally, I used <code>gradio</code> to create a UI for the chatbot, you can find the complete code on this <a href="https://github.com/AhmadHamze/Q-A-Chatbot">repo</a>, do check it out.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This is a simple example of how to create a medical chatbot using RAG. The code is not perfect, and it can be improved in many ways, LangChain is a great library that can help you with this task, and it is worth checking out.</p>
+<p>The dataset can be improved, images, videos, and other types of data can be added. You can also use a more complex model to encode the questions, or even use a different model for each type of data.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/AI/medical_chatbot/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/opinion/changing-jobs/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>Reflections on Changing Jobs</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

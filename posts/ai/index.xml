@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on Ahmad Hamze Homepage</title>
+    <link>http://AhmadHamze.github.io/posts/ai/</link>
+    <description>Recent content in AI on Ahmad Hamze Homepage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RAG Medical Chatbot</title>
+      <link>http://AhmadHamze.github.io/posts/ai/medical_chatbot/</link>
+      <pubDate>Wed, 09 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/ai/medical_chatbot/</guid>
+      <description>A few years ago, when I started delving deeper into programming, AI was one of the main topics that captivated my interest.
+It was only natural for me to stumble upon this subject since I was drawn to scientific programming and Python. Back in the day, AI wasn&amp;rsquo;t the hype as it is today. Most importantly, when it was discussed, it was associated with different domains, not just LLMs as it is today.</description>
+    </item>
+    
+  </channel>
+</rss>
