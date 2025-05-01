@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Infrastructure on Ahmad Hamze Homepage</title>
+    <link>http://AhmadHamze.github.io/posts/infra/</link>
+    <description>Recent content in Infrastructure on Ahmad Hamze Homepage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/infra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RAG Chatbot: Vector Database &amp; Deployment</title>
+      <link>http://AhmadHamze.github.io/posts/infra/chatbot_deployment/</link>
+      <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/infra/chatbot_deployment/</guid>
+      <description>In a previous blog, we created a RAG chatbot using Qdrant, and FastAPI. In this blog, we will deploy the chatbot as an API using Docker and AWS.</description>
+    </item>
+    
+  </channel>
+</rss>

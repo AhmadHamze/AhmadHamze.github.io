@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AI</title>
+    <title>RAG Chatbot: Vector Database &amp; Deployment</title>
     
 
 
@@ -36,8 +36,13 @@
 <link rel="stylesheet" href="/css/style.css"/>
 
     
-    <link rel="stylesheet" href="/css/layouts/list.css">
-    <link rel="stylesheet" href="/css/navigators/sidebar.css">
+<meta name="description" content="Deploying a RAG chatbot" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
 
 
     
@@ -96,9 +101,6 @@
 
       
       
-  
-  
-
   <section class="sidebar-section" id="sidebar-section">
     <div class="sidebar-holder">
       <div class="sidebar" id="sidebar">
@@ -130,15 +132,12 @@
   
   
   
-    
-    
-  
   
     
     <li>
-      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/ai/">AI Blogs</a>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/ai/">AI Blogs</a>
       
-      <ul class="active">
+      <ul class="">
         
   
   
@@ -235,20 +234,26 @@
   
   
   
+    
+    
+  
   
     
     <li>
-      <i class="fas fa-plus-circle"></i><a class="" href="/posts/infra/">Infrastructure &amp; DevOps</a>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/infra/">Infrastructure &amp; DevOps</a>
       
-      <ul class="">
+      <ul class="active">
         
   
   
   
   
+    
+    
+  
   
     
-    <li><a class="" href="/posts/infra/chatbot_deployment/">Chatbot Deployment</a></li>
+    <li><a class="active" href="/posts/infra/chatbot_deployment/">Chatbot Deployment</a></li>
   
 
 
@@ -388,69 +393,127 @@
       
       
 <section class="content-section" id="content-section">
-  <div class="content container-fluid" id="content">
-    <div class="container-fluid post-card-holder" id="post-card-holder">
+  <div class="content">
+    <div class="container p-0 read-area">
       
-      
-        <div class="post-card">
-  <a href="/posts/ai/qdrant_chatbot/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/posts/ai/qdrant_chatbot/hero.png'/>
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/images/default-hero.jpg);'>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">RAG Chatbot: Vector Database Approach</h5>
-        <p class="card-text post-summary">In a previous blog, I wrote about a RAG chatbot that I created using a dataset of medical questions and answers.
-The RAG chatbot embedded the user’s question and retrieved the most relevant answers from an embedding file. Then, using the retrieved answers, GPT-4o-mini generated the final answer.
-In this blog, we will get rid of the embedding file and use a vector database instead, the code will be repurposed to be smaller in size in order to deploy the chatbot using Docker and AWS.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">May 1, 2025</span>
-        <a
-        href="/posts/ai/qdrant_chatbot/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
-</div>
 
       
-        <div class="post-card">
-  <a href="/posts/ai/medical_chatbot/" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg'/>
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>April 29, 2025</p>
+        </div>
+
+        <div class="title">
+          <h1>RAG Chatbot: Vector Database &amp; Deployment</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>In a previous blog, we created a RAG chatbot using Qdrant, and FastAPI. In this blog, we will deploy the chatbot as an API using Docker and AWS.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/infra/chatbot_deployment/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/ai/qdrant_chatbot/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>RAG Chatbot: Vector Database Approach</span>
+        </a>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">RAG Medical Chatbot</h5>
-        <p class="card-text post-summary">A few years ago, when I started delving deeper into programming, AI was one of the main topics that captivated my interest.
-It was only natural for me to stumble upon this subject since I was drawn to scientific programming and Python. Back in the day, AI wasn&rsquo;t the hype as it is today. Most importantly, when it was discussed, it was associated with different domains, not just LLMs as it is today.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">April 9, 2025</span>
-        <a
-        href="/posts/ai/medical_chatbot/"
-        class="float-right btn btn-outline-info btn-sm"
-        >Read</a
-        >
-      </div>
-    </div>
-  </a>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/ai/medical_chatbot/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>RAG Medical Chatbot</span>
+          </a>
+        </div>
+      
+    
+  
+
+  
+
 </div>
 
+      <hr />
       
-    </div>
-    <div class="paginator">
       
+      </div>
     </div>
   </div>
+  
 </section>
 
 
       
-       
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
     </div>
 
     
@@ -579,7 +642,12 @@ It was only natural for me to stumble upon this subject since I was drawn to sci
 
     
     
-    <script src="/js/list.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
 
   </body>
 </html>

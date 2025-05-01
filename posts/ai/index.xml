@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 09 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>RAG Chatbot: Vector Database Approach</title>
+      <link>http://AhmadHamze.github.io/posts/ai/qdrant_chatbot/</link>
+      <pubDate>Thu, 01 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/ai/qdrant_chatbot/</guid>
+      <description>In a previous blog, I wrote about a RAG chatbot that I created using a dataset of medical questions and answers.
+The RAG chatbot embedded the user’s question and retrieved the most relevant answers from an embedding file. Then, using the retrieved answers, GPT-4o-mini generated the final answer.
+In this blog, we will get rid of the embedding file and use a vector database instead, the code will be repurposed to be smaller in size in order to deploy the chatbot using Docker and AWS.</description>
+    </item>
+    
+    <item>
       <title>RAG Medical Chatbot</title>
       <link>http://AhmadHamze.github.io/posts/ai/medical_chatbot/</link>
       <pubDate>Wed, 09 Apr 2025 00:00:00 +0000</pubDate>

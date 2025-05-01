@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RAG Chatbot: Vector Database Approach</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="A RAG chatbot using Qdrant and FastAPI" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/ai/">AI Blogs</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/ai/qdrant_chatbot/">Chatbot with Vector Database and FastAPI</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/ai/medical_chatbot/">Medical Chatbot</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/infra/">Infrastructure &amp; DevOps</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/infra/chatbot_deployment/">Chatbot Deployment</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/apology-frontend/">With due apology to front-end developers</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/changing-jobs/">Changing Jobs and Tech Stacks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/ai/qdrant_chatbot/hero.png);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/new-photo.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>May 1, 2025</p>
+        </div>
+
+        <div class="title">
+          <h1>RAG Chatbot: Vector Database Approach</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>In a <a href="https://ahmadhamze.github.io/posts/ai/medical_chatbot/">previous blog</a>, I wrote about a RAG chatbot that I created using a dataset of medical questions and answers.</p>
+<p>The RAG chatbot embedded the user’s question and retrieved the most relevant answers from an embedding file. Then, using the retrieved answers, GPT-4o-mini generated the final answer.</p>
+<p>In this blog, we will get rid of the embedding file and use a vector database instead, the code will be repurposed to be smaller in size in order to deploy the chatbot using Docker and AWS.</p>
+<blockquote>
+<p>The code is available on <a href="https://github.com/AhmadHamze/Q-A-Chatbot">GitHub</a></p>
+</blockquote>
+<h3 id="why-vector-database">Why Vector Database?</h3>
+<p>Initially, I wanted to deploy the chatbot using the embedding file, but I realized this method is not scalable. The size of the file can get huge which means that retrieval will be slow and packaging the app will require more space.</p>
+<p>Therefore, I decided to use a vector database instead, I chose <a href="https://qdrant.tech/">Qdrant</a> among the many available options because it is easy to use and has a free tier that is sufficient for experimental purposes.</p>
+<h2 id="building-the-vector-database">Building the Vector Database</h2>
+<p>In this section, we will redo what we did in the previous blog, but with a twist. Not only embed the questions, but also the answers (more on that later), and instead of saving the embeddings to a file, we will save them to a Qdrant database.</p>
+<blockquote>
+<p>It is possible to run Qdrant locally using Docker, but I decided to use the hosted version instead.</p>
+</blockquote>
+<p>After creating an account, you can create an API key to be able to connect to the database.</p>
+<p>First, we need to initialize the Qdrant client</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> qdrant_client <span style="color:#f92672">import</span> QdrantClient
+<span style="color:#f92672">from</span> google.colab <span style="color:#f92672">import</span> userdata
+
+<span style="color:#75715e"># ---- Config ----</span>
+QDRANT_HOST <span style="color:#f92672">=</span> userdata<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;QDRANT_HOST&#34;</span>)
+QDRANT_API_KEY <span style="color:#f92672">=</span> userdata<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;QDRANT_API_KEY&#34;</span>)
+COLLECTION_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ruslanmv-ai-medical-chatbot&#34;</span>
+
+<span style="color:#75715e"># ---- Initialize Qdrant Client ----</span>
+client <span style="color:#f92672">=</span> QdrantClient(
+    url<span style="color:#f92672">=</span>QDRANT_HOST,
+    api_key<span style="color:#f92672">=</span>QDRANT_API_KEY,
+)
+</code></pre></div><blockquote>
+<p>Notice that the code is supposed to run on Google Colab, this is in order to use a GPU for creating embeddings.</p>
+</blockquote>
+<p>Once the client is initialized, we can create a collection to store the embeddings. You have to specify the name and the distance metric, also the number of dimensions of the embeddings.</p>
+<p>In our case, we will use the <code>cosine</code> distance metric and the number of dimensions is 384, this is the dimension of the <a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">all-MiniLM-L6-v2</a> sentence-transformer model.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># ---- Create Collection ----</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> client<span style="color:#f92672">.</span>collection_exists(collection_name<span style="color:#f92672">=</span>COLLECTION_NAME):
+    print(<span style="color:#e6db74">&#34;Creating collection&#34;</span>, COLLECTION_NAME)
+    client<span style="color:#f92672">.</span>create_collection(
+        collection_name<span style="color:#f92672">=</span>COLLECTION_NAME,
+        vectors_config<span style="color:#f92672">=</span>models<span style="color:#f92672">.</span>VectorParams(
+            size<span style="color:#f92672">=</span><span style="color:#ae81ff">384</span>,  <span style="color:#75715e"># Depends on your embedding model, all-MiniLM-L6-v2 is a 384 dimensional dense vector space</span>
+            distance<span style="color:#f92672">=</span>models<span style="color:#f92672">.</span>Distance<span style="color:#f92672">.</span>COSINE
+        )
+    )
+<span style="color:#66d9ef">else</span>:
+    print(<span style="color:#e6db74">&#34;Collection already exists&#34;</span>)
+</code></pre></div><p>Now that we have a collection, we can load the dataset and embed the questions just like we did in the previous blog.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> datasets <span style="color:#f92672">import</span> load_dataset
+<span style="color:#f92672">from</span> sentence_transformers <span style="color:#f92672">import</span> SentenceTransformer
+
+ds <span style="color:#f92672">=</span> load_dataset(<span style="color:#e6db74">&#34;ruslanmv/ai-medical-chatbot&#34;</span>)
+
+qa_pairs <span style="color:#f92672">=</span> [(entry[<span style="color:#e6db74">&#34;Patient&#34;</span>], entry[<span style="color:#e6db74">&#34;Doctor&#34;</span>]) <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> ds[<span style="color:#e6db74">&#34;train&#34;</span>]]
+questions, answers <span style="color:#f92672">=</span> zip(<span style="color:#f92672">*</span>qa_pairs)
+
+<span style="color:#75715e"># Initialize model with GPU</span>
+embed_model <span style="color:#f92672">=</span> SentenceTransformer(<span style="color:#e6db74">&#34;all-MiniLM-L6-v2&#34;</span>, device<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cuda&#34;</span>)
+
+<span style="color:#75715e"># Process embeddings in batches</span>
+batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>  <span style="color:#75715e"># Larger batch size for GPU</span>
+question_embeddings <span style="color:#f92672">=</span> embed_model<span style="color:#f92672">.</span>encode(
+    questions,
+    batch_size<span style="color:#f92672">=</span>batch_size,
+    convert_to_numpy<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+    show_progress_bar<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+    device<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cuda&#34;</span>
+)
+</code></pre></div><p>Now that the questions are embedded, we can insert them into the Qdrant database. However, unlike the previous blog, this time we
+are trying to minimize the size of the code and the dependencies to reduce the size of the Docker image.</p>
+<p>That&rsquo;s why we will save the questions and answers in the database next to the question embeddings.
+This way, we can retrieve the question and the answer together without needing to load the dataset like we did in the previous blog.</p>
+<p>To populate the database, we will make post requests to the Qdrant API, the data will be batched to avoid hitting the API limits.</p>
+<p>To insert or update data in Qdrant, we use the <code>upsert</code> method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> qdrant_client.http <span style="color:#f92672">import</span> models
+
+<span style="color:#75715e"># Upload to Qdrant</span>
+
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">&#39;answer&#39; is needed in the payload, otherwise, finding the context will be harder and costly.
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> tqdm(range(<span style="color:#ae81ff">0</span>, len(questions), batch_size)):
+    <span style="color:#75715e"># Batching questions </span>
+    batch_questions <span style="color:#f92672">=</span> questions[i : i <span style="color:#f92672">+</span> batch_size]
+    <span style="color:#75715e"># Batching answers</span>
+    batch_answers <span style="color:#f92672">=</span> answers[i : i <span style="color:#f92672">+</span> batch_size]
+    <span style="color:#75715e"># Batching question embeddings</span>
+    batch_vectors <span style="color:#f92672">=</span> question_embeddings[i : i <span style="color:#f92672">+</span> batch_size]
+
+    points_batch <span style="color:#f92672">=</span> [
+        models<span style="color:#f92672">.</span>PointStruct(
+            id<span style="color:#f92672">=</span>i<span style="color:#f92672">+</span>j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,
+            vector<span style="color:#f92672">=</span>batch_vectors[j],
+            payload<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;question&#34;</span>: batch_questions[j], <span style="color:#e6db74">&#34;answer&#34;</span>: batch_answers[j]}
+            )
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(len(batch_questions))
+    ]
+    client<span style="color:#f92672">.</span>upsert(
+        collection_name<span style="color:#f92672">=</span>COLLECTION_NAME,
+        points<span style="color:#f92672">=</span>points_batch,
+    )
+</code></pre></div><p>The <code>PointStruct</code> constructs a Qdrant <code>Point</code>, the central entity in Qdrant, it represents a single point in the vector space.</p>
+<p>The &ldquo;payload&rdquo; is a dictionary that contains the metadata associated with the point, in our case, it contains the question and the answer, allowing us to retrieve them later.</p>
+<blockquote>
+<p>You can read more about <code>Points</code> in the <a href="https://qdrant.tech/documentation/concepts/points/">Qdrant documentation</a>.</p>
+</blockquote>
+<p>This process might take a while, I remember it took around 40 minutes to finish. Also, note that after it finishes, the cluster overview page will show that the RAM and vCPU usage are off the charts, this is normal, the database needs some time to index the data.</p>
+<p>After around 15 minutes, you should see a dashboard that looks like this (assuming you are using a dataset of the same size as the one used in the project).</p>
+<p><img src="./media/qdrant-overview.png" alt="Qdrant Dashboard"></p>
+<p>Finally, we can embed a user&rsquo;s question and create a context using the retrieved questions and answers.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">retrieve_context</span>(query: str) <span style="color:#f92672">-&gt;</span> str:
+    nearest <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>query_points(
+        collection_name<span style="color:#f92672">=</span>COLLECTION_NAME,
+        query<span style="color:#f92672">=</span>embed_model<span style="color:#f92672">.</span>encode(query),
+        limit<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>
+    )
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>join([
+        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Patient: </span><span style="color:#e6db74">{</span>question<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Doctor: </span><span style="color:#e6db74">{</span>answer<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+        <span style="color:#66d9ef">for</span> question, answer <span style="color:#f92672">in</span> [
+            (point<span style="color:#f92672">.</span>payload[<span style="color:#e6db74">&#34;question&#34;</span>], point<span style="color:#f92672">.</span>payload[<span style="color:#e6db74">&#34;answer&#34;</span>]) <span style="color:#66d9ef">for</span> point <span style="color:#f92672">in</span> nearest<span style="color:#f92672">.</span>points
+            ]
+        ])
+</code></pre></div><p>The <code>retrieve_context</code> function can be used to give GPT-4o-mini the context it needs to generate the final answer, but not so fast!</p>
+<h4 id="hugging-face-inference-api">Hugging Face Inference API</h4>
+<p>The current code needs the <code>sentence_transformers</code> library to work, all it does is load the <code>all-MiniLM-L6-v2</code> model and embed the user&rsquo;s question.</p>
+<p><code>sentence_transformers</code> is a huge library that depends on other libraries as well, installing it increases the size of the Docker image significantly.</p>
+<blockquote>
+<p>I created a docker image containing <code>sentence_transformers</code>, <code>openai</code>, and <code>datasets</code> libraries, the image size was around 6.1 GB!</p>
+</blockquote>
+<p>We can avoid this easily by using the <a href="https://huggingface.co/docs/api-inference/index">Hugging Face Inference API</a> to embed the user&rsquo;s question.</p>
+<p>On Hugging Face, go to <strong>Settings</strong> &gt; <strong>Access Tokens</strong> and create a new token with the <code>READ</code> permission, you can use this key to connect to the Inference API.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> requests
+
+<span style="color:#75715e"># HUGGING_FACE_API_KEY is retrieved from the environment variables</span>
+headers <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Authorization&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Bearer </span><span style="color:#e6db74">{</span>HUGGING_FACE_API_KEY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>}
+
+API_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2&#34;</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_embedding</span>(text: str):
+    response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(
+        API_URL,
+        headers<span style="color:#f92672">=</span>headers,
+        json<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;inputs&#34;</span>: text}
+    )
+    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>json()
+</code></pre></div><p>Now, instead of using the oversized <code>sentence_transformers</code>, we can simply call <code>get_embedding</code> to embed the user&rsquo;s question.</p>
+<blockquote>
+<p>You can call the Hugging Face API for free, but there are limitations, for a real production app, you should consider using a paid plan.</p>
+</blockquote>
+<h2 id="building-the-api">Building the API</h2>
+<p>To use the chatbot, we need to build an API that will handle the requests and responses. We will use FastAPI with uvicorn for this purpose.</p>
+<p>Keep in mind that the API is going to be deployed, so we need to make sure that all the needed packages are installed and that the routing is correct.</p>
+<p>First, we need to create an <code>/api</code> folder that will contain our API code. Inside the <code>api</code> folder, we&rsquo;re going to have an <code>api_requirements.txt</code> file, a <code>/routers</code> folder, a <code>/services</code> folder, and a <code>main.py</code> file.</p>
+<p>It is important to create a <code>__init__.py</code> file in each folder to make them packages, this is important for the Docker image to work correctly.</p>
+<p>In the same directory as <code>main.py</code>, I created a <code>models.py</code> file that uses <code>Pydantic</code> to define the request and response models.
+This allows FastAPI to validate the data and generate the OpenAPI documentation automatically.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> pydantic <span style="color:#f92672">import</span> BaseModel
+<span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> List, Dict, Optional
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatRequest</span>(BaseModel):
+    query: str
+    chat_history: Optional[List[Dict[str, str]]] <span style="color:#f92672">=</span> []
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatResponse</span>(BaseModel):
+    response: str
+</code></pre></div><p>We can use these types to define the post request of the API (this is defined in the <code>routers/chat.py</code> file)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> APIRouter, HTTPException
+<span style="color:#f92672">from</span> models <span style="color:#f92672">import</span> ChatRequest, ChatResponse
+<span style="color:#f92672">from</span> services.chatbot <span style="color:#f92672">import</span> get_chatbot_response
+
+router <span style="color:#f92672">=</span> APIRouter(
+    prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/chat&#34;</span>,
+    tags<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;chat&#34;</span>],
+    responses<span style="color:#f92672">=</span>{<span style="color:#ae81ff">404</span>: {<span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Not found&#34;</span>}},
+)
+
+<span style="color:#a6e22e">@router</span><span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;/&#34;</span>, response_model<span style="color:#f92672">=</span>ChatResponse)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">chat</span>(request: ChatRequest):
+    <span style="color:#66d9ef">try</span>:
+        response <span style="color:#f92672">=</span> get_chatbot_response(request<span style="color:#f92672">.</span>query, request<span style="color:#f92672">.</span>chat_history)
+        <span style="color:#66d9ef">return</span> ChatResponse(response<span style="color:#f92672">=</span>response)
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        <span style="color:#66d9ef">raise</span> HTTPException(status_code<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, detail<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error processing request: </span><span style="color:#e6db74">{</span>str(e)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</code></pre></div><p>This creates a <code>/chat</code> endpoint that accepts a POST request with a JSON body containing the user&rsquo;s question and the chat history. The response will be a JSON object containing the generated answer.</p>
+<p>The <code>get_chatbot_response</code> function is defined in the <code>services/chatbot.py</code> file, it&rsquo;s a straightforward function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> qdrant_chatbot <span style="color:#f92672">import</span> medical_chatbot
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_chatbot_response</span>(query: str, chat_history<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Process a user query through the medical chatbot
+</span><span style="color:#e6db74">    
+</span><span style="color:#e6db74">    Args:
+</span><span style="color:#e6db74">        query: The user&#39;s question
+</span><span style="color:#e6db74">        chat_history: Optional chat history
+</span><span style="color:#e6db74">        
+</span><span style="color:#e6db74">    Returns:
+</span><span style="color:#e6db74">        The chatbot&#39;s response as a string
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> chat_history <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+        chat_history <span style="color:#f92672">=</span> []
+        
+    <span style="color:#75715e"># medical_chatbot is the function that generates the response</span>
+    response <span style="color:#f92672">=</span> medical_chatbot(query, chat_history)
+    <span style="color:#66d9ef">return</span> response
+</code></pre></div><h4 id="the-chatbot">The Chatbot</h4>
+<p><code>medical_chatbot</code> is the function that &ldquo;answers&rdquo; the question, this is the same function we used in the previous blog, it takes the user&rsquo;s question and the chat history and returns the generated answer.</p>
+<p>I didn&rsquo;t go over it in detail the last time, so let&rsquo;s take a look at it now</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">medical_chatbot</span>(user_query, chat_history<span style="color:#f92672">=</span>[]):
+    <span style="color:#e6db74">&#34;&#34;&#34;Uses OpenAI&#39;s GPT-4 to generate a response with retrieved context&#34;&#34;&#34;</span>
+    retrieved_info <span style="color:#f92672">=</span> retrieve_context(user_query)
+    <span style="color:#75715e"># Used for debugging</span>
+    print(<span style="color:#e6db74">&#34;Retrieved info:&#34;</span>, retrieved_info)
+    prompt <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    You are a helpful and professional medical chatbot, you only answer questions related to medical topics,
+</span><span style="color:#e6db74">    if the user asks a question that is not medical, you should let them know that you can only answer medical questions.
+</span><span style="color:#e6db74">    Below is past conversation data:
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74">{</span>retrieved_info<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    Now, answer the following question solely based on the context provided above, do not use any other knowledge, even if it is related:
+</span><span style="color:#e6db74">    </span><span style="color:#e6db74">{</span>user_query<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    response <span style="color:#f92672">=</span> client_4o<span style="color:#f92672">.</span>chat<span style="color:#f92672">.</span>completions<span style="color:#f92672">.</span>create(
+        model<span style="color:#f92672">=</span>GPT_4o_MODEL,
+        messages<span style="color:#f92672">=</span>[
+            {
+                <span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;system&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: <span style="color:#e6db74">&#34;You are a medical chatbot.&#34;</span>
+            },
+            {
+                <span style="color:#e6db74">&#34;role&#34;</span>: <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;content&#34;</span>: prompt
+            }
+        ],
+        temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>
+    )
+    <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>choices[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>message<span style="color:#f92672">.</span>content
+</code></pre></div><p>A few things to note here:</p>
+<ol>
+<li><code>retrieve_context</code> is the same function we defined earlier, the one retrieving the context using Qdrant and Hugging Face APIs</li>
+<li>The prompt is detailed to make sure that the model doesn&rsquo;t answer questions that are not related to medical topics</li>
+<li>The prompt tells the model to not use any other knowledge, even if it is related, this is important because otherwise, the context won&rsquo;t matter at all given the huge knowledge of the model</li>
+</ol>
+<p>The final component of the API is the <code>main.py</code> file, this is where we define the FastAPI app and include the router.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> fastapi <span style="color:#f92672">import</span> FastAPI
+<span style="color:#f92672">from</span> fastapi.middleware.cors <span style="color:#f92672">import</span> CORSMiddleware
+<span style="color:#f92672">from</span> routers <span style="color:#f92672">import</span> chat
+
+app <span style="color:#f92672">=</span> FastAPI(
+    title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Medical Chatbot API&#34;</span>,
+    description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;API for a medical chatbot that answers health-related questions&#34;</span>,
+    version<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.0.0&#34;</span>
+)
+
+<span style="color:#75715e"># CORS settings</span>
+app<span style="color:#f92672">.</span>add_middleware(
+    CORSMiddleware,
+    allow_origins<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;*&#34;</span>],  <span style="color:#75715e"># Adjust for production</span>
+    allow_credentials<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+    allow_methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;*&#34;</span>],
+    allow_headers<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;*&#34;</span>],
+)
+
+<span style="color:#75715e"># Include routers</span>
+app<span style="color:#f92672">.</span>include_router(chat<span style="color:#f92672">.</span>router)
+
+<span style="color:#a6e22e">@app</span><span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;/&#34;</span>)
+<span style="color:#66d9ef">async</span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">root</span>():
+    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;message&#34;</span>: <span style="color:#e6db74">&#34;Welcome to the Medical Chatbot API. Use /docs for API documentation.&#34;</span>}
+</code></pre></div><p>The middleware is an important security feature, <code>allow_origins</code> is set to accept requests from anywhere, this is acceptable only in this case because this is a development environment. But in production, you should restrict the allowed origins to only the ones you trust.</p>
+<h2 id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
+<p>We rebuilt the RAG chatbot using a vector database, used Hugging Face embedding API, and built a backend API using FastAPI.</p>
+<p>The new design is more scalable and easier to deploy, unlike the previous version, we don&rsquo;t need to load the dataset every time we want to retrieve the context, and we got rid of big libraries like <code>sentence_transformers</code>, <code>datasets</code>, and <code>faiss</code>.</p>
+<p>Now, we can containerize the app and deploy it using Docker and AWS, this is what I will cover in the next blog.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/AI/qdrant_chatbot/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/infra/chatbot_deployment/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>RAG Chatbot: Vector Database &amp; Deployment</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
