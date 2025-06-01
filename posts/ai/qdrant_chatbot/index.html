@@ -402,7 +402,7 @@
       
       <div class="page-content">
         <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/new-photo.jpg'/>
+          <img class="rounded-circle" src='/images/sunset-custom.jpg'/>
           <h5 class="author-name">Ahmad Hamze</h5>
           <p>May 1, 2025</p>
         </div>
@@ -548,7 +548,7 @@ This way, we can retrieve the question and the answer together without needing t
 <span style="color:#75715e"># HUGGING_FACE_API_KEY is retrieved from the environment variables</span>
 headers <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Authorization&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Bearer </span><span style="color:#e6db74">{</span>HUGGING_FACE_API_KEY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>}
 
-API_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2&#34;</span>
+API_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://router.huggingface.co/hf-inference/models/sentence-transformers/all-MiniLM-L6-v2/pipeline/feature-extraction&#34;</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_embedding</span>(text: str):
     response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>post(
         API_URL,
@@ -557,6 +557,12 @@ API_URL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ht
     )
     <span style="color:#66d9ef">return</span> response<span style="color:#f92672">.</span>json()
 </code></pre></div><p>Now, instead of using the oversized <code>sentence_transformers</code>, we can simply call <code>get_embedding</code> to embed the user&rsquo;s question.</p>
+<blockquote>
+<p>Just after I finished writing this blog, the url for the <code>all-MiniLM-L6-v2</code> model changed, the app broke and even though I
+figured out quickly that the url was broken, it took me a while to find the new url.
+I had to ask a question on Hugging Face discord page, and someone pointed me to the location of the new url.
+This might be a proof that using a url might not be a good idea! You may want to use the model directly despite its size after all.</p>
+</blockquote>
 <blockquote>
 <p>You can call the Hugging Face API for free, but there are limitations, for a real production app, you should consider using a paid plan.</p>
 </blockquote>
@@ -682,7 +688,7 @@ app<span style="color:#f92672">.</span>include_router(chat<span style="color:#f9
 <h2 id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
 <p>We rebuilt the RAG chatbot using a vector database, used Hugging Face embedding API, and built a backend API using FastAPI.</p>
 <p>The new design is more scalable and easier to deploy, unlike the previous version, we don&rsquo;t need to load the dataset every time we want to retrieve the context, and we got rid of big libraries like <code>sentence_transformers</code>, <code>datasets</code>, and <code>faiss</code>.</p>
-<p>Now, we can containerize the app and deploy it using Docker and AWS, this is what I will cover in the next blog.</p>
+<p>Now, we can containerize the app and deploy it using Docker and AWS, please continue reading <a href="https://ahmadhamze.github.io/posts/infra/chatbot_deployment/">here</a>.</p>
 
         </div>
 
@@ -734,15 +740,13 @@ app<span style="color:#f92672">.</span>include_router(chat<span style="color:#f9
   
 
   
-
-  
     
       
       <div class="col-md-6 previous-article">
-        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+        <a href="/posts/infra/chatbot_deployment/" class="btn btn-outline-info">
           <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
           <br />
-          <span>Estimating pi</span>
+          <span>RAG Chatbot: AWS Deployment</span>
         </a>
       </div>
       
@@ -756,14 +760,16 @@ app<span style="color:#f92672">.</span>include_router(chat<span style="color:#f9
           
         
         <div class="col-md-6 next-article">
-          <a href="/posts/infra/chatbot_deployment/" class="btn btn-outline-info">
+          <a href="/posts/ai/medical_chatbot/" class="btn btn-outline-info">
             <span>Next <i class="fas fa-chevron-circle-right"></i></span>
             <br />
-            <span>RAG Chatbot: Vector Database &amp; Deployment</span>
+            <span>RAG Medical Chatbot</span>
           </a>
         </div>
       
     
+  
+
   
 
 </div>

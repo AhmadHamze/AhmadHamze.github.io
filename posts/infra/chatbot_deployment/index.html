@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RAG Chatbot: Vector Database &amp; Deployment</title>
+    <title>RAG Chatbot: AWS Deployment</title>
     
 
 
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="/css/style.css"/>
 
     
-<meta name="description" content="Deploying a RAG chatbot" />
+<meta name="description" content="Deploying a RAG chatbot with AWS ECS Fargate" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
@@ -396,23 +396,230 @@
   <div class="content">
     <div class="container p-0 read-area">
       
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/images/default-hero.jpg);'>
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/infra/chatbot_deployment/hero.png);'>
       </div>
 
       
       <div class="page-content">
         <div class="author-profile ml-auto align-self-lg-center">
-          <img class="rounded-circle" src='/images/new-photo.jpg'/>
+          <img class="rounded-circle" src='/images/sunset-custom.jpg'/>
           <h5 class="author-name">Ahmad Hamze</h5>
-          <p>April 29, 2025</p>
+          <p>June 1, 2025</p>
         </div>
 
         <div class="title">
-          <h1>RAG Chatbot: Vector Database &amp; Deployment</h1>
+          <h1>RAG Chatbot: AWS Deployment</h1>
         </div>
 
         <div class="post-content" id="post-content">
-          <p>In a previous blog, we created a RAG chatbot using Qdrant, and FastAPI. In this blog, we will deploy the chatbot as an API using Docker and AWS.</p>
+          <p>In a <a href="https://ahmadhamze.github.io/posts/ai/qdrant_chatbot/">previous blog</a>, we created a RAG chatbot using Qdrant, and FastAPI. In this blog, we will deploy the chatbot as an API using Docker and AWS.</p>
+<h2 id="what-does-it-mean-to-deploy-an-application">What does it mean to deploy an application?</h2>
+<p>Deployment is the process of making an application available for use, this does not necessarily mean that the application is in production.
+Deployment can be done in different environments, such as development, staging, and production. In this blog, we will deploy the chatbot in a staging environment using Docker and AWS.</p>
+<p>Staging is an environment that is similar to production, but it is not accessible to end users.
+Developers and testers can use the staging environment to test the application before it gets deployed to production, this allows developers to catch any bugs or issues before they affect the end users.</p>
+<h2 id="deployment-friendly-code">Deployment friendly code</h2>
+<p>The first step is to make sure that the code can run correctly wherever it is deployed. In our case, we have a chatbot that uses multiple API keys to connect to different services. We need to ensure that these keys are available in the environment where the code is running.</p>
+<p>One way to do so is by using environment variables, we already have a <code>.env</code> file that contains the API keys, however, this is not the best way to store secrets in production.</p>
+<h3 id="aws-secrets-manager">AWS Secrets Manager</h3>
+<p>In this blog, we will use AWS Secrets Manager to store the API keys and load them in the code.</p>
+<p>Creating secrets is straightforward, just go to &ldquo;AWS Secrets Manager&rdquo; -&gt; &ldquo;Store a new secret&rdquo;, and select the type of secret you want to store.
+In our case, we will use the <code>Other type of secrets</code> option, and add the keys as key-value pairs, e.g. QDRANT_HOST: <code>https://your-qdrant-host</code>, QDRANT_API_KEY: <code>your-qdrant-api-key</code>, etc.</p>
+<p>Then, name your secret, e.g. <code>qdrant-medical-chatbot-secrets</code>, and select the encryption key (you can leave it as default).</p>
+<p><img src="./media/aws_secrets.png" alt="AWS Secrets"></p>
+<p>Now that the secret is stored, we can use it in our code, to do so, we need to change the code from using the <code>.env</code> file to using the AWS Secrets Manager.</p>
+<p>This is why we need to use the <code>boto3</code> library, this is a Python library that allows interaction with AWS services, including Secrets Manager.
+We will use the <code>get_secret_value</code> method to retrieve the secret value, and then we will load it into variables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> boto3
+<span style="color:#f92672">import</span> json
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_secret</span>(secret_name, region_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;eu-north-1&#34;</span>):
+    <span style="color:#75715e"># Create a Secrets Manager client</span>
+    session <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>Session()
+    client <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>client(
+        service_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;secretsmanager&#34;</span>,
+        region_name<span style="color:#f92672">=</span>region_name
+    )
+    <span style="color:#66d9ef">try</span>:
+        response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>get_secret_value(SecretId<span style="color:#f92672">=</span>secret_name)
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;SecretString&#34;</span> <span style="color:#f92672">in</span> response:
+            <span style="color:#66d9ef">return</span> json<span style="color:#f92672">.</span>loads(response[<span style="color:#e6db74">&#34;SecretString&#34;</span>])
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#75715e"># Binary secrets handling if needed</span>
+            <span style="color:#66d9ef">return</span> json<span style="color:#f92672">.</span>loads(response[<span style="color:#e6db74">&#34;SecretBinary&#34;</span>]<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>))
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Error retrieving secret </span><span style="color:#e6db74">{</span>secret_name<span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{</span>e<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+        <span style="color:#66d9ef">raise</span>
+
+<span style="color:#75715e"># Get secrets from AWS Secrets Manager</span>
+<span style="color:#75715e"># You can store all related secrets in one secret with multiple key-value pairs</span>
+secrets <span style="color:#f92672">=</span> get_secret(<span style="color:#e6db74">&#34;qdrant-medical-chatbot-secrets&#34;</span>)
+
+GPT_4o_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;openai/gpt-4o-mini&#34;</span>
+client_4o <span style="color:#f92672">=</span> OpenAI(base_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://openrouter.ai/api/v1&#34;</span>, api_key<span style="color:#f92672">=</span>secrets[<span style="color:#e6db74">&#34;GPT_4o_API_KEY&#34;</span>])
+
+QDRANT_HOST <span style="color:#f92672">=</span> secrets[<span style="color:#e6db74">&#34;QDRANT_HOST&#34;</span>]
+QDRANT_API_KEY <span style="color:#f92672">=</span> secrets[<span style="color:#e6db74">&#34;QDRANT_API_KEY&#34;</span>]
+HUGGING_FACE_API_KEY <span style="color:#f92672">=</span> secrets[<span style="color:#e6db74">&#34;HUGGING_FACE_API_KEY&#34;</span>]
+COLLECTION_NAME <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ruslanmv-ai-medical-chatbot&#34;</span>
+</code></pre></div><blockquote>
+<p>Do not forget to add the <code>boto3</code> library to <code>api_requirements.txt</code> file</p>
+</blockquote>
+<h2 id="dockerizing-the-application">Dockerizing the application</h2>
+<p>Once the code is ready to run in any environment, we can create a Docker image for it. Docker images are portable and can run on any machine that has Docker installed, this makes it easy to deploy the application in different environments.</p>
+<p>To create a Docker image, a <code>Dockerfile</code> is needed, this file contains the instructions to build the image. In this file,
+we will instruct Docker to use a Python base image, copy the code into the image, install the dependencies, and finally run the application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.12-slim</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy the source code</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> ./src/api .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> pip install --no-cache-dir -r api_requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Expose the port the app will run on</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 8000</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Command to run the application</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;uvicorn&#34;</span>, <span style="color:#e6db74">&#34;main:app&#34;</span>, <span style="color:#e6db74">&#34;--host&#34;</span>, <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, <span style="color:#e6db74">&#34;--port&#34;</span>, <span style="color:#e6db74">&#34;8000&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>A few things to note here:</p>
+<ol>
+<li>The location of the <code>Dockerfile</code> is important, I kept it at the root of the application, the <code>COPY</code> command will have to change if you move the <code>Dockerfile</code> to a different location.</li>
+<li>The <code>WORKDIR</code> command sets the working directory inside the container, this is where the code will be copied to and where the application will run.</li>
+<li>The <code>CMD</code> command specifies the command to run the application, here we run the FastAPI application using <code>uvicorn</code>. We also specify what file and function to run (<code>main:app</code>), this is very important to get right, otherwise the application will not start.</li>
+</ol>
+<blockquote>
+<p>To not copy useless files into the Docker image, you can create a <code>.dockerignore</code> file in the root of the application, similar to <code>.gitignore</code>, and add files and directories that should not be copied into the image, such as <code>*.pyc</code>, <code>__pycache__</code>, <code>.env</code>, etc.</p>
+</blockquote>
+<p>One simple way to test the Docker image is to build it and run it locally, you can do so by using docker commands like <code>docker build</code> and <code>docker run</code>.
+However, there is a much more suitable way to test the Docker image, given that we have some AWS services to use, that is using <code>docker compose</code>.</p>
+<h3 id="docker-compose">Docker Compose</h3>
+<p>Docker Compose is a tool that allows you to define and run multi-container Docker applications. It uses a <code>docker-compose.yml</code> file to configure the application services, networks, and volumes.</p>
+<p>We will create a file that points to the Dockerfile, and gives access to the AWS credentials needed to run the application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+  <span style="color:#f92672">chatbot-api</span>:
+    <span style="color:#f92672">build</span>:
+      <span style="color:#f92672">context</span>: <span style="color:#ae81ff">.</span>
+      <span style="color:#f92672">dockerfile</span>: <span style="color:#ae81ff">Dockerfile</span>
+    <span style="color:#f92672">ports</span>:
+      - <span style="color:#e6db74">&#34;8000:8000&#34;</span>
+    <span style="color:#75715e"># These environments are needed to test if boto3 can connect to AWS</span>
+    <span style="color:#75715e"># and fetch the necessary secrets for the chatbot</span>
+    <span style="color:#75715e"># You need to pass them to the local container if you want to test if the code works</span>
+    <span style="color:#f92672">environment</span>:
+      - <span style="color:#ae81ff">AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}</span>
+      - <span style="color:#ae81ff">AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}</span>
+      - <span style="color:#ae81ff">AWS_REGION=${AWS_REGION}</span>
+    <span style="color:#f92672">volumes</span>:
+      - <span style="color:#ae81ff">./src/api:/app</span>
+    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+</code></pre></div><p>The <code>context</code> specifies the directory where the Dockerfile is located, here it is the root of the application.
+Under <code>environment</code>, we pass the AWS credentials to the container, this is needed for the <code>boto3</code> library to connect to AWS and fetch the secrets.</p>
+<blockquote>
+<p>Use <code>aws configure</code> to set up your AWS credentials locally, this will create a <code>~/.aws/credentials</code> file that contains the credentials needed to access AWS services.</p>
+</blockquote>
+<p>Now, you can run the application using <code>docker compose up</code> from the root of the application, this will build the Docker image and run the application in a container.</p>
+<p>One of the many benefits <code>docker compose</code> is that when you change the code in the <code>src/api</code> directory, the changes will be reflected in the container, this is because we mounted the <code>src/api</code> directory as a volume in the container.</p>
+<blockquote>
+<p>This does not mean that the code in the container is changed! When you want to run the container directly, you will have to rebuild the image using <code>docker build</code> command.</p>
+</blockquote>
+<p>Once you make sure that you can curl the API locally, you can start the process of deploying the application to AWS.</p>
+<h2 id="deploying-on-aws">Deploying on AWS</h2>
+<p>To deploy the application on AWS, we will use AWS ECS Fargate, which is a serverless compute engine for containers that allows running containers without managing servers or clusters.</p>
+<p>The first step is to make the docker container available on AWS, to do so, we will push the Docker image to AWS Elastic Container Registry (ECR).</p>
+<h3 id="pushing-the-docker-image-to-aws-ecr">Pushing the Docker image to AWS ECR</h3>
+<p>Go to the AWS Management Console, and navigate to the ECR service. Create a new repository for your Docker image, e.g. <code>ai-chatbot-medical</code>.
+Once the repository is created, you will see instructions on how to push the Docker image to ECR.
+It is a three-step process:</p>
+<ol>
+<li>Authenticate Docker to the ECR registry</li>
+<li>Tag the Docker image</li>
+<li>Push the Docker image to the ECR repository</li>
+</ol>
+<p>In our case, we built the docker image locally when we ran <code>docker compose up</code>, however, it is better to rebuild the image
+again to make sure the image is updated with the latest code changes.</p>
+<p>Also, the AWS command tags the image with the <code>latest</code> tag, which is not recommended and might give you a headache later on when you want to upload a newer container.
+It is better to tag the image with a version number, e.g. <code>v1.0.0</code> or a commit hash, this helps you identify the image later and it helps AWS fetch the new image when you update the application.</p>
+<blockquote>
+<p>It turns out that AWS might have a problem fetching the newest image if you use the same tag!</p>
+</blockquote>
+<h3 id="deploying-the-application-on-aws-ecs-fargate">Deploying the application on AWS ECS Fargate</h3>
+<p>Once the Docker image is pushed to ECR, we can deploy the application on ECS Fargate. This is the step that runs the application in the cloud.</p>
+<h4 id="task-definition">Task Definition</h4>
+<p>Before we create the service, we need to create a &ldquo;task definition&rdquo;. A task definition is a blueprint for your application, it specifies the Docker image to use, the resources needed, and the environment variables to set.</p>
+<blockquote>
+<p>It is important to get this part right, otherwise, you will get errors later when you try to run the service.
+The most important part is specifying the permissions needed for the task to run.</p>
+</blockquote>
+<p>Here are the steps to create a task definition (this is a form-like page on AWS):</p>
+<p><img src="./media/task_definitions.png" alt="Task definitions"></p>
+<ol>
+<li>Go to <strong>ECS &gt; Task definitions</strong> and create a new task definition.</li>
+<li>Select the <strong>Fargate</strong> launch type.</li>
+<li>In the task definition settings, give it a name (keep a -task suffix as a best practice).</li>
+<li>In <strong>Task Execution Role</strong>, you must give permission to the task so that it is able to run, attach <code>ecsTaskExecutionRole</code></li>
+<li>In <strong>Task Role</strong>, you must specify some permissions to allow ECS to interact with the Docker container, this includes <code>CloudWatchLogsFullAccess</code>,  <code>AmazonEC2ContainerRegistryReadOnly</code>, and in case you&rsquo;re using AWS Secrets Manager, <code>SecretsManagerReadWrite</code>. Note that you have to create the rule that will be assigned in <strong>Task role</strong> yourself, you can do so from IAM &gt; Roles.</li>
+<li>Add a container to the task definition, give it a name, and specify the Docker image and the port mappings (e.g. 8000:8000).</li>
+<li>Add the secrets under <strong>Environment &gt; Secrets</strong>.</li>
+<li>Click &ldquo;Add&rdquo; then &ldquo;Create&rdquo; to create the task definition.</li>
+</ol>
+<h4 id="ecs-service">ECS Service</h4>
+<p>Here are the steps for creating the ECS service:</p>
+<ol>
+<li>Go to ECS &gt; Clusters and create a new cluster, select the <strong>Networking only</strong> option, and give it a name, (keep a -cluster suffix to avoid confusion with the service name).</li>
+<li>For VPC/Subnets, select or let AWS create a new VPC.</li>
+<li>Inside the cluster, go to <strong>Services &gt; Create</strong>, you have to configure the service:
+<ol>
+<li>Launch type: <strong>Fargate</strong>.</li>
+<li>Task Definition: select the task definition you created earlier.</li>
+<li>Cluster: select the cluster you created earlier.</li>
+<li>Service name: give it a name (keep a -service suffix to avoid confusion with the cluster name).</li>
+<li>Number of tasks: set it to 1.</li>
+<li>Netowrking: select subnets and assign a security group, you have to check the box for <strong>Auto assign public IP</strong> if you want to access the service from the internet.</li>
+<li>Load balancer: this is needed for production, you can skip it, I will cover it in a future blog.</li>
+</ol>
+</li>
+<li>Click &ldquo;Next&rdquo; and review the settings, then click &ldquo;Create Service&rdquo;.</li>
+</ol>
+<h4 id="traffic-to-ports">Traffic to ports</h4>
+<p>Now, you should have a running service! Congratulations! However, if you try to access the service using the public IP address, you will not get anything, bummer!</p>
+<p>This is because the service is not configured to allow traffic to port 8000, you need to add a rule to the security group that allows traffic to this port.</p>
+<ol>
+<li>Go to <strong>EC2 &gt; Security Groups</strong> and find the security group that was created for the ECS service.</li>
+<li>Click on the security group and go to the <strong>Inbound rules</strong> tab.</li>
+<li>Click on <strong>Edit inbound rules</strong> and add a new rule:
+<ul>
+<li>Type: <strong>Custom TCP</strong></li>
+<li>Protocol: <strong>TCP</strong></li>
+<li>Port Range: <strong>8000</strong> (or other port if you specified a different one in the task definition)</li>
+<li>Source: <strong>0.0.0.0/0</strong> (or your IP address if you want to restrict access)</li>
+</ul>
+</li>
+<li>Click <strong>Save rules</strong>.</li>
+</ol>
+<p>Now, you should be able to access the service using the public IP address of the ECS service, e.g. <code>http://&lt;public-ip&gt;:8000/</code>.
+You can find this public-ip address in the ECS service details page, under the <strong>Tasks</strong> tab, click on the task ID, and you will see the public IP address in the task details.</p>
+<h3 id="curling-the-api">Curling the API</h3>
+<p>If everything is working fine, you should be able to curl the API like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -X POST <span style="color:#e6db74">&#34;http://&lt;public-ip&gt;:8000/chat/&#34;</span> -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#34;{\&#34;query\&#34;:\&#34;Hello doctor, I was hiking a few days ago, I felt something went into my eye, the next day, my eye is full of tears and it&#39;s barely opened. What do you recommend?\&#34;}&#34;</span>
+</code></pre></div><p>You should get an answer from the chatbot, if that&rsquo;s the case, congratulations! You have successfully deployed a RAG chatbot on AWS ECS Fargate.</p>
+<h4 id="notes">Notes</h4>
+<p>A few things to note here:</p>
+<ul>
+<li>The service might take a few minutes to start, so be patient</li>
+<li>If you want to turn off the task, you have to click on <strong>Update service</strong> and set the number of tasks to 0, this will stop the task and you will not be charged for it. Stopping the task manually will trigger a new task to start! So, make sure to set the number of tasks to 0</li>
+<li>Once you stop the task, the public IP address will change when you create a new one, so you will have to update the curl command with the new IP address (this is why it is better to use a load balancer that gives a stable URL to use)</li>
+<li>The running task is what costs the most, in my case, 9 days of constant running cost me around 15$</li>
+<li>The service itself is not expensive, less than a dollar a month</li>
+<li>The secrets manager is also cheap, I ended up paying 0.1$ a month</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this blog, we learned how to deploy a RAG chatbot on AWS ECS Fargate using Docker. We covered the steps to make the code deployment-friendly, create a Docker image, push it to AWS ECR, and finally deploy it on ECS Fargate.</p>
+<p>I found doing this quite hard, I couldn&rsquo;t do it without LLMs, I had to ask for help from multiple models and figure stuff on my own when the LLMs were not able to help me.
+This will probably be challenging for you as well if this domain is new to you, I hope this blog can help.</p>
+<p>In the next blog, I will cover how to set up a load balancer for the service, this will allow you to access the service using a stable URL and it will also allow you to scale the service if needed.
+I will also improve the chatbot and deploy a simple UI on a different service, so stay tuned!</p>
 
         </div>
 
@@ -464,13 +671,15 @@
   
 
   
+
+  
     
       
       <div class="col-md-6 previous-article">
-        <a href="/posts/ai/qdrant_chatbot/" class="btn btn-outline-info">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
           <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
           <br />
-          <span>RAG Chatbot: Vector Database Approach</span>
+          <span>Estimating pi</span>
         </a>
       </div>
       
@@ -484,16 +693,14 @@
           
         
         <div class="col-md-6 next-article">
-          <a href="/posts/ai/medical_chatbot/" class="btn btn-outline-info">
+          <a href="/posts/ai/qdrant_chatbot/" class="btn btn-outline-info">
             <span>Next <i class="fas fa-chevron-circle-right"></i></span>
             <br />
-            <span>RAG Medical Chatbot</span>
+            <span>RAG Chatbot: Vector Database Approach</span>
           </a>
         </div>
       
     
-  
-
   
 
 </div>
