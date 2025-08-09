@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/infra/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>AWS ALB and Render.com Deployment</title>
+      <link>http://AhmadHamze.github.io/posts/infra/load_balancer/</link>
+      <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/infra/load_balancer/</guid>
+      <description>In the previous blog RAG Chatbot: AWS Deployment, we walked through deploying a RAG chatbot using AWS ECS Fargate. This time, we&amp;rsquo;ll take it a step further by setting an Application Load Balancer (ALB) for a stable, production-ready endpoint, and we&amp;rsquo;ll also look at a simpler alternative on Render.com.
+Application Load Balancer (ALB) The app is currently deployed with an IP address assigned to the running task of the ECS service.</description>
+    </item>
+    
+    <item>
       <title>RAG Chatbot: AWS Deployment</title>
       <link>http://AhmadHamze.github.io/posts/infra/chatbot_deployment/</link>
       <pubDate>Sun, 01 Jun 2025 00:00:00 +0000</pubDate>

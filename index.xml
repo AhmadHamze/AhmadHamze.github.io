@@ -6,7 +6,7 @@
     <description>Recent content on Ahmad Hamze Homepage</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cellular Automata</title>
       <link>http://AhmadHamze.github.io/posts/cellular-automata/cellular-automata/</link>
@@ -24,6 +24,16 @@
       <guid>http://AhmadHamze.github.io/posts/estimating-pi/</guid>
       <description>Using the Monte-Carlo simulation to estimate the value of &amp;#x03C0;First of all, let&#39;s talk briefly about what is a Monte-Carlo simulation.
 Simply put, it is a computational method that uses a large number of random samples to obtain a result. Itis used in awide range of disciplines like mathematics, computer graphics, and physical sciences.In this blog, we will see how we can use this method to estimate the value of the mathematical constant \(\pi \).</description>
+    </item>
+    
+    <item>
+      <title>AWS ALB and Render.com Deployment</title>
+      <link>http://AhmadHamze.github.io/posts/infra/load_balancer/</link>
+      <pubDate>Sat, 09 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/infra/load_balancer/</guid>
+      <description>In the previous blog RAG Chatbot: AWS Deployment, we walked through deploying a RAG chatbot using AWS ECS Fargate. This time, we&amp;rsquo;ll take it a step further by setting an Application Load Balancer (ALB) for a stable, production-ready endpoint, and we&amp;rsquo;ll also look at a simpler alternative on Render.com.
+Application Load Balancer (ALB) The app is currently deployed with an IP address assigned to the running task of the ECS service.</description>
     </item>
     
     <item>

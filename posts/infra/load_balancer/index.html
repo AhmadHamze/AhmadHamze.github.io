@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AWS ALB and Render.com Deployment</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="Using an ALB and deploying on Render.com" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/ai/">AI Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/ai/qdrant_chatbot/">Chatbot with Vector Database and FastAPI</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/ai/medical_chatbot/">Medical Chatbot</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/infra/">Infrastructure &amp; DevOps</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/infra/load_balancer/">ALB and Render.com</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/infra/chatbot_deployment/">Chatbot Deployment</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/apology-frontend/">With due apology to front-end developers</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/changing-jobs/">Changing Jobs and Tech Stacks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/sunset-custom.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>August 9, 2025</p>
+        </div>
+
+        <div class="title">
+          <h1>AWS ALB and Render.com Deployment</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>In the previous blog <a href="https://ahmadhamze.github.io/posts/infra/chatbot_deployment/">RAG Chatbot: AWS Deployment</a>, we walked through deploying a RAG chatbot using AWS ECS Fargate.
+This time, we&rsquo;ll take it a step further by setting an Application Load Balancer (ALB) for a stable, production-ready endpoint, and we&rsquo;ll also look at a simpler alternative on Render.com.</p>
+<h2 id="application-load-balancer-alb">Application Load Balancer (ALB)</h2>
+<p>The app is currently deployed with an IP address assigned to the running task of the ECS service.
+Once that task is stopped or terminated, the IP address changes, breaking any clients pointing to it.</p>
+<p>To avoid this issue, we can use an Application Load Balancer (ALB) to provide a stable DNS name that always routes to the right task.</p>
+<h3 id="setting-up-the-alb">Setting Up the ALB</h3>
+<p>First, just like we did in the previous blog, make sure you already have the following:</p>
+<ol>
+<li>An ECS Cluster</li>
+<li>A running service using Fargate (you might need to recreate one that accepts an ALB)</li>
+<li>The ECS task exposing port 8000 (or whatever port your application uses)</li>
+<li>A VPC with at least two subnets in different Availability Zones (AZs)</li>
+</ol>
+<h3 id="creating-the-alb">Creating the ALB</h3>
+<p>First, you need to create a <strong>Target Group</strong>:</p>
+<ol>
+<li>Go to EC2 -&gt; Target Groups</li>
+<li>Click &ldquo;Create target group&rdquo;</li>
+<li>Choose:
+<ol>
+<li>Target type: IP</li>
+<li>Protocol: HTTP</li>
+<li>Port: 8000 (or whatever port your application uses)</li>
+<li>VPC: Select the VPC you created earlier</li>
+</ol>
+</li>
+<li>Click Next, skip registering targets for now</li>
+<li>Name it <code>chatbot-api-tg</code></li>
+<li>Click &ldquo;Create target group&rdquo;</li>
+</ol>
+<p>Now, to create the <strong>ALB</strong>:</p>
+<ol>
+<li>Go to EC2 -&gt; Load Balancers</li>
+<li>Click &ldquo;Create Load Balancer&rdquo; -&gt; &ldquo;Application Load Balancer&rdquo;</li>
+<li>Set:
+<ol>
+<li>Name: <code>chatbot-api-alb</code></li>
+<li>Scheme: Internet-facing</li>
+<li>IP address type: IPv4</li>
+</ol>
+</li>
+<li>Select at least two public subnets in different AZs</li>
+<li>Security Group:
+<ol>
+<li>Either create a new SG or use the existing one</li>
+<li>Allow Inbound HTTP (port 80) from anywhere</li>
+</ol>
+</li>
+<li>Listener:
+<ol>
+<li>Create a listener on HTTP:80</li>
+<li>Default action: Forward to <code>chatbot-api-tg</code></li>
+</ol>
+</li>
+<li>Click &ldquo;Create Load Balancer&rdquo;</li>
+</ol>
+<p>Once the ALB is created, you can update the ECS service to use it.</p>
+<blockquote>
+<p>You might not be able to add the ALB to the existing service if it was not set up to use one initially.
+In this case you will need to recreate the ECS service with the ALB configuration.</p>
+</blockquote>
+<p>Whether you updated the existing service or recreated it, you have to set up the load balancer:</p>
+<ol>
+<li>Select <code>Application Load Balancer</code></li>
+<li>Choose the ALB you created earlier</li>
+<li>Listener: choose <code>HTTP: 80</code></li>
+<li>Target group: choose <code>chatbot-api-tg</code>, type: <code>ip</code>, and port: 8000</li>
+<li>Health check path: Use <code>/health</code> or any simple endpoint that returns 200 (e.g. <code>/</code>)</li>
+</ol>
+<p>After setting up the load balancer, you should be able to access your chatbot using the ALB&rsquo;s DNS name.
+The DNS name can be found in the AWS Management Console under the EC2 section, in the <strong>Load Balancers</strong> page, it looks like this:
+<code>chatbot-api-alb-1234567890.eu-north-1.elb.amazonaws.com</code></p>
+<p>You can use this DNS name to access your chatbot through the ALB:</p>
+<blockquote>
+<p>In <code>.env</code>, set <code>CHATBOT_API_URL</code> to <code>http://chatbot-api-alb-1234567890.eu-north-1.elb.amazonaws.com/chat</code></p>
+</blockquote>
+<p>If all goes well, you should now be able to access your chatbot through the ALB.
+You can stop the task, then restart it, you will not need to update anything in the app.</p>
+<h3 id="a-quick-reality-check">A Quick Reality Check</h3>
+<p>I have to admit this wasn&rsquo;t easy, following the above is actually hard if you&rsquo;re a beginner.
+I stumbled a lot while setting this up, and I hope this guide helps you avoid some of the mistakes I made.</p>
+<p>For instance, I had to recreate the ECS service because I couldn&rsquo;t find the ALB configuration when editing.
+I also somehow ended up creating two load balancers and trying to use the one that is not attached to any service, which was a waste of time.</p>
+<p>So, if you find the above difficult to follow, or simply unclear, don&rsquo;t worry, this is completely normal.</p>
+<h2 id="deploying-on-rendercom">Deploying on Render.com</h2>
+<p>After wrestling with AWS, I developed a great appreciation and admiration for the AWS wizards that
+I&rsquo;ve worked with. I didn&rsquo;t like how costly AWS was either, so I started looking for alternatives.</p>
+<p>That&rsquo;s how I discovered <a href="https://render.com/">Render.com</a>.</p>
+<blockquote>
+<p>No, I&rsquo;m not sponsored by them, although I wish that was the case!</p>
+</blockquote>
+<p>This platform is amazing, it is much easier to deploy applications compared to AWS, it also has a free tier that allows you to test deploying your applications without any costs whatsoever.</p>
+<p>It also solves the problem that necessitated the use of an ALB in the first place.</p>
+<p>Because Render generates a unique domain for each service, you don&rsquo;t need to worry about setting up a load balancer manually.</p>
+<h3 id="how-to-deploy-on-rendercom">How to deploy on Render.com</h3>
+<ol>
+<li>Sign up for a free account on <a href="https://render.com/">Render.com</a>.</li>
+<li>Create a new web service.</li>
+<li>Connect your GitHub repository containing the chatbot code.</li>
+<li>Set the build command (if needed) and the start command (e.g., <code>python app.py</code>).</li>
+<li>Set the environment variables, such as the AI API keys and the database connection string.</li>
+<li>Choose the free plan and click &ldquo;Create Web Service&rdquo;.</li>
+</ol>
+<p>Render will automatically handle the deployment, and you will get a unique URL for your service.</p>
+<p>If anything goes wrong during deployment, the logs are quite easy to understand, if you could handle AWS, Render will feel like a child&rsquo;s play.</p>
+<h2 id="comparison">Comparison</h2>
+<p>While AWS provides powerful tools for managing your infrastructure, it can be complex and challenging for beginners.</p>
+<p>Render.com offers a simpler alternative that abstracts away much of the complexity, allowing you to focus on building your application.</p>
+<table>
+<thead>
+<tr>
+<th>Feature / Factor</th>
+<th>AWS (with ALB)</th>
+<th>Render.com</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ease of Setup</strong></td>
+<td>Steep learning curve, multiple services to configure</td>
+<td>Very straightforward, deploy in minutes</td>
+</tr>
+<tr>
+<td><strong>Deployment Speed</strong></td>
+<td>Slower: requires manual setup of ECS, ALB, networking</td>
+<td>Faster: connect repo, set commands, done</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Highly scalable with fine-grained control</td>
+<td>Scales automatically, but fewer configuration options</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Pay-as-you-go, can get expensive for small projects</td>
+<td>Free tier for small apps; predictable paid plans</td>
+</tr>
+<tr>
+<td><strong>Custom Domains</strong></td>
+<td>Supported, requires Route 53 or similar</td>
+<td>Supported, built-in with SSL</td>
+</tr>
+<tr>
+<td><strong>Load Balancing</strong></td>
+<td>Requires manual setup (ALB, target groups, listeners)</td>
+<td>Automatic: each service gets its own stable URL</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>Extremely flexible, can integrate with hundreds of AWS services</td>
+<td>More limited feature set, focused on simplicity</td>
+</tr>
+<tr>
+<td><strong>Learning Value</strong></td>
+<td>Great for learning cloud infrastructure</td>
+<td>Great for quick prototyping and MVPs</td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td>Production-grade apps needing advanced networking and infrastructure control</td>
+<td>Developers who want fast deployment with minimal configuration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="which-should-you-choose">Which should you choose?</h2>
+<p>If you’re building a production-grade application that needs advanced networking, fine-grained scaling, or integration with a wide range of cloud services, AWS with an ALB is worth the extra effort.
+You’ll get enterprise-level reliability at the cost of complexity.</p>
+<p>If speed, simplicity, and lower costs matter more, especially for prototypes, MVPs, or personal projects, Render.com is the clear winner.
+In many cases, you can even start on Render and later migrate to AWS when your infrastructure needs grow.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/infra/load_balancer/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/infra/chatbot_deployment/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>RAG Chatbot: AWS Deployment</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
