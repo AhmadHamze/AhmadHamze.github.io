@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image manipulation with convolution using Julia</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="Applying convolutions on images" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png">Ahmad Hamze Homepage</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_3.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_3.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/earthquakes/">Mapping Earthquakes Locations on a Map</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/pictionary/">Pictionary using websockets</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/ai/">AI Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/ai/qdrant_chatbot/">Chatbot with Vector Database and FastAPI</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/ai/medical_chatbot/">Medical Chatbot</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/algorithmics/">Algorithmics Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/algorithmics/memoization/">Recursion with Memoization</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/automation/">Automation Programs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/puppeteer-vs-selenium/">Puppeteer vs Selenium</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/automation/selenium-speed-test/">Selenium Speed Test</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/cellular-automata/">Cellular Automata</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/infra/">Infrastructure &amp; DevOps</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/infra/load_balancer/">ALB and Render.com</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/infra/chatbot_deployment/">Chatbot Deployment</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/mathematics/">Mathematics</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/diffusion/">From random walk to diffusion</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/mathematics/convolution/">Image manipulation with convolution</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/mathematics/c&#43;&#43;-matrix/">Simple C&#43;&#43; matrix calculation</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/opinion/">Opinion Blogs</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/apology-frontend/">With due apology to front-end developers</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/advice-to-myself/">Advice to my past self</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/changing-jobs/">Changing Jobs and Tech Stacks</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/opinion/first-react-job/">Web Dev Learned Lessons</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/react/">React Applications</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/trivia-quiz/">React Trivia Quiz</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/react/storybook-trivia-quiz/">Storybook with React</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(http://AhmadHamze.github.io/posts/mathematics/convolution/hero.png);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/sunset-custom.jpg'/>
+          <h5 class="author-name">Ahmad Hamze</h5>
+          <p>February 24, 2026</p>
+        </div>
+
+        <div class="title">
+          <h1>Image manipulation with convolution using Julia</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <p>In the past month, I started learning the <a href="https://julialang.org/">Julia</a> programming language, it was created by mathematicians for mathematicians. It is mostly used for scientific research and teaching purposes. I was always drawn to it, but for some reason I kept procrastinating learning it until recently.</p>
+<p>In this blog, I will share what I learned from the amazing <a href="https://computationalthinking.mit.edu/Fall24">Introduction to Computational Thinking</a> course taught by Professor <a href="https://math.mit.edu/~edelman/index.php">Alan Edelman</a>, one of the cofounders of the Julia language, and others.</p>
+<p>You can find the code used in this blog <a href="https://github.com/AhmadHamze/PlutojlProjects">here</a>.</p>
+<blockquote>
+<p>Heads Up! If you intend on taking the course, do not continue reading this blog, as it spoils some problem sets.</p>
+</blockquote>
+<h1 id="image-manipulation-with-julia">Image manipulation with Julia</h1>
+<p>When learning a new programming language, one usually starts with the basic syntax, data structures, and loops. The way I will do it here is by jumping directly to hands-on problems like image manipulation.
+When you learn how to manipulate arrays in a programming language, a typical exercise is to manipulate images, which are fundamentally arrays of pixels, for example, you would write code to detect the edges inside an image.</p>
+<p>In this blog, I will show a simple edge detection algorithm and another, more sophisticated one that uses the mathematical concept of <a href="https://en.wikipedia.org/wiki/Convolution">convolution</a>.</p>
+<h2 id="simple-edge-detection-of-an-image">Simple edge detection of an image</h2>
+<p>I will be using a Julia library called <a href="https://plutojl.org/">Pluto.jl</a>, which creates a notebook where you can run Julia code interactively.</p>
+<blockquote>
+<p>Pluto notebooks are similar to Jupyter notebooks, but they are more interactive, manage their own packages, and are written completely with Julia.</p>
+</blockquote>
+<p>If you haven&rsquo;t seen this problem before, the main idea is to check the surroundings of every pixel and see if the pixels around this pixel are quite different than each other. If that is the case, this means that the pixel is an &ldquo;edge pixel&rdquo;, i.e., a pixel where a noticeable change occurred.</p>
+<blockquote>
+<p>Note that a pixel is nothing but a combination of the three colors red, green, and blue. In Julia, we can create a pixel like this <code>RGB(red_value, green_value, blue_value)</code> where the values are floating numbers between 0 and 1.</p>
+</blockquote>
+<div align="center">
+  <img src="./images/edge_pixel.png" alt="Edge Pixel" />
+</div>
+<p>The image above demonstrates what an edge pixel might look like. The circled pixel has green pixels on the left and purple pixels on the right; this is a considerable difference to consider the pixel itself an edge pixel. Note that the color of the targeted pixel itself is not important.</p>
+<p>Since the objective is to show the edges only, we can change the color of the edge pixels to white and change all other pixels to black. This will leave us with an image showing the edges only.</p>
+<h3 id="edge-cases">Edge cases</h3>
+<p>Once you start thinking about the code that implements the logic above, the first obstacle you will face is what to do with pixels at the edge of the image.</p>
+<p>The code needs to always access pixels on the sides, so what do we do when there are no sides?
+There are many ways to address this issue. In this, blog we will see two different ways. First, I will keep things easy and ignore the edge completely.
+So, instead of looping through all the pixels of the image, I will only loop through the interior pixels, leaving the ones on the four edges.</p>
+<p>The code will also check the left, right, top, and bottom pixels of each interior pixel. Again, this is to keep things as simple as possible, but you can use a larger neighborhood to get better results.</p>
+<h3 id="simple-edge-detection-code">Simple edge detection code</h3>
+<p>Before diving into the code, it will be useful to see a quick intro to Julia matrices.</p>
+<h4 id="julia-matrix-notes">Julia matrix notes</h4>
+<p>We can create a matrix like this</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">m <span style="color:#f92672">=</span> [
+  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span>;
+  <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">5</span> <span style="color:#ae81ff">6</span>;
+  <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">9</span>
+  ]
+</code></pre></div><ul>
+<li>To access the first element of the matrix (that is, the number 1): <code>m[1,1]</code> (In Julia, arrays are indexed starting by 1, not 0)</li>
+<li>You can access a portion of the matrix, e.g. <code>m[2:end, 2:end]</code> gives the matrix <code>[5 6; 8 9]</code></li>
+<li>You can access a property of an object (a structure to be more precise) like this <code>obj.property</code></li>
+<li>Functions always return in Julia; the <code>return</code> keyword can be used, but it is optional</li>
+<li>Julia offers something called the &ldquo;broadcasting operator&rdquo;, which can be used with normal operators (e.g. +, -, *, &gt;, &lt;) to broadcast the operator on an iterable, e.g. <code>(1, 2, 3) .&gt; 2</code> yields <code>(false, false, true)</code></li>
+</ul>
+<h4 id="code">Code</h4>
+<p>We will have a function that takes an image and iterates through the inner parts of the image while identifying each pixel as an edge pixel or not.</p>
+<p>First, here is the function that checks every pixel</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> check_pixel_neighboor(neighboor<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractMatrix</span>)
+  <span style="color:#75715e"># checks the pixels on top and bottom, if the difference is big, then make it black</span>
+  <span style="color:#75715e"># do the same when comparing right and left</span>
+  threshold <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span>
+  vertical_change <span style="color:#f92672">=</span> abs(neighboor[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> neighboor[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>])
+  horizontal_change <span style="color:#f92672">=</span> abs(neighboor[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> neighboor[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+  <span style="color:#75715e"># The broadcasting operator compares each element of the tuple with &#39;threshold&#39;</span>
+  <span style="color:#75715e"># if one is true than the condition is valid</span>
+  <span style="color:#66d9ef">if</span> any((vertical_change<span style="color:#f92672">.</span>r, vertical_change<span style="color:#f92672">.</span>g, vertical_change<span style="color:#f92672">.</span>b) <span style="color:#f92672">.&gt;</span> threshold)
+    <span style="color:#66d9ef">return</span> RGB(<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>)
+  <span style="color:#66d9ef">elseif</span> any((horizontal_change<span style="color:#f92672">.</span>r, horizontal_change<span style="color:#f92672">.</span>g, horizontal_change<span style="color:#f92672">.</span>b) <span style="color:#f92672">.&gt;</span> threshold)
+	  <span style="color:#66d9ef">return</span> RGB(<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>)
+  <span style="color:#66d9ef">else</span>
+	  <span style="color:#66d9ef">return</span> RGB(<span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0</span>)
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>Quite simple, it is only checking the vertical and horizontal changes, if the change in one of the directions is large enough, i.e., exceeds the threshold, return a white pixel, otherwise return a black pixel. Notice that the function takes the neighbor only and not the specific pixel because we don&rsquo;t need it.</p>
+<p>Now, for the function that runs the checking on all the interior pixels</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> simple_edge_detection(image<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractMatrix</span>)
+	s <span style="color:#f92672">=</span> size(image) <span style="color:#75715e"># gives a tuple describing the size e.g. (200, 300)</span>
+	[
+		check_pixel_neighboor(image[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]) <span style="color:#75715e"># sends 9 pixels in total, we only check 4</span>
+		<span style="color:#66d9ef">for</span> 
+		i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>s[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>s[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#75715e"># start from the second row/column and stop befor the last row/column</span>
+	] <span style="color:#75715e"># result_image is returned even though &#39;return&#39; is not specified</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>If you have done this before, the first thing you probably noticed is how easy and small the syntax is. I remember doing the same thing with C, and it was much longer and harder to write.</p>
+<p>You can also see that the code is using a list comprehension just like in Python; the only difference is that Julia makes it
+easier to create matrices, which is what the <code>,</code> is doing in the list comprehension.</p>
+<blockquote>
+<p>To see this better, you can create a table of multiplication like this <code>[i * j for i in 1:10, j in 1:10]</code></p>
+</blockquote>
+<h3 id="result">Result</h3>
+<p>I will apply the code on this not-so-clean cat</p>
+<div align="center">
+  <img src="./images/cat.png" alt="dirty cat" />
+</div>
+<blockquote>
+<p>This is not my cat, I found it on the streets, calm down!</p>
+</blockquote>
+<p>And this is the result</p>
+<div align="center">
+  <img src="./images/simple_edge_cat.png" alt="simple edge cat" />
+</div>
+<p>The simple edge detection function seems to work. What stands out the most to me is the cat&rsquo;s mustache, nose, and eye countour.
+These regions have strong colors that are different than the neighboring regions, which is why their edges show clearly.
+Because the cat has colorful fur, it is being detected as edgy in many regions. Also, the rock behind the cat got its fair share of edginess as well.</p>
+<h2 id="convolution">Convolution</h2>
+<p>In the context of image processing, convolution is the process of adding each element of the image to its local neighbors, weighted by a kernel. You can see a cool animation of the concept on this <a href="https://en.wikipedia.org/wiki/Kernel_(image_processing)#Convolution">Wikipedia</a> page.</p>
+<p>With convolution, you can apply many linear transformations to an image by just using different kernels.</p>
+<p>If you didn&rsquo;t check the animation above, here is an image showing a part of it</p>
+<div align="center">
+  <img src="./images/convolution_2d.png" alt="2D convolution" />
+</div>
+<p>The input represents the image, and the kernel is the matrix to be used on the image. The center of the kernel (5 in this example) will be centered on the targeted pixel, and the rest of the kernel&rsquo;s element will be multiplied by the neighboring pixels.</p>
+<h3 id="edge-cases-1">Edge cases</h3>
+<p>This opens up the boundary conditions question again: how to deal with the pixels at the edge? What are we supposed to multiply the kernel&rsquo;s elements with if there are no pixels?
+The approach I took in simple edge detection can work here, but to be fair, it is kind of running away from the question.</p>
+<p>This time, I will use the same method shown in the animation, that is, using the closest available value.</p>
+<p>Back to the example, the input cell containing 7 is where the kernel is centered (7 will be multiplied by 5). There is nothing to the left of 7, so we use the number closest to this location (i.e., 7); therefore, we multiply 7 by -1 (the element to the left of 5 in the kernel).</p>
+<h3 id="convolution-1d">Convolution 1D</h3>
+<p>It is best to start with the simple case of one-dimensional arrays; not only does it help with seeing the method clearly, but it also helps with writing the code.
+Because Julia offers <a href="https://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatch</a>, we can reuse some of the 1D functions in the 2D case.</p>
+<h4 id="code-1">Code</h4>
+<p>We want to convolve a vector with a 1-D kernel (i.e., another vector), and we want to handle the edge case by extending the vector from both sides with the closest value, i.e., the first value if the extension is at the beginning and the last value if the extension is at the end.</p>
+<p>We start with the <code>extend</code> function which simply extends the vector</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#75715e"># The argument i is playing the role of the index, if the index is within range</span>
+<span style="color:#75715e"># the corresponding value is returned, otherwise, the closest value is returned</span>
+<span style="color:#66d9ef">function</span> extend(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>, i)
+	n <span style="color:#f92672">=</span> size(v)[<span style="color:#ae81ff">1</span>]
+	<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> i <span style="color:#f92672">&lt;=</span> n
+		<span style="color:#66d9ef">return</span> v[i]
+	<span style="color:#66d9ef">elseif</span> i <span style="color:#f92672">&gt;</span> n
+		<span style="color:#66d9ef">return</span> v[<span style="color:#66d9ef">end</span>]
+	<span style="color:#66d9ef">else</span>
+		<span style="color:#66d9ef">return</span> v[<span style="color:#ae81ff">1</span>]
+	<span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>Now that we have a function that takes care of the edge cases, we can use it in the 1D convolve function.
+The process is similar to the sliding window technique; the center of the kernel is always centered at the targeted element, and then the window slides from the beginning to the end.
+The window is a region with length <code>2*l + 1</code> going from <code>-l</code> to <code>l</code> and passing by 0, which is the center of the kernel.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> convolve(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>, k<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>)
+	size_k <span style="color:#f92672">=</span> size(k)[<span style="color:#ae81ff">1</span>]
+  <span style="color:#75715e"># Computing l such that the center of the kernel would be the center of the window of length 2*l + 1</span>
+	l <span style="color:#f92672">=</span> (size_k <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">÷</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># integer division</span>
+  <span style="color:#75715e"># Adjusting l in case size_k is even, this is to ensure having the correct window size</span>
+	l_adjusted <span style="color:#f92672">=</span> size_k <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> l
+	<span style="color:#66d9ef">return</span> [
+    sum(
+      <span style="color:#75715e"># grabbing the values of the window then using broadcast mulitplication to multiply</span>
+      <span style="color:#75715e"># each element with the kernel k. (k is inverted to follow the correct mathematical convention of convolution)</span>
+      [extend(v, idx) <span style="color:#66d9ef">for</span> idx <span style="color:#66d9ef">in</span> i <span style="color:#f92672">-</span> l<span style="color:#f92672">:</span> i <span style="color:#f92672">+</span> l_adjusted] <span style="color:#f92672">.*</span> k[<span style="color:#66d9ef">end</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>]
+      ) <span style="color:#75715e"># summing the result of each window</span>
+      <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>size(v)[<span style="color:#ae81ff">1</span>] <span style="color:#75715e"># going from the beginning of the vector till the end</span>
+      ]
+<span style="color:#66d9ef">end</span>
+</code></pre></div><blockquote>
+<p>Notice the ÷ symbol! You can use mathematical notation in Julia by writing LaTeX, e.g. \div gives ÷</p>
+</blockquote>
+<p>You&rsquo;re probably wondering why the kernel is inverted in the code. This is the proper way to do things given the mathematical notation of convolution. This is beyond the scope of this blog, but this is the formula for the one-dimensional case</p>
+<div align="center">
+  <img src="./images/equation_1d.png" alt="1D equation" />
+</div>
+<blockquote>
+<p><code>m</code> in the above formula runs between <code>-l</code> and <code>l</code>, where <code>2*l + 1</code> is the length of <code>k</code>.</p>
+</blockquote>
+<p>We can verify that the code is consistent with the formula using a quick test</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">begin</span>
+  v <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">10000</span>]
+  k <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>]
+  convolve(v, k)
+<span style="color:#66d9ef">end</span>
+<span style="color:#75715e"># Answer should be [11, 110, 1100, 11000, 20000]</span>
+</code></pre></div><h3 id="convolution-2d">Convolution 2D</h3>
+<p>We just need to extend the thinking into the two-dimensional case. The first step is to write a new <code>extend</code> function that takes care of the edge cases, as we saw in the animated example from Wikipedia.</p>
+<p>In the 2D case, we have to check the horizontal border and the vertical border.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> extend(M<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractMatrix</span>, i, j)
+	num_rows, num_cols <span style="color:#f92672">=</span> size(M)
+	<span style="color:#75715e"># i is outside (too little or too big)</span>
+	<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;</span> i <span style="color:#f92672">||</span> i <span style="color:#f92672">&gt;</span> num_rows
+		<span style="color:#75715e"># j is inside the valid range</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> j <span style="color:#f92672">&lt;=</span> num_cols
+			<span style="color:#75715e"># call the 1d extend on the j-th column of M and i</span>
+			<span style="color:#66d9ef">return</span> extend(M[<span style="color:#f92672">:</span>, j], i)
+		<span style="color:#75715e"># j is too little</span>
+		<span style="color:#66d9ef">elseif</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;</span> j
+			<span style="color:#75715e"># call the 1d extend on the 1st column of M and i </span>
+			<span style="color:#66d9ef">return</span> extend(M[<span style="color:#f92672">:</span>, <span style="color:#ae81ff">1</span>], i)
+		<span style="color:#75715e"># j is too big (the remaining case)</span>
+		<span style="color:#66d9ef">else</span>
+			<span style="color:#75715e"># call the 1d extend on the last column of M and i</span>
+			<span style="color:#66d9ef">return</span> extend(M[<span style="color:#f92672">:</span>, <span style="color:#66d9ef">end</span>], i)
+		<span style="color:#66d9ef">end</span>
+	<span style="color:#75715e"># j is outside (too little or too big)</span>
+	<span style="color:#66d9ef">elseif</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;</span> j <span style="color:#f92672">||</span> j <span style="color:#f92672">&gt;</span> num_cols
+		<span style="color:#75715e"># i is inside the valid range</span>
+		<span style="color:#66d9ef">if</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> i <span style="color:#f92672">&lt;=</span> num_rows
+			<span style="color:#75715e"># call the 1d extend on the i-th row of M and j</span>
+			<span style="color:#66d9ef">return</span> extend(M[i, <span style="color:#f92672">:</span>], j)
+		<span style="color:#75715e"># i is too little</span>
+		<span style="color:#66d9ef">elseif</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;</span> i
+			<span style="color:#75715e"># call the 1d extend on the 1st row of M and j</span>
+			<span style="color:#66d9ef">return</span> extend(M[<span style="color:#ae81ff">1</span>, <span style="color:#f92672">:</span>], j)
+		<span style="color:#75715e"># i is too big (the remaining case)</span>
+		<span style="color:#66d9ef">else</span>
+			<span style="color:#75715e"># call the 1d extend on the last row of M and j</span>
+			<span style="color:#66d9ef">return</span> extend(M[<span style="color:#66d9ef">end</span>, <span style="color:#f92672">:</span>], j)
+		<span style="color:#66d9ef">end</span>
+	<span style="color:#75715e"># The case where everything is good</span>
+	<span style="color:#66d9ef">else</span>
+		<span style="color:#75715e"># return the value at (i,j)</span>
+		<span style="color:#66d9ef">return</span> M[i, j]
+	<span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>Take a close look at the comments of the function to understand what is going on. All that the function is doing is identifying the edge cases and then letting the one-dimensional <code>extend</code> function take care of the rest.</p>
+<p>Now, the two-dimentional <code>convolve</code> function, here we want to center the kernel on the targeted value and slide it over two windows.
+A horizontal one going from <code>-l_rows</code> to <code>l_rows</code>, and a vertical one going from <code>-l_cols</code> to <code>l_cols</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> convolve(M<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractMatrix</span>, K<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractMatrix</span>)
+	m_rows, m_cols <span style="color:#f92672">=</span> size(M)
+	ker_rows, ker_cols <span style="color:#f92672">=</span> size(K)
+	<span style="color:#75715e"># l_rows is such that the horizontal center of the kernel would be the horizontal center of the matrix of length 2*l_rows + 1</span>
+	l_rows <span style="color:#f92672">=</span> (ker_rows <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">÷</span> <span style="color:#ae81ff">2</span>
+	<span style="color:#75715e"># l_cols is such that the vertical center of the kernel would be the vertical center of the matrix of length 2*l_cols + 1</span>
+	l_cols <span style="color:#f92672">=</span> (ker_cols <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">÷</span> <span style="color:#ae81ff">2</span>
+	<span style="color:#75715e"># Adjusting like the 1D case to ensure having the correct window sizes</span>
+	l_rows_adj <span style="color:#f92672">=</span> ker_rows <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> l_rows <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> l_rows
+	l_cols_adj <span style="color:#f92672">=</span> ker_cols <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> l_cols <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span> l_cols
+	<span style="color:#66d9ef">return</span> [
+		sum(
+			<span style="color:#75715e"># The logic is similar to the 1D case, but two dimensional</span>
+			[
+				extend(M, i, j) <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> r <span style="color:#f92672">-</span> l_rows<span style="color:#f92672">:</span>r <span style="color:#f92672">+</span> l_rows_adj, j <span style="color:#66d9ef">in</span> c <span style="color:#f92672">-</span> l_cols<span style="color:#f92672">:</span>c <span style="color:#f92672">+</span> l_cols_adj
+			]
+			<span style="color:#f92672">.*</span> 
+			K[<span style="color:#f92672">:</span>, <span style="color:#66d9ef">end</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>] <span style="color:#75715e"># inverting k to follow the correct mathematical convention</span>
+		)
+		<span style="color:#66d9ef">for</span> r <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>m_rows, c <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>m_cols <span style="color:#75715e"># creating a new matrix convolution matrix from the initial matrix and kernel</span>
+	]
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>The function is really just an extension of the one-dimensional case for the two-dimensional one.</p>
+<p>The kernel matrix is also modified; the columns are inverted to follow the mathematical convention of convolution.
+Here is the two-dimensional formula if you&rsquo;re interested</p>
+<div align="center">
+  <img src="./images/equation_2d.png" alt="convolution equation 2D" />
+</div>
+<p>That&rsquo;s it! We can now use the new <code>convolve</code> function to apply filters to images.
+Let&rsquo;s try the edge detection kernel on the same cat image. You can check <a href="https://en.wikipedia.org/wiki/Kernel_(image_processing)#Details">here</a> to see some interesting kernels.</p>
+<h3 id="result-1">Result</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">begin</span>
+  K_edge <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>]
+  convolve(cat, K_edge)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><div align="center">
+  <img src="./images/convolution_edge.png" alt="edge convolution cat" />
+</div>
+<p>This is what we expected, the quick <code>simple_edge_detection</code> function seems to have done a good job.
+The convolution function is smoother and doesn&rsquo;t show the edges as strongly as the one we created. This is normal, and you can probably make adjustments to <code>simple_edge_detection</code> to try to make them as close as possible.</p>
+<h3 id="other-kernels">Other kernels</h3>
+<p>Now that we have a convolution function, we can try as many filters as we want.</p>
+<p>The sharpen filter</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">begin</span>
+  K_sharpen <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>; <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>]
+  convolve(cat, K_sharpen)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><div align="center">
+  <img src="./images/sharpened.png" alt="convolution sharpen" />
+</div>
+<p>The Gaussian blur</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">begin</span>
+  K_gaussian_blur <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">.*</span> [<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>; <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">2</span>; <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>]
+  convolve(cat, K_gaussian_blur)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><div align="center">
+  <img src="./images/blurred.png" alt="convolution Gaussian blur" />
+</div>
+<p>We can even try a random filter; here is one that is not symmetrical unlike the previous filters</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">begin</span>
+  K_random <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>; <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; <span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>]
+  convolve(cat, K_random)
+<span style="color:#66d9ef">end</span>
+</code></pre></div><div align="center">
+  <img src="./images/random.png" alt="convolution random kernel" />
+</div>
+<p>I noticed that the center of the kernel controls the brightness of the image; the higher the value, the brighter the image will be.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>Image filtering is an application of linear algebra; any linear transformation can be written in matrix form and used as a filter on an image.</p>
+<p>Of course, we can do non-linear transformations on images, and the course covers some of that if you&rsquo;re interested.</p>
+<p>What I enjoyed most in this course is how good the Julia language is; it seemed to me like it combines what&rsquo;s good from other languages like Python, JavaScript, and even Matlab.
+The performance is similar to C as well, which is phenomenal. I encourage you to learn and use this language if you&rsquo;re into scientific programming.</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/AhmadHamze/AhmadHamze.github.io.git/edit//content/posts/mathematics/convolution/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/estimating-pi/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Estimating pi</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/infra/load_balancer/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>AWS ALB and Render.com Deployment</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#About">About me</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#Skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Blogs</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>ahmadhamze@yahoo.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2021 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

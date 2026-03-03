@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 22 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://AhmadHamze.github.io/posts/mathematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Image manipulation with convolution using Julia</title>
+      <link>http://AhmadHamze.github.io/posts/mathematics/convolution/</link>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+      
+      <guid>http://AhmadHamze.github.io/posts/mathematics/convolution/</guid>
+      <description>In the past month, I started learning the Julia programming language, it was created by mathematicians for mathematicians. It is mostly used for scientific research and teaching purposes. I was always drawn to it, but for some reason I kept procrastinating learning it until recently.
+In this blog, I will share what I learned from the amazing Introduction to Computational Thinking course taught by Professor Alan Edelman, one of the cofounders of the Julia language, and others.</description>
+    </item>
+    
+    <item>
       <title>From random walk to diffusion</title>
       <link>http://AhmadHamze.github.io/posts/mathematics/diffusion/</link>
       <pubDate>Sun, 22 Oct 2023 00:00:00 +0000</pubDate>
